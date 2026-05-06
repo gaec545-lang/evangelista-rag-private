@@ -1,0 +1,10 @@
+.venv/
+.venv_win/
+__pycache__/
+*.pyc
+.env
+.DS_Store
+qdrant_storage/
+qdrant_storage_v2/
+uvicorn_output*.txt
+.pytest_cache/

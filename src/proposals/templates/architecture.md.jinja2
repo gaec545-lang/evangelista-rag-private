@@ -1,0 +1,85 @@
+# Propuesta The Architecture
+**{{ client.name }}**
+*{{ date }}*
+
+---
+
+## Evangelista & Co.
+Propuesta de implementación basada en hallazgos del Dictamen Foundation.
+
+**Cliente:** {{ client.name }}
+**Sector:** {{ client.sector | capitalize }}
+**Ciudad:** {{ client.city }}
+**Complejidad (Γ):** {{ gamma }}
+
+---
+
+## 1. Contexto y Alcance
+
+Con base en el Dictamen Foundation ejecutado para {{ client.name }}, esta propuesta contempla la implementación de las soluciones identificadas para {{ client.sucursales }} sucursal(es) con {{ client.sistemas_erp }} sistema(s) ERP.
+
+{% if hallazgos %}
+### Hallazgos a resolver:
+{% for h in hallazgos %}
+- {{ h }}
+{% endfor %}
+{% endif %}
+
+---
+
+## 2. Metodología de Implementación
+
+The Architecture sigue el framework **DMAIC + Data Mesh** de Evangelista:
+
+| Fase | Duración | Entregable |
+|---|---|---|
+| Define | Semana 1-2 | Arquitectura TO-BE aprobada |
+| Measure | Semana 3-4 | Baseline de KPIs y métricas |
+| Analyze | Semana 5-6 | Root cause de brechas de datos |
+| Improve | Semana 7-{{ semanas - 2 }} | Implementación y pipelines |
+| Control | Semana {{ semanas - 1 }}-{{ semanas }} | Dashboard, alertas y handoff |
+
+**Duración total:** {{ semanas }} semanas
+
+---
+
+## 3. Inversión
+
+| Concepto | Valor |
+|---|---|
+| Setup Fee | ${{ "{:,.0f}".format(setup_fee) }} MXN |
+| Success Fee (25%) | ${{ "{:,.0f}".format(success_fee) }} MXN |
+| **Total** | **${{ "{:,.0f}".format(total_fee) }} MXN** |
+
+**Esquema de pago:**
+- 40% al inicio del proyecto (${{ "{:,.0f}".format(setup_fee * 0.4) }} MXN)
+- 35% a mitad del proyecto (${{ "{:,.0f}".format(setup_fee * 0.35) }} MXN)
+- 25% Success Fee al cumplimiento de KPIs (${{ "{:,.0f}".format(success_fee) }} MXN)
+
+---
+
+## 4. Análisis de Retorno de Inversión
+
+{{ financial_analysis }}
+
+---
+
+## 5. Equipo Evangelista
+
+El proyecto será liderado por un **Engagement Manager** con soporte de especialistas en:
+- Arquitectura de datos y Data Mesh
+- Procesos operativos y DMAIC
+- Business Intelligence y KPIs
+
+---
+
+## 6. Términos y Condiciones
+
+- **Vigencia:** 30 días naturales a partir de {{ date }}
+- **Success Fee:** Se activa al cumplir ≥ 80% de los KPIs acordados en el Dictamen
+- **Garantía de calidad:** 30 días de soporte post-implementación sin costo adicional
+- **Confidencialidad:** NDA bilateral vigente desde la firma
+
+---
+
+*Evangelista & Co. — Puebla, México*

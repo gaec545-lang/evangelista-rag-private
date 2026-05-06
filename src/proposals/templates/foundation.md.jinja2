@@ -1,0 +1,78 @@
+# Propuesta The Foundation
+**{{ client.name }}**
+*{{ date }}*
+
+---
+
+## Evangelista & Co.
+Firma de consultoría especializada en arquitectura de datos y transformación digital para empresas del sector {{ client.sector }}. Operamos desde Puebla con presencia en las principales ciudades de México.
+
+**Contacto:** {{ client.contact_name or 'N/D' }}
+**Sector:** {{ client.sector | capitalize }}
+**Ciudad:** {{ client.city }}
+
+---
+
+## 1. ¿Qué es The Foundation?
+
+The Foundation es el punto de partida de toda relación con Evangelista & Co. Es un diagnóstico estructurado de **8 semanas** que entrega tres resultados concretos:
+
+### Fase 1 — Scoping (Semanas 1-2)
+Definición del alcance, inventario de sistemas ({{ client.erp_type or 'ERP' }}, bases de datos, reportes actuales) y entrevistas con stakeholders clave. Resultado: **Mapa de sistemas y datos actuales**.
+
+### Fase 2 — Inmersión (Semanas 3-6)
+Análisis profundo de procesos ({{ client.sucursales }} sucursal(es), {{ client.sistemas_erp }} sistema(s) ERP), calidad de datos (Benford, duplicados, nulos), y modelado AS-IS. Resultado: **Diagnóstico técnico y operativo**.
+
+### Fase 3 — Dictamen (Semanas 7-8)
+Presentación de hallazgos, recomendaciones priorizadas por impacto financiero, y hoja de ruta de 12-18 meses. Resultado: **Dictamen ejecutivo y plan de acción**.
+
+---
+
+## 2. Inversión
+
+| Concepto | Valor |
+|---|---|
+| Foundation Fee | ${{ "{:,.0f}".format(foundation_fee) }} MXN |
+| Factor de Complejidad (Γ) | {{ gamma }} |
+| Forma de pago | 50% al inicio / 50% al Dictamen |
+
+*El Foundation Fee incluye todos los honorarios del equipo Evangelista, materiales de diagnóstico y entregables ejecutivos. No incluye licencias de software.*
+
+{% if client.city | upper not in ['PUEBLA', 'PUE'] %}
+> **Nota:** Se incluyen viáticos para trabajo presencial en {{ client.city }}.
+{% endif %}
+
+---
+
+## 3. Análisis Financiero Proyectado
+
+{{ financial_analysis }}
+
+---
+
+## 4. Hallazgos Típicos en el Sector {{ client.sector | capitalize }}
+
+{{ typical_findings }}
+
+---
+
+## 5. Próximos Pasos
+
+1. **Aprobación de propuesta** — Firma de carta de compromiso y transferencia del 50% inicial
+2. **Kickoff** — Reunión de inicio con equipo directivo y operativo (dentro de 5 días hábiles)
+3. **Scoping** — Primeras dos semanas de levantamiento de información
+4. **Entregables intermedios** — Reportes de avance cada 2 semanas
+
+---
+
+## 6. Términos y Condiciones
+
+- **Vigencia de propuesta:** 30 días naturales a partir de {{ date }}
+- **Confidencialidad:** Toda la información compartida está sujeta a NDA
+- **Propiedad intelectual:** Los entregables son propiedad de {{ client.name }}. Las metodologías y herramientas son propiedad de Evangelista & Co.
+- **Cancelación:** Sin costo si se notifica antes del Kickoff. 25% de penalización después del inicio.
+
+---
+
+*Evangelista & Co. — Puebla, México*
+*Para más información: contacto@evangelista.mx*

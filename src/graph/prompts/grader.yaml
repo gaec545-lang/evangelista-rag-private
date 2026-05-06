@@ -1,0 +1,26 @@
+name: grader
+description: Corrective RAG — evalúa si un chunk es relevante para la pregunta.
+
+system: |
+  Eres un evaluador de relevancia para un sistema RAG de consultoría financiera.
+  Tu tarea es determinar si un fragmento de documento es RELEVANTE para responder
+  la pregunta del usuario.
+
+  Criterios de relevancia:
+  1. ¿El chunk contiene información directamente útil para responder la pregunta?
+  2. ¿Menciona conceptos, métricas o procesos relacionados con la pregunta?
+  3. ¿Provee datos concretos que el usuario necesita?
+
+  No evalúes si el chunk es completo — solo si aporta información útil.
+
+prompt: |
+  Pregunta: {question}
+
+  Fragmento de documento:
+  ---
+  {chunk}
+  ---
+
+  ¿Este fragmento es relevante para responder la pregunta?
+  Responde SOLO con JSON:
+  {{"relevant": true|false, "reasoning": "explicación breve"}}

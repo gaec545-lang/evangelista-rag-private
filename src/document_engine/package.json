@@ -1,0 +1,9 @@
+{
+  "name": "document-engine",
+  "version": "1.0.0",
+  "description": "Motor de generación de documentos para Evangelista & Co.",
+  "main": "index.js",
+  "dependencies": {
+    "docx": "^8.5.0"
+  }
+}
