@@ -7,25 +7,26 @@ class Settings(BaseSettings):
     """Configuración cargada desde variables de entorno o archivo .env."""
 
     # Vault
-    VAULT_PATH: str = "../Evangelista-Obsidian/evangelista-vault"
+    # En producción (Render), el conocimiento está dentro del repo como submódulo 'vault'
+    VAULT_PATH: str = "./vault"
 
     # Qdrant
-    # Modo "local" usa archivo en disco (sin Docker). Modo "server" usa host:port.
+    # "local" usa archivos en disco. "server" usa host:port (recomendado para producción con persistencia).
     QDRANT_MODE: str = "local"
     QDRANT_LOCAL_PATH: str = "./qdrant_storage"
     QDRANT_HOST: str = "localhost"
     QDRANT_PORT: int = 6333
     QDRANT_COLLECTION: str = "evangelista_knowledge"
 
-    # LLM Provider: "groq" | "ollama" | "anthropic"
+    # LLM Provider: "groq" (Recomendado para velocidad en producción)
     LLM_PROVIDER: str = "groq"
     LLM_MODEL: str = "groq-llama-70b"
 
-    # Groq (dev)
+    # Groq (dev/prod)
     GROQ_API_KEY: str = ""
     GROQ_MODEL: str = "llama-3.3-70b-versatile"
 
-    # Ollama (prod)
+    # Ollama (solo para desarrollo local)
     OLLAMA_BASE_URL: str = "http://localhost:11434"
     OLLAMA_MODEL: str = "qwen2.5:32b"
     OLLAMA_EMBED_MODEL: str = "nomic-embed-text"
@@ -34,23 +35,16 @@ class Settings(BaseSettings):
     ANTHROPIC_API_KEY: str = ""
     ANTHROPIC_MODEL: str = "claude-sonnet-4-5-20251022"
 
-    # Kimi / Moonshot
-    KIMI_API_KEY: str = ""
-    KIMI_MODEL: str = "moonshot-v1-32k"
-
-    # DeepSeek
-    DEEPSEEK_API_KEY: str = ""
-    DEEPSEEK_MODEL: str = "deepseek-chat"
-
     # Embeddings
-    EMBED_PROVIDER: str = "ollama"
-    EMBED_MODEL: str = "nomic-embed-text"
-    EMBED_DIMENSIONS: int = 768
+    # Usamos "fastembed" como default porque es local, rápido y no necesita servidor externo (Ollama).
+    EMBED_PROVIDER: str = "fastembed"
+    EMBED_MODEL: str = "BAAI/bge-small-en-v1.5"
+    EMBED_DIMENSIONS: int = 384
 
     # Chunking
     CHUNK_MIN_LENGTH: int = 100
     CHUNK_MAX_LENGTH: int = 2000
-    CHUNK_OVERLAP: int = 0
+    CHUNK_OVERLAP: int = 200
 
     # Retrieval
     RETRIEVAL_TOP_K: int = 10
