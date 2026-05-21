@@ -47,3 +47,26 @@ class SearchRequest(BaseModel):
 class SearchResponse(BaseModel):
     results: list[dict]
     total: int
+
+
+class ProjectContext(BaseModel):
+    sector: str | None = None
+    hypotheses_count: int | None = 0
+    findings_summary: list[str] | None = Field(default_factory=list)
+    current_coi: float | None = 0.0
+
+
+class ChatRequest(BaseModel):
+    message: str
+    agent_name: str
+    project_phase: str | None = "scoping"
+    project_context: ProjectContext | None = None
+
+
+class ChatResponse(BaseModel):
+    message: str
+    agent_used: str
+    rag_status: str = "OK"
+    avg_relevance: float = 0.0
+    retriever_used: str = ""
+    hypothesis_used: bool = False

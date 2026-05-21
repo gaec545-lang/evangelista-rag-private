@@ -6,10 +6,14 @@ from .requests import (
     AgentExecuteResponse,
     SearchRequest,
     SearchResponse,
+    ChatRequest,
+    ChatResponse,
+    ProjectContext,
 )
 
 __all__ = [
     "AnalyzeRequest", "AnalyzeResponse",
     "AgentExecuteRequest", "AgentExecuteResponse",
     "SearchRequest", "SearchResponse",
+    "ChatRequest", "ChatResponse", "ProjectContext",
 ]

@@ -51,9 +51,13 @@ class Settings(BaseSettings):
     RETRIEVAL_FINAL_K: int = 5
     RERANKER_ENABLED: bool = False
 
-    # Supabase (para team management desde backend)
-    SUPABASE_URL: str = ""
-    SUPABASE_SERVICE_KEY: str = ""
+    # RAG Configuration
+    RAG_RELEVANCE_THRESHOLD: float = 0.65
+    RAG_TOP_K: int = 8
+    RAG_HYDE_TIMEOUT_SECONDS: float = 5.0
+    RAG_BM25_TOP_K_INTERMEDIATE: int = 20
+    RAG_CLASSIFIER_CONFIDENCE_THRESHOLD: float = 0.70
+    HYDE_MODEL: str = "llama3.1:8b"
 
     model_config = {
         "env_file": ".env",

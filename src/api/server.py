@@ -26,6 +26,18 @@ async def lifespan(app: FastAPI):
     agents = AgentRegistry.list_agents()
     logger.info("agents_registered", agents=agents)
 
+    try:
+        from src.utils.qdrant import get_qdrant_client
+        from src.retrieval.hybrid_retriever import HybridRetriever
+        logger.info("Building BM25 index from Qdrant vault...")
+        qdrant_client = get_qdrant_client()
+        hybrid_retriever_instance = HybridRetriever(qdrant_client, settings.QDRANT_COLLECTION)
+        await hybrid_retriever_instance._build_bm25_index()
+        app.state.hybrid_retriever = hybrid_retriever_instance
+        logger.info("BM25 index ready.")
+    except Exception as e:
+        logger.error("Error building BM25 index: " + str(e))
+
     yield
 
     logger.info("api_shutdown")
@@ -87,6 +99,7 @@ from src.api.routes import (
     foundation_analysis,
     documents,
     client_files,
+    ai_chat,
 )
 from src.api.routes import templates
 
@@ -103,4 +116,5 @@ app.include_router(foundation_analysis.router, tags=["Foundation Analysis"])
 app.include_router(documents.router, prefix="/api/v1", tags=["Documents"])
 app.include_router(templates.router, tags=["Templates"])
 app.include_router(client_files.router, tags=["Client Files"])
+app.include_router(ai_chat.router, prefix="/api/v1", tags=["AI Chat"])
 

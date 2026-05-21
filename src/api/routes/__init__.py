@@ -6,4 +6,5 @@ from . import (
     graph_viz,
     proposals,
     monte_carlo,
+    ai_chat,
 )

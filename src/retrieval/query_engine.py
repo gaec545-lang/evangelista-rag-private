@@ -10,8 +10,27 @@ from src.retrieval.filters import (
 )
 from src.config import settings
 from src.utils.qdrant import get_qdrant_client
+from typing import List, Literal
+from dataclasses import dataclass
+
+from .hybrid_retriever import HybridRetriever, RetrievedChunk
+from .hyde_retriever import HyDERetriever
+from .query_classifier import QueryClassifier
+from .corrective_evaluator import CorrectivenessEvaluator
+from src.prompts.few_shot_builder import FewShotPromptBuilder, EVANGELISTA_BASE_SYSTEM_PROMPT
 
 logger = structlog.get_logger()
+
+@dataclass
+class OrchestratedResult:
+    status: Literal["OK", "INSUFFICIENT_CONTEXT", "ERROR"]
+    chunks: List[RetrievedChunk]
+    system_prompt: str
+    query_type: str
+    retriever_used: str
+    avg_relevance: float
+    hypothesis_used: bool  # True si se usó HyDE
+
 
 class QueryEngine:
     """
@@ -132,3 +151,91 @@ class QueryEngine:
                 f"{r.content}"
             )
         return "\n\n---\n\n".join(parts)
+
+    async def retrieve_orchestrated(
+        self,
+        query: str,
+        agent_name: str,
+        project_phase: str,
+        project_context: dict = None,
+        top_k: int = 8
+    ) -> OrchestratedResult:
+        """
+        Orquestador principal del RAG fusionado.
+        Secuencia: Classify → Retrieve → Correct → Build Prompt
+        """
+        
+        try:
+            # PASO 1: Clasificar query
+            classifier = QueryClassifier()
+            classification = classifier.classify(query)
+            
+            hypothesis_used = False
+            chunks = []
+            retriever_used = classification.retriever
+            
+            # PASO 2: Recuperar según clasificación
+            if classification.retriever == "HYDE":
+                hyde = HyDERetriever(
+                    qdrant_client=self.client,
+                    embedder=self.embedder,
+                    collection_name=self.collection
+                )
+                chunks = await hyde.retrieve(query, agent_name, top_k)
+                
+                if chunks:
+                    hypothesis_used = True
+                else:
+                    # Fallback automático a Hybrid si HyDE falla
+                    retriever_used = "HYBRID (fallback de HYDE)"
+                    hybrid = HybridRetriever(self.client, self.collection)
+                    chunks = await hybrid.retrieve(query, agent_name, top_k)
+            else:
+                hybrid = HybridRetriever(self.client, self.collection)
+                chunks = await hybrid.retrieve(query, agent_name, top_k)
+            
+            # PASO 3: Evaluar corrección
+            evaluator = CorrectivenessEvaluator()
+            evaluation = evaluator.evaluate(chunks, query)
+            
+            if evaluation.status == "INSUFFICIENT_CONTEXT":
+                return OrchestratedResult(
+                    status="INSUFFICIENT_CONTEXT",
+                    chunks=[],
+                    system_prompt="",
+                    query_type=classification.query_type,
+                    retriever_used=retriever_used,
+                    avg_relevance=0.0,
+                    hypothesis_used=hypothesis_used
+                )
+            
+            # PASO 4: Construir system prompt con few-shots
+            builder = FewShotPromptBuilder()
+            system_prompt = builder.build(
+                query_type=classification.query_type,
+                project_phase=project_phase,
+                context_chunks=evaluation.approved_chunks,
+                project_context=project_context
+            )
+            
+            return OrchestratedResult(
+                status="OK",
+                chunks=evaluation.approved_chunks,
+                system_prompt=system_prompt,
+                query_type=classification.query_type,
+                retriever_used=retriever_used,
+                avg_relevance=evaluation.avg_score,
+                hypothesis_used=hypothesis_used
+            )
+        
+        except Exception as e:
+            logger.error(f"RAG orchestration failed: {e}")
+            return OrchestratedResult(
+                status="ERROR",
+                chunks=[],
+                system_prompt=EVANGELISTA_BASE_SYSTEM_PROMPT,  # fallback mínimo
+                query_type="FACTUAL",
+                retriever_used="NONE",
+                avg_relevance=0.0,
+                hypothesis_used=False
+            )
