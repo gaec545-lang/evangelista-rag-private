@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_WEBAPP_NAME: evangelista-backend
+  AZURE_WEBAPP_NAME: app-evangelista-backend-19863
   PYTHON_VERSION: '3.11'
 
 jobs:
@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          submodules: 'true' # Clona el vault de manera automática
+          submodules: 'true' # Clona el vault de manera automÃ¡tica
 
       - name: Set up Python version
         uses: actions/setup-python@v5
