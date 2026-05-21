@@ -1,4 +1,4 @@
-"""ERP Connections router – Supabase removed. Placeholder implementation for alternative storage.
+"""ERP Connections router – Supabase removed. Placeholder implementation for alternative storage."""
 
 from fastapi import APIRouter, HTTPException
 
@@ -22,4 +22,4 @@ async def test_stored_connection(source_id: str):
 @router.delete("/api/v1/erp-connections/{connection_id}")
 async def revoke_connection(connection_id: str):
     _not_impl()
-"
+
