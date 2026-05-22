@@ -55,6 +55,5 @@ python-docx>=1.0
 # ── Database (Azure SQL) ──
 sqlalchemy>=2.0
 pyodbc>=5.1.0
-supabase>=2.0.0
 # Triggering new build with SCM_DO_BUILD_DURING_DEPLOYMENT=true
 

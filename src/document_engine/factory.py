@@ -5,10 +5,9 @@ from pydantic import BaseModel
 from typing import Dict, Any, Optional
 from src.document_engine.folio import generate_folio_atomic
 from src.config import settings
-from supabase import create_client
+from sqlalchemy import text
 
 router = APIRouter()
-supabase = create_client(settings.SUPABASE_URL, settings.SUPABASE_SERVICE_KEY)
 
 TEMPLATE_MAP = {
     'propuesta':              'propuesta.js',
@@ -49,25 +48,57 @@ class DocumentGeneratePayload(BaseModel):
     variables: Dict[str, Any] = {}
 
 async def register_deliverable(project_id: str, client_id: str, doc_type: str, folio: str, file_path: str, client_facing: bool):
-    """Register the deliverable in Supabase"""
+    """Register the deliverable in the database (Azure SQL / PostgreSQL)"""
     if not project_id:
         return
     
     file_name = os.path.basename(file_path)
+    file_url = f"local://{file_path}"
+    title = f"{doc_type.capitalize()} - {folio}"
     
-    # In a real scenario, we would upload to Supabase Storage and get the URL.
-    # For now, we will just register the logical record.
+    from src.tools.database_connector import SessionLocal
+    if SessionLocal is None:
+        print("Database session not configured, skipping deliverable registration.")
+        return
+        
+    db = SessionLocal()
     try:
-        supabase.table('deliverables').insert({
-            'project_id': project_id,
-            'deliverable_type': doc_type,
-            'title': f"{doc_type.capitalize()} - {folio}",
-            'status': 'borrador',
-            'file_name': file_name,
-            'file_url': f"local://{file_path}"
-        }).execute()
+        # Try Azure SQL schema first
+        query = text("""
+            INSERT INTO Deliverables (ProjectId, DeliverableType, Title, Status, FileName, FileUrl)
+            VALUES (:project_id, :doc_type, :title, 'borrador', :file_name, :file_url)
+        """)
+        db.execute(query, {
+            "project_id": project_id,
+            "doc_type": doc_type,
+            "title": title,
+            "file_name": file_name,
+            "file_url": file_url
+        })
+        db.commit()
+        print(f"Registered deliverable in Azure SQL: {folio}")
     except Exception as e:
-        print(f"Failed to register deliverable: {e}")
+        db.rollback()
+        try:
+            # Try PostgreSQL schema
+            query = text("""
+                INSERT INTO deliverables (project_id, deliverable_type, title, status, file_name, file_url, version)
+                VALUES (:project_id, :doc_type, :title, 'borrador', :file_name, :file_url, 1)
+            """)
+            db.execute(query, {
+                "project_id": project_id,
+                "doc_type": doc_type,
+                "title": title,
+                "file_name": file_name,
+                "file_url": file_url
+            })
+            db.commit()
+            print(f"Registered deliverable in PostgreSQL: {folio}")
+        except Exception as ex:
+            db.rollback()
+            print(f"Failed to register deliverable in both database systems: {e} | {ex}")
+    finally:
+        db.close()
 
 @router.post("/generate")
 async def generate_document(payload: DocumentGeneratePayload):

@@ -1,0 +1,282 @@
+2026-05-22T04:43:37.0027999Z,Updating submodules.,76e1d8c0-662b-48fe-9b40-247b606715fa,0
+2026-05-22T04:43:38.1654660Z,Preparing deployment for commit id '423c2a9f-b'.,7a85379e-7e99-4d25-937f-57281c963663,0
+2026-05-22T04:43:38.5071987Z,PreDeployment: context.CleanOutputPath False,1ceb170f-2a59-4e2f-8170-2628f5d75354,0
+2026-05-22T04:43:38.6395425Z,PreDeployment: context.OutputPath /home/site/wwwroot,195fc1ab-f072-4cf9-8ab0-67f11fdef96c,0
+2026-05-22T04:43:38.8255286Z,Repository path is /tmp/zipdeploy/extracted,c2cd6266-96b3-4a61-9ade-6affcb701c42,0
+2026-05-22T04:43:39.0425431Z,Running oryx build...,62f22d72-203e-4ef8-b4a4-b7c1e5158724,0
+	2026-05-22T04:43:39.0918971Z,Command: oryx build /tmp/zipdeploy/extracted -o /home/site/wwwroot --platform python --platform-version 3.11 -p virtualenv_name=antenv --log-file /tmp/build-debug.log  -i /tmp/8deb7bcb0ee575c --compress-destination-dir | tee /tmp/oryx-build.log,,0
+	2026-05-22T04:43:41.6426140Z,Operation performed by Microsoft Oryx&comma; https://github.com/Microsoft/Oryx,,0
+	2026-05-22T04:43:41.6926593Z,You can report issues at https://github.com/Microsoft/Oryx/issues,,0
+	2026-05-22T04:43:41.7328336Z,,,0
+	2026-05-22T04:43:41.7752042Z,Oryx Version: 0.2.20260420.1+83c04e9ee1882dc90d279b63348824daedbd3c96&comma; Commit: 83c04e9ee1882dc90d279b63348824daedbd3c96&comma; ReleaseTagName: 20260420.1,,0
+	2026-05-22T04:43:41.8049936Z,,,0
+	2026-05-22T04:43:41.8618219Z,Build Operation ID: 957034e05e442091,,0
+	2026-05-22T04:43:41.9040320Z,Repository Commit : 423c2a9f-bb31-40c2-a7e5-92fb780d9a63,,0
+	2026-05-22T04:43:41.9246416Z,OS Type           : bullseye,,0
+	2026-05-22T04:43:41.9642546Z,Image Type        : githubactions,,0
+	2026-05-22T04:43:42.0214608Z,,,0
+	2026-05-22T04:43:42.0785978Z,Primary SDK Storage URL: https://oryx-cdn.microsoft.io,,0
+	2026-05-22T04:43:42.1578989Z,Backup SDK Storage URL: ,,0
+	2026-05-22T04:43:42.1898600Z,ACR SDK Registry URL: (not set),,0
+	2026-05-22T04:43:42.2368585Z,SDK provider status:,,0
+	2026-05-22T04:43:42.2853803Z,  External ACR SDK provider: Disabled,,0
+	2026-05-22T04:43:42.3313148Z,  External SDK provider: Enabled,,0
+	2026-05-22T04:43:42.3914776Z,  Direct ACR SDK provider: Disabled,,0
+	2026-05-22T04:43:42.4302936Z,  Blob SDK provider: Enabled,,0
+	2026-05-22T04:43:42.4993805Z,Detecting platforms...,,0
+	2026-05-22T04:43:42.5515643Z,Requesting metadata for platform python from external SDK provider,,0
+	2026-05-22T04:43:44.0703353Z,Requesting metadata for platform python from external SDK provider,,0
+	2026-05-22T04:43:44.4238211Z,Version resolved using external SDK provider.,,0
+	2026-05-22T04:43:44.7854579Z,Detected following platforms:,,0
+	2026-05-22T04:43:44.8035265Z,  python: 3.11.15,,0
+	2026-05-22T04:43:45.2997580Z,,,0
+	2026-05-22T04:43:45.4012108Z,Using intermediate directory '/tmp/8deb7bcb0ee575c'.,,0
+	2026-05-22T04:43:45.4281263Z,,,0
+	2026-05-22T04:43:45.4703568Z,Copying files to the intermediate directory...,,0
+	2026-05-22T04:43:46.8492428Z,Copying files to intermediate directory done in 1 sec(s).,,0
+	2026-05-22T04:43:46.8773353Z,,,0
+	2026-05-22T04:43:46.9377653Z,Source directory     : /tmp/8deb7bcb0ee575c,,0
+	2026-05-22T04:43:46.9950622Z,Destination directory: /home/site/wwwroot,,0
+	2026-05-22T04:43:47.0244931Z,,,0
+	2026-05-22T04:43:47.4517840Z,Running build script snippets...,,0
+	2026-05-22T04:43:47.4805286Z,Python Version: /tmp/oryx/platforms/python/3.11.15/bin/python3.11,,0
+	2026-05-22T04:43:47.5113923Z,Creating directory for command manifest file if it does not exist,,0
+	2026-05-22T04:43:47.5424182Z,Removing existing manifest file,,0
+	2026-05-22T04:43:47.6015476Z,Python Virtual Environment: antenv,,0
+	2026-05-22T04:43:47.6575653Z,Creating virtual environment...,,0
+	2026-05-22T04:43:47.6897301Z,Executing: /tmp/oryx/platforms/python/3.11.15/bin/python3.11 -m venv antenv --copies --system-site-packages,,0
+	2026-05-22T04:44:08.5172589Z,Activating virtual environment...,,0
+	2026-05-22T04:44:08.5666127Z,Fast build is enabled,,0
+	2026-05-22T04:44:08.5981052Z,Installing uv...,,0
+	2026-05-22T04:44:13.6884280Z,Collecting uv,,0
+	2026-05-22T04:44:13.7992026Z,  Downloading uv-0.11.16-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (11 kB),,0
+	2026-05-22T04:44:13.9820842Z,Downloading uv-0.11.16-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (24.7 MB),,0
+	2026-05-22T04:44:15.8573231Z,   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 24.7/24.7 MB 7.5 MB/s eta 0:00:00,,0
+	2026-05-22T04:44:16.4024927Z,Installing collected packages: uv,,0
+	2026-05-22T04:44:18.9911949Z,Successfully installed uv-0.11.16,,0
+	2026-05-22T04:44:20.8789205Z,,,1
+	2026-05-22T04:44:20.9300244Z,[notice] A new release of pip is available: 24.0 -> 26.1.1,,1
+	2026-05-22T04:44:21.0040958Z,[notice] To update&comma; run: pip install --upgrade pip,,1
+	2026-05-22T04:44:22.7582009Z,Running uv pip install...,,0
+	2026-05-22T04:48:31.3724051Z,Using Python 3.11.15 environment at: antenv,,0
+	2026-05-22T04:48:31.4117016Z,Resolved 187 packages in 3.44s,,0
+	2026-05-22T04:48:31.4411860Z,Prepared 3 packages in 91ms,,0
+	2026-05-22T04:48:31.4799092Z,Installed 186 packages in 7.00s,,0
+	2026-05-22T04:48:31.5292050Z,Bytecode compiled 19491 files in 3m 56s,,0
+	2026-05-22T04:48:31.5510948Z, + aiohappyeyeballs==2.6.2,,0
+	2026-05-22T04:48:31.5805489Z, + aiohttp==3.13.5,,0
+	2026-05-22T04:48:31.6107090Z, + aiosignal==1.4.0,,0
+	2026-05-22T04:48:31.6306297Z, + annotated-doc==0.0.4,,0
+	2026-05-22T04:48:31.6696023Z, + annotated-types==0.7.0,,0
+	2026-05-22T04:48:31.7008932Z, + anthropic==0.104.0,,0
+	2026-05-22T04:48:31.7388850Z, + anyio==4.13.0,,0
+	2026-05-22T04:48:31.7806889Z, + arch==8.0.0,,0
+	2026-05-22T04:48:31.8204916Z, + astropy==7.2.0,,0
+	2026-05-22T04:48:31.8395694Z, + astropy-iers-data==0.2026.5.18.1.11.28,,0
+	2026-05-22T04:48:31.8718460Z, + asttokens==3.0.1,,0
+	2026-05-22T04:48:31.9112891Z, + attrs==26.1.0,,0
+	2026-05-22T04:48:31.9301481Z, + certifi==2026.5.20,,0
+	2026-05-22T04:48:31.9569755Z, + cffi==2.0.0,,0
+	2026-05-22T04:48:31.9756900Z, + charset-normalizer==3.4.7,,0
+	2026-05-22T04:48:31.9993289Z, + clarabel==0.11.1,,0
+	2026-05-22T04:48:32.0358174Z, + click==8.4.1,,0
+	2026-05-22T04:48:32.0481362Z, + cmdstanpy==1.3.0,,0
+	2026-05-22T04:48:32.0861208Z, + comm==0.2.3,,0
+	2026-05-22T04:48:32.1067667Z, + contourpy==1.3.3,,0
+	2026-05-22T04:48:32.1387863Z, + cryptography==48.0.0,,0
+	2026-05-22T04:48:32.1785745Z, + cvxpy==1.9.0,,0
+	2026-05-22T04:48:32.1971590Z, + cycler==0.12.1,,0
+	2026-05-22T04:48:32.2296540Z, + dataclasses-json==0.6.7,,0
+	2026-05-22T04:48:32.2571798Z, + dateparser==1.4.0,,0
+	2026-05-22T04:48:32.2974183Z, + decorator==5.3.1,,0
+	2026-05-22T04:48:32.3262429Z, + dill==0.4.1,,0
+	2026-05-22T04:48:32.3755297Z, + distro==1.9.0,,0
+	2026-05-22T04:48:32.4069890Z, + docstring-parser==0.18.0,,0
+	2026-05-22T04:48:32.4459624Z, + duckduckgo-search==8.1.1,,0
+	2026-05-22T04:48:32.4750658Z, + ecdsa==0.19.2,,0
+	2026-05-22T04:48:32.5054562Z, + executing==2.2.1,,0
+	2026-05-22T04:48:32.5272510Z, + fastapi==0.136.1,,0
+	2026-05-22T04:48:32.5559331Z, + fastembed==0.8.0,,0
+	2026-05-22T04:48:32.5776857Z, + filelock==3.29.0,,0
+	2026-05-22T04:48:32.6094379Z, + flatbuffers==25.12.19,,0
+	2026-05-22T04:48:32.6275585Z, + fonttools==4.63.0,,0
+	2026-05-22T04:48:32.6663553Z, + frozenlist==1.8.0,,0
+	2026-05-22T04:48:32.6949698Z, + fsspec==2026.4.0,,0
+	2026-05-22T04:48:32.7180093Z, + greenlet==3.5.1,,0
+	2026-05-22T04:48:32.7567145Z, + groq==1.2.0,,0
+	2026-05-22T04:48:32.7956974Z, + grpcio==1.80.0,,0
+	2026-05-22T04:48:32.8270995Z, + h11==0.16.0,,0
+	2026-05-22T04:48:32.8490878Z, + h2==4.3.0,,0
+	2026-05-22T04:48:32.8677272Z, + hf-xet==1.5.0,,0
+	2026-05-22T04:48:32.8994940Z, + highspy==1.14.0,,0
+	2026-05-22T04:48:32.9589452Z, + holidays==0.97,,0
+	2026-05-22T04:48:32.9977177Z, + hpack==4.1.0,,0
+	2026-05-22T04:48:33.0362522Z, + httpcore==1.0.9,,0
+	2026-05-22T04:48:33.1242027Z, + httptools==0.7.1,,0
+	2026-05-22T04:48:33.1738907Z, + httpx==0.28.1,,0
+	2026-05-22T04:48:33.2146868Z, + httpx-sse==0.4.3,,0
+	2026-05-22T04:48:33.3197912Z, + huggingface-hub==1.16.1,,0
+	2026-05-22T04:48:33.3620056Z, + hyperframe==6.1.0,,0
+	2026-05-22T04:48:33.4482899Z, + idna==3.16,,0
+	2026-05-22T04:48:33.5266460Z, + imageio==2.37.3,,0
+	2026-05-22T04:48:33.5770183Z, + importlib-resources==7.1.0,,0
+	2026-05-22T04:48:33.6853161Z, + iniconfig==2.3.0,,0
+	2026-05-22T04:48:33.8532731Z, + ipython==9.13.0,,0
+	2026-05-22T04:48:33.9113367Z, + ipython-pygments-lexers==1.1.1,,0
+	2026-05-22T04:48:33.9719100Z, + ipywidgets==8.1.8,,0
+	2026-05-22T04:48:33.9930012Z, + jedi==0.20.0,,0
+	2026-05-22T04:48:34.0616161Z, + jinja2==3.1.6,,0
+	2026-05-22T04:48:34.1194156Z, + jiter==0.15.0,,0
+	2026-05-22T04:48:34.1947297Z, + joblib==1.5.3,,0
+	2026-05-22T04:48:34.2245105Z, + jsonpatch==1.33,,0
+	2026-05-22T04:48:34.2820112Z, + jsonpointer==3.1.1,,0
+	2026-05-22T04:48:34.4135879Z, + jupyterlab-widgets==3.0.16,,0
+	2026-05-22T04:48:34.4943985Z, + kiwisolver==1.5.0,,0
+	2026-05-22T04:48:34.6037613Z, + langchain-classic==1.0.7,,0
+	2026-05-22T04:48:34.7028452Z, + langchain-community==0.4.1,,0
+	2026-05-22T04:48:34.7841396Z, + langchain-core==1.4.0,,0
+	2026-05-22T04:48:34.8535574Z, + langchain-protocol==0.0.15,,0
+	2026-05-22T04:48:34.9515029Z, + langchain-text-splitters==1.1.2,,0
+	2026-05-22T04:48:35.0287589Z, + langgraph==1.2.1,,0
+	2026-05-22T04:48:35.1521538Z, + langgraph-checkpoint==4.1.0,,0
+	2026-05-22T04:48:35.3193030Z, + langgraph-prebuilt==1.1.0,,0
+	2026-05-22T04:48:35.4194795Z, + langgraph-sdk==0.3.14,,0
+	2026-05-22T04:48:35.5875850Z, + langsmith==0.8.5,,0
+	2026-05-22T04:48:35.6771140Z, + llvmlite==0.47.0,,0
+	2026-05-22T04:48:35.7233174Z, + loguru==0.7.3,,0
+	2026-05-22T04:48:35.8062056Z, + lxml==6.1.1,,0
+	2026-05-22T04:48:35.8522965Z, + markdown-it-py==4.2.0,,0
+	2026-05-22T04:48:35.9639215Z, + markupsafe==3.0.3,,0
+	2026-05-22T04:48:36.0709832Z, + marshmallow==3.26.2,,0
+	2026-05-22T04:48:36.1121417Z, + matplotlib==3.10.9,,0
+	2026-05-22T04:48:36.1416986Z, + matplotlib-inline==0.2.2,,0
+	2026-05-22T04:48:36.1705411Z, + mdurl==0.1.2,,0
+	2026-05-22T04:48:36.2874459Z, + mmh3==5.2.1,,0
+	2026-05-22T04:48:36.4283179Z, + multidict==6.7.1,,0
+	2026-05-22T04:48:36.4676752Z, + mypy-extensions==1.1.0,,0
+	2026-05-22T04:48:36.5260166Z, + narwhals==2.21.2,,0
+	2026-05-22T04:48:36.6819547Z, + networkx==3.6.1,,0
+	2026-05-22T04:48:36.8546656Z, + numba==0.65.1,,0
+	2026-05-22T04:48:36.9839501Z, + numpy==2.4.6,,0
+	2026-05-22T04:48:37.1600113Z, + onnxruntime==1.26.0,,0
+	2026-05-22T04:48:37.2120964Z, + orjson==3.11.9,,0
+	2026-05-22T04:48:37.3510341Z, + ormsgpack==1.12.2,,0
+	2026-05-22T04:48:37.4331890Z, + osqp==1.1.1,,0
+	2026-05-22T04:48:37.5814202Z, + packaging==26.2,,0
+	2026-05-22T04:48:37.7038292Z, + pandas==3.0.3,,0
+	2026-05-22T04:48:37.7711385Z, + parso==0.8.7,,0
+	2026-05-22T04:48:37.8534745Z, + patsy==1.0.2,,0
+	2026-05-22T04:48:37.9733959Z, + pexpect==4.9.0,,0
+	2026-05-22T04:48:38.0356151Z, + pillow==12.2.0,,0
+	2026-05-22T04:48:38.0945680Z, + plotly==6.7.0,,0
+	2026-05-22T04:48:38.1924048Z, + pluggy==1.6.0,,0
+	2026-05-22T04:48:38.2948122Z, + portalocker==3.2.0,,0
+	2026-05-22T04:48:38.3623330Z, + primp==1.3.0,,0
+	2026-05-22T04:48:38.4326256Z, + prompt-toolkit==3.0.52,,0
+	2026-05-22T04:48:38.4625593Z, + propcache==0.5.2,,0
+	2026-05-22T04:48:38.4856569Z, + prophet==1.3.0,,0
+	2026-05-22T04:48:38.5513995Z, + protobuf==7.35.0,,0
+	2026-05-22T04:48:38.5843848Z, + psutil==7.2.2,,0
+	2026-05-22T04:48:38.6514453Z, + ptyprocess==0.7.0,,0
+	2026-05-22T04:48:38.6904908Z, + pure-eval==0.2.3,,0
+	2026-05-22T04:48:38.7312307Z, + py-rust-stemmers==0.1.5,,0
+	2026-05-22T04:48:38.7989894Z, + pyasn1==0.6.3,,0
+	2026-05-22T04:48:38.8471598Z, + pybind11==3.0.4,,0
+	2026-05-22T04:48:38.8693785Z, + pycparser==3.0,,0
+	2026-05-22T04:48:38.9008658Z, + pydantic==2.13.4,,0
+	2026-05-22T04:48:38.9375681Z, + pydantic-core==2.46.4,,0
+	2026-05-22T04:48:38.9798513Z, + pydantic-settings==2.14.1,,0
+	2026-05-22T04:48:39.0598866Z, + pyerfa==2.0.1.5,,0
+	2026-05-22T04:48:39.1498395Z, + pygments==2.20.0,,0
+	2026-05-22T04:48:39.2378067Z, + pyodbc==5.3.0,,0
+	2026-05-22T04:48:39.2767632Z, + pyparsing==3.3.2,,0
+	2026-05-22T04:48:39.3576812Z, + pytest==9.0.3,,0
+	2026-05-22T04:48:39.3905680Z, + pytest-asyncio==1.3.0,,0
+	2026-05-22T04:48:39.4286782Z, + python-dateutil==2.9.0.post0,,0
+	2026-05-22T04:48:39.4977882Z, + python-docx==1.2.0,,0
+	2026-05-22T04:48:39.5368099Z, + python-dotenv==1.2.2,,0
+	2026-05-22T04:48:39.6275036Z, + python-jose==3.5.0,,0
+	2026-05-22T04:48:39.6951320Z, + python-multipart==0.0.29,,0
+	2026-05-22T04:48:39.7527974Z, + pytz==2026.2,,0
+	2026-05-22T04:48:39.8429748Z, + pyyaml==6.0.3,,0
+	2026-05-22T04:48:39.9221310Z, + qdldl==0.1.9.post1,,0
+	2026-05-22T04:48:39.9741853Z, + qdrant-client==1.18.0,,0
+	2026-05-22T04:48:40.0517071Z, + rank-bm25==0.2.2,,0
+	2026-05-22T04:48:40.1144617Z, + regex==2026.5.9,,0
+	2026-05-22T04:48:40.1809180Z, + requests==2.34.2,,0
+	2026-05-22T04:48:40.3202882Z, + requests-toolbelt==1.0.0,,0
+	2026-05-22T04:48:40.3681848Z, + rich==15.0.0,,0
+	2026-05-22T04:48:40.4795011Z, + riskfolio-lib==7.2.1,,0
+	2026-05-22T04:48:40.5295624Z, + rsa==4.9.1,,0
+	2026-05-22T04:48:40.5664196Z, + schedule==1.2.2,,0
+	2026-05-22T04:48:40.6485298Z, + scikit-learn==1.8.0,,0
+	2026-05-22T04:48:40.7375803Z, + scipy==1.17.1,,0
+	2026-05-22T04:48:40.8373005Z, + scs==3.2.11,,0
+	2026-05-22T04:48:40.8692137Z, + shellingham==1.5.4,,0
+	2026-05-22T04:48:40.9966691Z, + simpy==4.1.1,,0
+	2026-05-22T04:48:41.0795293Z, + six==1.17.0,,0
+	2026-05-22T04:48:41.1559481Z, + sniffio==1.3.1,,0
+	2026-05-22T04:48:41.1852520Z, + sparsediffpy==0.3.0,,0
+	2026-05-22T04:48:41.2245269Z, + sqlalchemy==2.0.49,,0
+	2026-05-22T04:48:41.2767529Z, + stack-data==0.6.3,,0
+	2026-05-22T04:48:41.3539868Z, + stanio==0.5.1,,0
+	2026-05-22T04:48:41.4140699Z, + starlette==1.0.1,,0
+	2026-05-22T04:48:41.4713611Z, + statsmodels==0.14.6,,0
+	2026-05-22T04:48:41.5204174Z, + structlog==25.5.0,,0
+	2026-05-22T04:48:41.5799490Z, + tavily-python==0.7.24,,0
+	2026-05-22T04:48:41.6277295Z, + tenacity==9.1.4,,0
+	2026-05-22T04:48:41.6918603Z, + threadpoolctl==3.6.0,,0
+	2026-05-22T04:48:41.7341727Z, + tiktoken==0.13.0,,0
+	2026-05-22T04:48:41.7850423Z, + tokenizers==0.23.1,,0
+	2026-05-22T04:48:41.8303958Z, + tqdm==4.67.3,,0
+	2026-05-22T04:48:41.8605664Z, + traitlets==5.15.0,,0
+	2026-05-22T04:48:41.9301951Z, + typer==0.25.1,,0
+	2026-05-22T04:48:41.9769287Z, + typing-extensions==4.15.0,,0
+	2026-05-22T04:48:42.0949766Z, + typing-inspect==0.9.0,,0
+	2026-05-22T04:48:42.1441710Z, + typing-inspection==0.4.2,,0
+	2026-05-22T04:48:42.2011168Z, + tzlocal==5.3.1,,0
+	2026-05-22T04:48:42.2437725Z, + urllib3==2.7.0,,0
+	2026-05-22T04:48:42.3201375Z, + uuid-utils==0.16.0,,0
+	2026-05-22T04:48:42.3616020Z, + uvicorn==0.47.0,,0
+	2026-05-22T04:48:42.4013111Z, + uvloop==0.22.1,,0
+	2026-05-22T04:48:42.4638418Z, + vectorbt==0.28.2,,0
+	2026-05-22T04:48:42.5041419Z, + watchdog==6.0.0,,0
+	2026-05-22T04:48:42.5541946Z, + watchfiles==1.2.0,,0
+	2026-05-22T04:48:42.5924889Z, + wcwidth==0.7.0,,0
+	2026-05-22T04:48:42.6254944Z, + websockets==16.0,,0
+	2026-05-22T04:48:42.7005762Z, + widgetsnbextension==4.0.15,,0
+	2026-05-22T04:48:42.7440142Z, + xlsxwriter==3.2.9,,0
+	2026-05-22T04:48:42.8141322Z, + xxhash==3.7.0,,0
+	2026-05-22T04:48:42.8519473Z, + yarl==1.24.2,,0
+	2026-05-22T04:48:42.8917443Z, + zstandard==0.25.0,,0
+	2026-05-22T04:48:42.9321044Z,uv pip install done in 263 sec(s).,,0
+	2026-05-22T04:48:42.9622602Z,Not a vso image&comma; so not writing build commands,,0
+	2026-05-22T04:48:43.0306424Z,,,0
+	2026-05-22T04:48:43.0766929Z,Copying 'requirements.txt' to destination directory...,,0
+	2026-05-22T04:48:43.0972666Z,Done copying requirements.txt to destination directory.,,0
+	2026-05-22T04:48:43.1557881Z,Build script snippets done in 284 sec(s).,,0
+	2026-05-22T04:48:43.2520992Z,Preparing output...,,0
+	2026-05-22T04:48:43.3073177Z,Compressing source directory directly to destination (optimized path)...,,0
+	2026-05-22T04:48:43.3745926Z,Using zstd for compression,,0
+	2026-05-22T04:50:23.6798543Z,Copied the compressed output to '/home/site/wwwroot',,0
+	2026-05-22T04:50:23.7479060Z,Direct compression with zstd done in 112 sec(s).,,0
+	2026-05-22T04:50:23.7656959Z,,,0
+	2026-05-22T04:50:23.7866199Z,Removing existing manifest file,,0
+	2026-05-22T04:50:23.7995516Z,Creating a manifest file...,,0
+	2026-05-22T04:50:23.8189103Z,Manifest file created.,,0
+	2026-05-22T04:50:23.8551069Z,Copying .ostype to manifest output directory.,,0
+	2026-05-22T04:50:23.9217109Z,,,0
+	2026-05-22T04:50:23.9710805Z,Total execution done in 398 sec(s).,,0
+2026-05-22T04:50:24.3860443Z,Running post deployment command(s)...,6d9473ba-e049-49e2-922b-72a4138524f5,0
+2026-05-22T04:50:24.5464329Z,,6b097827-53b9-4db2-8922-4696677c8df2,0
+2026-05-22T04:50:24.6542374Z,Generating summary of Oryx build,f5d1c0be-59ff-40a0-bb3c-e7627b7eb3f6,0
+2026-05-22T04:50:24.8104144Z,Parsing the build logs,a20c57d5-13a3-42f5-8a1a-b7edffb5182c,0
+2026-05-22T04:50:25.0024961Z,Found 0 issue(s),18814d01-2f17-47ca-ba6c-d3bcab471348,0
+2026-05-22T04:50:25.1522431Z,,28ab6714-c401-4f83-8996-cfaea68aeb9c,0
+2026-05-22T04:50:25.2809490Z,Build Summary :,c523d7f2-1a7e-4e12-845c-a8ac949f7ffa,0
+2026-05-22T04:50:25.3963934Z,===============,b98ec1ea-1e00-4111-8459-712422d08cd8,0
+2026-05-22T04:50:25.6544233Z,Errors (0),7e306517-4ea2-4372-b8a9-536357189904,0
+2026-05-22T04:50:25.7535615Z,Warnings (0),f4fc1682-1329-4fd3-84f1-4b25013d7b2e,0
+2026-05-22T04:50:25.8611521Z,,550e4c7f-9b51-4c74-b414-a2ea7ea4f962,0
+2026-05-22T04:50:25.9910811Z,Triggering container recycle for OneDeploy by adding/updating restartTrigger.txt to the site root path,42840e12-4bc6-496b-9373-ce3260d14dc7,0
+2026-05-22T04:50:26.7728744Z,Deployment successful. deployer = OneDeploy deploymentPath = OneDeploy,d3d54858-36e2-43e7-992a-13d61110ad2f,0

@@ -1,8 +1,8 @@
 from src.config import settings
-from supabase import create_client
+import datetime
+from sqlalchemy import text
+from src.tools.database_connector import SessionLocal
 from pydantic import BaseModel
-
-supabase = create_client(settings.SUPABASE_URL, settings.SUPABASE_SERVICE_KEY)
 
 DOCUMENT_TYPE_CODES = {
     'propuesta': 'P',
@@ -38,28 +38,80 @@ def derive_client_code(company_name: str) -> str:
     return 'XXX'
 
 async def generate_folio_atomic(client_id: str, doc_type: str) -> str:
-    """Generates an atomic folio for a document using the Supabase rpc."""
-    # First, get client info - Using 'name' as it's the standard column in dim_clients
-    response = supabase.table('clients').select('name, client_code').eq('id', client_id).execute()
+    """Generates an atomic folio for a document using the database."""
+    client_code = 'XXX'
     
-    if not response.data:
-        client_code = 'XXX'
+    if SessionLocal is None:
+        print("Database not configured, using fallback client code.")
     else:
-        client_data = response.data[0]
-        client_code = client_data.get('client_code')
-        if not client_code:
-            client_code = derive_client_code(client_data.get('name', ''))
+        db = SessionLocal()
+        try:
+            # Query client table with fallback for casing & column names
+            row = None
+            try:
+                # 1. Try case-insensitive fields in lowercase
+                res = db.execute(
+                    text("SELECT name, client_code FROM clients WHERE id = :client_id"),
+                    {"client_id": client_id}
+                ).first()
+                if res:
+                    row = dict(res._mapping)
+            except Exception:
+                try:
+                    # 2. Try uppercase Client table & column names for Azure SQL
+                    res = db.execute(
+                        text("SELECT Name FROM Clients WHERE Id = :client_id"),
+                        {"client_id": client_id}
+                    ).first()
+                    if res:
+                        row = dict(res._mapping)
+                except Exception as e:
+                    print(f"Failed to fetch client: {e}")
+            
+            if row:
+                # Resolve name/Name and client_code/client_code
+                name = row.get('name') or row.get('Name') or ''
+                client_code = row.get('client_code') or row.get('client_code')
+                if not client_code and name:
+                    client_code = derive_client_code(name)
+        except Exception as e:
+            print(f"Error resolving client code: {e}")
+        finally:
+            db.close()
+
+    if not client_code:
+        client_code = 'XXX'
     
     type_code = DOCUMENT_TYPE_CODES.get(doc_type, 'DOC')
     
-    # Use RPC to generate atomic folio
-    rpc_response = supabase.rpc(
-        'generate_folio',
-        {
-            'p_client_id': client_id,
-            'p_doc_type': type_code,
-            'p_client_code': client_code
-        }
-    ).execute()
-    
-    return rpc_response.data
+    # Calculate sequence
+    sequence = 1
+    if SessionLocal is not None:
+        db = SessionLocal()
+        try:
+            # Azure SQL casing
+            query = text("""
+                SELECT COUNT(*) 
+                FROM Deliverables d
+                JOIN Projects p ON d.ProjectId = p.Id
+                WHERE p.ClientId = :client_id AND d.DeliverableType = :doc_type
+            """)
+            sequence = db.execute(query, {"client_id": client_id, "doc_type": doc_type}).scalar() + 1
+        except Exception:
+            try:
+                # PostgreSQL casing
+                query = text("""
+                    SELECT COUNT(*) 
+                    FROM deliverables d
+                    JOIN projects p ON d.project_id = p.id
+                    WHERE p.client_id = :client_id AND d.deliverable_type = :doc_type
+                """)
+                sequence = db.execute(query, {"client_id": client_id, "doc_type": doc_type}).scalar() + 1
+            except Exception as e:
+                print(f"Error calculating sequence, falling back to 1: {e}")
+                sequence = 1
+        finally:
+            db.close()
+
+    year_suffix = datetime.datetime.now().strftime("%y") # e.g. "26"
+    return f"EVA-{client_code}-{type_code}-{year_suffix}-{sequence:03d}"

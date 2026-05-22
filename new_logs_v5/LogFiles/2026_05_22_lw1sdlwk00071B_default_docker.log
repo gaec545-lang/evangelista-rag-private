@@ -1,0 +1,936 @@
+2026-05-22T00:55:10.0694671Z    _____                               
+2026-05-22T00:55:10.0695266Z   /  _  \ __________ _________   ____  
+2026-05-22T00:55:10.0695307Z  /  /_\  \\___   /  |  \_  __ \_/ __ \ 
+2026-05-22T00:55:10.0695336Z /    |    \/    /|  |  /|  | \/\  ___/ 
+2026-05-22T00:55:10.0695367Z \____|__  /_____ \____/ |__|    \___  >
+2026-05-22T00:55:10.0695396Z         \/      \/                  \/ 
+2026-05-22T00:55:10.0695424Z A P P   S E R V I C E   O N   L I N U X
+2026-05-22T00:55:10.0695450Z 
+2026-05-22T00:55:10.0695480Z Documentation     : https://aka.ms/webapp-linux
+2026-05-22T00:55:10.0695514Z Python quickstart : https://aka.ms/python-qs
+2026-05-22T00:55:10.0695546Z Python version    : 3.11.15
+2026-05-22T00:55:10.0695660Z Instance name     : lw1sdlwk00071B
+2026-05-22T00:55:10.0695695Z Instance id       : 9d9ad26f55314832f40453d107bc280606f9336225ee3827727ea25821b4efdd
+2026-05-22T00:55:10.0695721Z 
+2026-05-22T00:55:10.0695750Z App port          : 8000
+2026-05-22T00:55:10.0695779Z Port selected by  : Default for this image
+2026-05-22T00:55:10.0695809Z (Learn more about the PORT appsetting https://aka.ms/webapp-python-settings)
+2026-05-22T00:55:10.0695835Z 
+2026-05-22T00:55:10.0695864Z Note: Any data outside '/home' is not persisted
+2026-05-22T00:55:10.0695890Z 
+2026-05-22T00:55:10.0695936Z ────────────────────────────────────────────────────────────────
+2026-05-22T00:55:10.0695986Z  Run 'apphelp' for available commands and aliases.
+2026-05-22T00:55:10.0696017Z  Run 'install-nettools' to install networking utilities.
+2026-05-22T00:55:10.0696055Z ────────────────────────────────────────────────────────────────
+2026-05-22T00:55:11.6860046Z Starting OpenBSD Secure Shell server: sshd.
+2026-05-22T00:55:11.7170563Z WEBSITES_INCLUDE_CLOUD_CERTS is not set to true.
+2026-05-22T00:55:11.8720387Z Updating certificates in /etc/ssl/certs...
+2026-05-22T00:55:36.6482158Z rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+2026-05-22T00:55:36.6614928Z rehash: warning: skipping duplicate certificate in azl_SSL.com_TLS_ECC_Root_CA_2022.pem
+2026-05-22T00:55:36.6897474Z rehash: warning: skipping duplicate certificate in azl_SSL.com_TLS_RSA_Root_CA_2022.pem
+2026-05-22T00:55:36.7293645Z 4 added, 0 removed; done.
+2026-05-22T00:55:36.7393042Z Running hooks in /etc/ca-certificates/update.d...
+2026-05-22T00:55:36.7417728Z done.
+2026-05-22T00:55:36.7712536Z CA certificates copied and updated successfully.
+2026-05-22T00:55:36.9082428Z Site's appCommandLine: python -m uvicorn src.api.server:app --host 0.0.0.0 --port 8000
+2026-05-22T00:55:37.4843041Z Starting periodic command scheduler: cron.
+2026-05-22T00:55:37.5151010Z Launching oryx with: create-script -appPath /home/site/wwwroot -output /opt/startup/startup.sh -virtualEnvName antenv -defaultApp /opt/defaultsite -userStartupCommand 'python -m uvicorn src.api.server:app --host 0.0.0.0 --port 8000'
+2026-05-22T00:55:38.1404425Z Found build manifest file at '/home/site/wwwroot/oryx-manifest.toml'. Deserializing it...
+2026-05-22T00:55:38.1405299Z Build Operation ID: de87cc0ad6ee7138
+2026-05-22T00:55:38.1709181Z Oryx Version: 0.2.20260504.2, Commit: a776ec9f2fd225b305599e35443ecb3533bcdb26, ReleaseTagName: 20260504.2
+2026-05-22T00:55:38.1709921Z Output is compressed. Extracting it...
+2026-05-22T00:55:38.1709972Z Found zstd-compressed tarball.
+2026-05-22T00:55:38.1710013Z Extracting '/home/site/wwwroot/output.tar.zst' to directory '/tmp/8deb77929353778'...
+2026-05-22T00:55:38.1710043Z Using zstd for decompression of file: /home/site/wwwroot/output.tar.zst
+2026-05-22T00:56:46.2427399Z zstd tar Successfully extracted '/home/site/wwwroot/output.tar.zst' to '/tmp/8deb77929353778'
+2026-05-22T00:56:46.2427762Z App path is set to '/tmp/8deb77929353778'
+2026-05-22T00:56:46.2487239Z Writing output script to '/opt/startup/startup.sh'
+2026-05-22T00:56:46.6999855Z Using packages from virtual environment antenv located at /tmp/8deb77929353778/antenv.
+2026-05-22T00:56:46.7000865Z Updated PYTHONPATH to '/opt/startup/app_logs:/tmp/8deb77929353778/antenv/lib/python3.11/site-packages'
+2026-05-22T00:57:00.3015445Z [2m2026-05-22T00:57:00.301226Z[0m [[32m[1minfo     [0m] [1mcreating_llm_client           [0m [36mmodel[0m=[35mgroq-llama-70b[0m [36mprovider[0m=[35mgroq[0m
+2026-05-22T00:57:00.3184624Z [2m2026-05-22T00:57:00.312177Z[0m [[32m[1minfo     [0m] [1mcreating_llm_client           [0m [36mmodel[0m=[35mgroq-llama-70b[0m [36mprovider[0m=[35mgroq[0m
+2026-05-22T00:57:00.3283113Z [2m2026-05-22T00:57:00.322472Z[0m [[32m[1minfo     [0m] [1mcreating_llm_client           [0m [36mmodel[0m=[35mgroq-llama-70b[0m [36mprovider[0m=[35mgroq[0m
+2026-05-22T00:57:00.6182942Z Traceback (most recent call last):
+2026-05-22T00:57:00.6194013Z   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-05-22T00:57:00.6257932Z   File "<frozen runpy>", line 88, in _run_code
+2026-05-22T00:57:00.6258188Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/__main__.py", line 4, in <module>
+2026-05-22T00:57:00.6264799Z     uvicorn.main()
+2026-05-22T00:57:00.6268973Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 1524, in __call__
+2026-05-22T00:57:00.6289722Z     return self.main(*args, **kwargs)
+2026-05-22T00:57:00.6369254Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T00:57:00.6369646Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 1445, in main
+2026-05-22T00:57:00.6369687Z     rv = self.invoke(ctx)
+2026-05-22T00:57:00.6369717Z          ^^^^^^^^^^^^^^^^
+2026-05-22T00:57:00.6369749Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 1308, in invoke
+2026-05-22T00:57:00.6369780Z     return ctx.invoke(self.callback, **ctx.params)
+2026-05-22T00:57:00.6369809Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T00:57:00.6369841Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 877, in invoke
+2026-05-22T00:57:00.6369870Z     return callback(*args, **kwargs)
+2026-05-22T00:57:00.6369902Z            ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T00:57:00.6369935Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/main.py", line 441, in main
+2026-05-22T00:57:00.6379316Z     run(
+2026-05-22T00:57:00.6379536Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/main.py", line 609, in run
+2026-05-22T00:57:00.6379571Z     config.load_app()
+2026-05-22T00:57:00.6379604Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/config.py", line 415, in load_app
+2026-05-22T00:57:00.6385105Z     return import_from_string(self.app)
+2026-05-22T00:57:00.6385224Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T00:57:00.6387184Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/importer.py", line 22, in import_from_string
+2026-05-22T00:57:00.6456818Z     raise exc from None
+2026-05-22T00:57:00.6456962Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/importer.py", line 19, in import_from_string
+2026-05-22T00:57:00.6457001Z     module = importlib.import_module(module_str)
+2026-05-22T00:57:00.6457078Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T00:57:00.6457111Z   File "/opt/python/3.11.15/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2026-05-22T00:57:00.6470059Z     return _bootstrap._gcd_import(name[level:], package, level)
+2026-05-22T00:57:00.6474812Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T00:57:00.6479235Z   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2026-05-22T00:57:00.6483205Z   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2026-05-22T00:57:00.6487016Z   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2026-05-22T00:57:00.6662109Z   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2026-05-22T00:57:00.6662473Z   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+2026-05-22T00:57:00.6662513Z   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2026-05-22T00:57:00.6662546Z   File "/tmp/8deb77929353778/src/api/server.py", line 89, in <module>
+2026-05-22T00:57:00.6662575Z     from src.api.routes import (
+2026-05-22T00:57:00.6662611Z   File "/tmp/8deb77929353778/src/api/routes/documents.py", line 2, in <module>
+2026-05-22T00:57:00.6662641Z     from src.document_engine.factory import router as document_engine_router
+2026-05-22T00:57:00.6662672Z   File "/tmp/8deb77929353778/src/document_engine/factory.py", line 6, in <module>
+2026-05-22T00:57:00.6662702Z     from src.document_engine.folio import generate_folio_atomic
+2026-05-22T00:57:00.6662733Z   File "/tmp/8deb77929353778/src/document_engine/folio.py", line 2, in <module>
+2026-05-22T00:57:00.6662761Z     from supabase import create_client
+2026-05-22T00:57:00.6662791Z ModuleNotFoundError: No module named 'supabase'
+2026-05-22T01:01:47.7912895Z    _____                               
+2026-05-22T01:01:47.7913590Z   /  _  \ __________ _________   ____  
+2026-05-22T01:01:47.7913633Z  /  /_\  \\___   /  |  \_  __ \_/ __ \ 
+2026-05-22T01:01:47.7913663Z /    |    \/    /|  |  /|  | \/\  ___/ 
+2026-05-22T01:01:47.7913691Z \____|__  /_____ \____/ |__|    \___  >
+2026-05-22T01:01:47.7913719Z         \/      \/                  \/ 
+2026-05-22T01:01:47.7913834Z A P P   S E R V I C E   O N   L I N U X
+2026-05-22T01:01:47.7913864Z 
+2026-05-22T01:01:47.7913894Z Documentation     : https://aka.ms/webapp-linux
+2026-05-22T01:01:47.7913924Z Python quickstart : https://aka.ms/python-qs
+2026-05-22T01:01:47.7913953Z Python version    : 3.11.15
+2026-05-22T01:01:47.7913983Z Instance name     : lw1sdlwk00071B
+2026-05-22T01:01:47.7914017Z Instance id       : 9d9ad26f55314832f40453d107bc280606f9336225ee3827727ea25821b4efdd
+2026-05-22T01:01:47.7914043Z 
+2026-05-22T01:01:47.7914071Z App port          : 8000
+2026-05-22T01:01:47.7914101Z Port selected by  : Default for this image
+2026-05-22T01:01:47.7914131Z (Learn more about the PORT appsetting https://aka.ms/webapp-python-settings)
+2026-05-22T01:01:47.7914158Z 
+2026-05-22T01:01:47.7914210Z Note: Any data outside '/home' is not persisted
+2026-05-22T01:01:47.7914237Z 
+2026-05-22T01:01:47.7914282Z ────────────────────────────────────────────────────────────────
+2026-05-22T01:01:47.7914311Z  Run 'apphelp' for available commands and aliases.
+2026-05-22T01:01:47.7914341Z  Run 'install-nettools' to install networking utilities.
+2026-05-22T01:01:47.7914381Z ────────────────────────────────────────────────────────────────
+2026-05-22T01:01:49.8265654Z Starting OpenBSD Secure Shell server: sshd.
+2026-05-22T01:01:49.8467718Z WEBSITES_INCLUDE_CLOUD_CERTS is not set to true.
+2026-05-22T01:01:49.9152864Z Updating certificates in /etc/ssl/certs...
+2026-05-22T01:02:20.6650887Z rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+2026-05-22T01:02:20.7259959Z rehash: warning: skipping duplicate certificate in azl_SSL.com_TLS_ECC_Root_CA_2022.pem
+2026-05-22T01:02:20.8236716Z rehash: warning: skipping duplicate certificate in azl_SSL.com_TLS_RSA_Root_CA_2022.pem
+2026-05-22T01:02:21.1710833Z 4 added, 0 removed; done.
+2026-05-22T01:02:21.1711384Z Running hooks in /etc/ca-certificates/update.d...
+2026-05-22T01:02:21.2389266Z done.
+2026-05-22T01:02:21.3182584Z CA certificates copied and updated successfully.
+2026-05-22T01:02:21.8294819Z Site's appCommandLine: python -m uvicorn src.api.server:app --host 0.0.0.0 --port 8000
+2026-05-22T01:02:22.9530399Z Starting periodic command scheduler: cron.
+2026-05-22T01:02:22.9751267Z Launching oryx with: create-script -appPath /home/site/wwwroot -output /opt/startup/startup.sh -virtualEnvName antenv -defaultApp /opt/defaultsite -userStartupCommand 'python -m uvicorn src.api.server:app --host 0.0.0.0 --port 8000'
+2026-05-22T01:02:23.5037168Z Found build manifest file at '/home/site/wwwroot/oryx-manifest.toml'. Deserializing it...
+2026-05-22T01:02:23.5153964Z Build Operation ID: de87cc0ad6ee7138
+2026-05-22T01:02:23.5240283Z Output is compressed. Extracting it...
+2026-05-22T01:02:23.5240946Z Oryx Version: 0.2.20260504.2, Commit: a776ec9f2fd225b305599e35443ecb3533bcdb26, ReleaseTagName: 20260504.2
+2026-05-22T01:02:23.5941118Z Found zstd-compressed tarball.
+2026-05-22T01:02:23.5941713Z Extracting '/home/site/wwwroot/output.tar.zst' to directory '/tmp/8deb77929353778'...
+2026-05-22T01:02:23.5941762Z Using zstd for decompression of file: /home/site/wwwroot/output.tar.zst
+2026-05-22T01:03:50.6032342Z zstd tar Successfully extracted '/home/site/wwwroot/output.tar.zst' to '/tmp/8deb77929353778'
+2026-05-22T01:03:50.6032912Z App path is set to '/tmp/8deb77929353778'
+2026-05-22T01:03:50.7412643Z Writing output script to '/opt/startup/startup.sh'
+2026-05-22T01:03:50.9370769Z Using packages from virtual environment antenv located at /tmp/8deb77929353778/antenv.
+2026-05-22T01:03:50.9373664Z Updated PYTHONPATH to '/opt/startup/app_logs:/tmp/8deb77929353778/antenv/lib/python3.11/site-packages'
+2026-05-22T01:04:06.7392405Z [2m2026-05-22T01:04:06.738808Z[0m [[32m[1minfo     [0m] [1mcreating_llm_client           [0m [36mmodel[0m=[35mgroq-llama-70b[0m [36mprovider[0m=[35mgroq[0m
+2026-05-22T01:04:06.7577028Z [2m2026-05-22T01:04:06.757108Z[0m [[32m[1minfo     [0m] [1mcreating_llm_client           [0m [36mmodel[0m=[35mgroq-llama-70b[0m [36mprovider[0m=[35mgroq[0m
+2026-05-22T01:04:06.7764268Z [2m2026-05-22T01:04:06.769316Z[0m [[32m[1minfo     [0m] [1mcreating_llm_client           [0m [36mmodel[0m=[35mgroq-llama-70b[0m [36mprovider[0m=[35mgroq[0m
+2026-05-22T01:04:07.1223351Z Traceback (most recent call last):
+2026-05-22T01:04:07.1229228Z   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-05-22T01:04:07.1230538Z   File "<frozen runpy>", line 88, in _run_code
+2026-05-22T01:04:07.1231279Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/__main__.py", line 4, in <module>
+2026-05-22T01:04:07.1239025Z     uvicorn.main()
+2026-05-22T01:04:07.1241606Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 1524, in __call__
+2026-05-22T01:04:07.1256494Z     return self.main(*args, **kwargs)
+2026-05-22T01:04:07.1257936Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T01:04:07.1259722Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 1445, in main
+2026-05-22T01:04:07.1319032Z     rv = self.invoke(ctx)
+2026-05-22T01:04:07.1320730Z          ^^^^^^^^^^^^^^^^
+2026-05-22T01:04:07.1321497Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 1308, in invoke
+2026-05-22T01:04:07.1325656Z     return ctx.invoke(self.callback, **ctx.params)
+2026-05-22T01:04:07.1328221Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T01:04:07.1328946Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 877, in invoke
+2026-05-22T01:04:07.1332159Z     return callback(*args, **kwargs)
+2026-05-22T01:04:07.1333350Z            ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T01:04:07.1334071Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/main.py", line 441, in main
+2026-05-22T01:04:07.1351590Z     run(
+2026-05-22T01:04:07.1353881Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/main.py", line 609, in run
+2026-05-22T01:04:07.1357527Z     config.load_app()
+2026-05-22T01:04:07.1359382Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/config.py", line 415, in load_app
+2026-05-22T01:04:07.1366092Z     return import_from_string(self.app)
+2026-05-22T01:04:07.1366261Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T01:04:07.1366297Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/importer.py", line 22, in import_from_string
+2026-05-22T01:04:07.1368701Z     raise exc from None
+2026-05-22T01:04:07.1420046Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/importer.py", line 19, in import_from_string
+2026-05-22T01:04:07.1425724Z     module = importlib.import_module(module_str)
+2026-05-22T01:04:07.1425924Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T01:04:07.1426740Z   File "/opt/python/3.11.15/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2026-05-22T01:04:07.1433757Z     return _bootstrap._gcd_import(name[level:], package, level)
+2026-05-22T01:04:07.1436578Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T01:04:07.1437343Z   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2026-05-22T01:04:07.1439623Z   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2026-05-22T01:04:07.1439700Z   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2026-05-22T01:04:07.1439732Z   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2026-05-22T01:04:07.1439762Z   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+2026-05-22T01:04:07.1439794Z   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2026-05-22T01:04:07.1439824Z   File "/tmp/8deb77929353778/src/api/server.py", line 89, in <module>
+2026-05-22T01:04:07.1442014Z     from src.api.routes import (
+2026-05-22T01:04:07.1443924Z   File "/tmp/8deb77929353778/src/api/routes/documents.py", line 2, in <module>
+2026-05-22T01:04:07.1445643Z     from src.document_engine.factory import router as document_engine_router
+2026-05-22T01:04:07.1446848Z   File "/tmp/8deb77929353778/src/document_engine/factory.py", line 6, in <module>
+2026-05-22T01:04:07.1449605Z     from src.document_engine.folio import generate_folio_atomic
+2026-05-22T01:04:07.1450454Z   File "/tmp/8deb77929353778/src/document_engine/folio.py", line 2, in <module>
+2026-05-22T01:04:07.1453674Z     from supabase import create_client
+2026-05-22T01:04:07.1453773Z ModuleNotFoundError: No module named 'supabase'
+2026-05-22T01:10:24.3727710Z    _____                               
+2026-05-22T01:10:24.3728230Z   /  _  \ __________ _________   ____  
+2026-05-22T01:10:24.3728274Z  /  /_\  \\___   /  |  \_  __ \_/ __ \ 
+2026-05-22T01:10:24.3728304Z /    |    \/    /|  |  /|  | \/\  ___/ 
+2026-05-22T01:10:24.3728339Z \____|__  /_____ \____/ |__|    \___  >
+2026-05-22T01:10:24.3728368Z         \/      \/                  \/ 
+2026-05-22T01:10:24.3728453Z A P P   S E R V I C E   O N   L I N U X
+2026-05-22T01:10:24.3728483Z 
+2026-05-22T01:10:24.3728512Z Documentation     : https://aka.ms/webapp-linux
+2026-05-22T01:10:24.3728541Z Python quickstart : https://aka.ms/python-qs
+2026-05-22T01:10:24.3728571Z Python version    : 3.11.15
+2026-05-22T01:10:24.3728599Z Instance name     : lw1sdlwk00071B
+2026-05-22T01:10:24.3728631Z Instance id       : 9d9ad26f55314832f40453d107bc280606f9336225ee3827727ea25821b4efdd
+2026-05-22T01:10:24.3728658Z 
+2026-05-22T01:10:24.3728686Z App port          : 8000
+2026-05-22T01:10:24.3728715Z Port selected by  : Default for this image
+2026-05-22T01:10:24.3728745Z (Learn more about the PORT appsetting https://aka.ms/webapp-python-settings)
+2026-05-22T01:10:24.3728790Z 
+2026-05-22T01:10:24.3728821Z Note: Any data outside '/home' is not persisted
+2026-05-22T01:10:24.3728847Z 
+2026-05-22T01:10:24.3728894Z ────────────────────────────────────────────────────────────────
+2026-05-22T01:10:24.3728923Z  Run 'apphelp' for available commands and aliases.
+2026-05-22T01:10:24.3728953Z  Run 'install-nettools' to install networking utilities.
+2026-05-22T01:10:24.3728993Z ────────────────────────────────────────────────────────────────
+2026-05-22T01:10:26.9209503Z Starting OpenBSD Secure Shell server: sshd.
+2026-05-22T01:10:26.9528008Z WEBSITES_INCLUDE_CLOUD_CERTS is not set to true.
+2026-05-22T01:10:27.0209808Z Updating certificates in /etc/ssl/certs...
+2026-05-22T01:10:50.4480002Z rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+2026-05-22T01:10:50.5302459Z rehash: warning: skipping duplicate certificate in azl_SSL.com_TLS_ECC_Root_CA_2022.pem
+2026-05-22T01:10:50.6093437Z rehash: warning: skipping duplicate certificate in azl_SSL.com_TLS_RSA_Root_CA_2022.pem
+2026-05-22T01:10:50.8479116Z 4 added, 0 removed; done.
+2026-05-22T01:10:50.8479664Z Running hooks in /etc/ca-certificates/update.d...
+2026-05-22T01:10:50.8776765Z done.
+2026-05-22T01:10:51.0169384Z CA certificates copied and updated successfully.
+2026-05-22T01:10:51.4191492Z Site's appCommandLine: python -m uvicorn src.api.server:app --host 0.0.0.0 --port 8000
+2026-05-22T01:10:52.3888867Z Starting periodic command scheduler: cron.
+2026-05-22T01:10:52.3889240Z Launching oryx with: create-script -appPath /home/site/wwwroot -output /opt/startup/startup.sh -virtualEnvName antenv -defaultApp /opt/defaultsite -userStartupCommand 'python -m uvicorn src.api.server:app --host 0.0.0.0 --port 8000'
+2026-05-22T01:10:52.6055018Z Found build manifest file at '/home/site/wwwroot/oryx-manifest.toml'. Deserializing it...
+2026-05-22T01:10:52.6148844Z Build Operation ID: de87cc0ad6ee7138
+2026-05-22T01:10:52.6224908Z Output is compressed. Extracting it...
+2026-05-22T01:10:52.6229383Z Oryx Version: 0.2.20260504.2, Commit: a776ec9f2fd225b305599e35443ecb3533bcdb26, ReleaseTagName: 20260504.2
+2026-05-22T01:10:52.6324796Z Found zstd-compressed tarball.
+2026-05-22T01:10:52.6325407Z Extracting '/home/site/wwwroot/output.tar.zst' to directory '/tmp/8deb77929353778'...
+2026-05-22T01:10:52.6325453Z Using zstd for decompression of file: /home/site/wwwroot/output.tar.zst
+2026-05-22T01:11:55.4590081Z zstd tar Successfully extracted '/home/site/wwwroot/output.tar.zst' to '/tmp/8deb77929353778'
+2026-05-22T01:11:55.4590565Z App path is set to '/tmp/8deb77929353778'
+2026-05-22T01:11:55.5165337Z Writing output script to '/opt/startup/startup.sh'
+2026-05-22T01:11:55.8559253Z Using packages from virtual environment antenv located at /tmp/8deb77929353778/antenv.
+2026-05-22T01:11:55.8565853Z Updated PYTHONPATH to '/opt/startup/app_logs:/tmp/8deb77929353778/antenv/lib/python3.11/site-packages'
+2026-05-22T01:12:19.9529475Z [2m2026-05-22T01:12:19.952568Z[0m [[32m[1minfo     [0m] [1mcreating_llm_client           [0m [36mmodel[0m=[35mgroq-llama-70b[0m [36mprovider[0m=[35mgroq[0m
+2026-05-22T01:12:20.0011866Z [2m2026-05-22T01:12:20.000840Z[0m [[32m[1minfo     [0m] [1mcreating_llm_client           [0m [36mmodel[0m=[35mgroq-llama-70b[0m [36mprovider[0m=[35mgroq[0m
+2026-05-22T01:12:20.0235574Z [2m2026-05-22T01:12:20.023087Z[0m [[32m[1minfo     [0m] [1mcreating_llm_client           [0m [36mmodel[0m=[35mgroq-llama-70b[0m [36mprovider[0m=[35mgroq[0m
+2026-05-22T01:12:20.8469303Z Traceback (most recent call last):
+2026-05-22T01:12:20.8470034Z   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-05-22T01:12:20.8470206Z   File "<frozen runpy>", line 88, in _run_code
+2026-05-22T01:12:20.8470241Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/__main__.py", line 4, in <module>
+2026-05-22T01:12:20.8491433Z     uvicorn.main()
+2026-05-22T01:12:20.8491641Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 1524, in __call__
+2026-05-22T01:12:20.8586720Z     return self.main(*args, **kwargs)
+2026-05-22T01:12:20.8661238Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T01:12:20.8678728Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 1445, in main
+2026-05-22T01:12:20.8699531Z     rv = self.invoke(ctx)
+2026-05-22T01:12:20.8776690Z          ^^^^^^^^^^^^^^^^
+2026-05-22T01:12:20.8777135Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 1308, in invoke
+2026-05-22T01:12:20.8791482Z     return ctx.invoke(self.callback, **ctx.params)
+2026-05-22T01:12:20.8791687Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T01:12:20.8791729Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 877, in invoke
+2026-05-22T01:12:20.8791759Z     return callback(*args, **kwargs)
+2026-05-22T01:12:20.8791789Z            ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T01:12:20.8791935Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/main.py", line 441, in main
+2026-05-22T01:12:20.9054785Z     run(
+2026-05-22T01:12:20.9055209Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/main.py", line 609, in run
+2026-05-22T01:12:20.9055246Z     config.load_app()
+2026-05-22T01:12:20.9055280Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/config.py", line 415, in load_app
+2026-05-22T01:12:20.9055310Z     return import_from_string(self.app)
+2026-05-22T01:12:20.9055338Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T01:12:20.9055371Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/importer.py", line 22, in import_from_string
+2026-05-22T01:12:20.9055399Z     raise exc from None
+2026-05-22T01:12:20.9055432Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/importer.py", line 19, in import_from_string
+2026-05-22T01:12:20.9055463Z     module = importlib.import_module(module_str)
+2026-05-22T01:12:20.9055492Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T01:12:20.9055543Z   File "/opt/python/3.11.15/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2026-05-22T01:12:20.9055575Z     return _bootstrap._gcd_import(name[level:], package, level)
+2026-05-22T01:12:20.9055604Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T01:12:20.9055635Z   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2026-05-22T01:12:20.9055665Z   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2026-05-22T01:12:20.9055696Z   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2026-05-22T01:12:20.9055727Z   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2026-05-22T01:12:20.9055757Z   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+2026-05-22T01:12:20.9055788Z   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2026-05-22T01:12:20.9055819Z   File "/tmp/8deb77929353778/src/api/server.py", line 89, in <module>
+2026-05-22T01:12:20.9055872Z     from src.api.routes import (
+2026-05-22T01:12:20.9055904Z   File "/tmp/8deb77929353778/src/api/routes/documents.py", line 2, in <module>
+2026-05-22T01:12:20.9055934Z     from src.document_engine.factory import router as document_engine_router
+2026-05-22T01:12:20.9055965Z   File "/tmp/8deb77929353778/src/document_engine/factory.py", line 6, in <module>
+2026-05-22T01:12:20.9542537Z     from src.document_engine.folio import generate_folio_atomic
+2026-05-22T01:12:20.9542915Z   File "/tmp/8deb77929353778/src/document_engine/folio.py", line 2, in <module>
+2026-05-22T01:12:20.9542952Z     from supabase import create_client
+2026-05-22T01:12:20.9542982Z ModuleNotFoundError: No module named 'supabase'
+2026-05-22T01:16:22.0794489Z    _____                               
+2026-05-22T01:16:22.0794877Z   /  _  \ __________ _________   ____  
+2026-05-22T01:16:22.0794918Z  /  /_\  \\___   /  |  \_  __ \_/ __ \ 
+2026-05-22T01:16:22.0794948Z /    |    \/    /|  |  /|  | \/\  ___/ 
+2026-05-22T01:16:22.0794977Z \____|__  /_____ \____/ |__|    \___  >
+2026-05-22T01:16:22.0795005Z         \/      \/                  \/ 
+2026-05-22T01:16:22.0795034Z A P P   S E R V I C E   O N   L I N U X
+2026-05-22T01:16:22.0795065Z 
+2026-05-22T01:16:22.0795095Z Documentation     : https://aka.ms/webapp-linux
+2026-05-22T01:16:22.0795125Z Python quickstart : https://aka.ms/python-qs
+2026-05-22T01:16:22.0795153Z Python version    : 3.11.15
+2026-05-22T01:16:22.0795211Z Instance name     : lw1sdlwk00071B
+2026-05-22T01:16:22.0795245Z Instance id       : 9d9ad26f55314832f40453d107bc280606f9336225ee3827727ea25821b4efdd
+2026-05-22T01:16:22.0795272Z 
+2026-05-22T01:16:22.0795300Z App port          : 8000
+2026-05-22T01:16:22.0795330Z Port selected by  : Default for this image
+2026-05-22T01:16:22.0795361Z (Learn more about the PORT appsetting https://aka.ms/webapp-python-settings)
+2026-05-22T01:16:22.0795387Z 
+2026-05-22T01:16:22.0795416Z Note: Any data outside '/home' is not persisted
+2026-05-22T01:16:22.0795442Z 
+2026-05-22T01:16:22.0795489Z ────────────────────────────────────────────────────────────────
+2026-05-22T01:16:22.0795518Z  Run 'apphelp' for available commands and aliases.
+2026-05-22T01:16:22.0795569Z  Run 'install-nettools' to install networking utilities.
+2026-05-22T01:16:22.0795610Z ────────────────────────────────────────────────────────────────
+2026-05-22T01:16:24.0200871Z Starting OpenBSD Secure Shell server: sshd.
+2026-05-22T01:16:24.0421896Z WEBSITES_INCLUDE_CLOUD_CERTS is not set to true.
+2026-05-22T01:16:24.1302948Z Updating certificates in /etc/ssl/certs...
+2026-05-22T01:16:47.9629160Z rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+2026-05-22T01:16:48.0552125Z rehash: warning: skipping duplicate certificate in azl_SSL.com_TLS_ECC_Root_CA_2022.pem
+2026-05-22T01:16:48.1345112Z rehash: warning: skipping duplicate certificate in azl_SSL.com_TLS_RSA_Root_CA_2022.pem
+2026-05-22T01:16:48.2440153Z 4 added, 0 removed; done.
+2026-05-22T01:16:48.2440786Z Running hooks in /etc/ca-certificates/update.d...
+2026-05-22T01:16:48.2838721Z done.
+2026-05-22T01:16:48.3158262Z CA certificates copied and updated successfully.
+2026-05-22T01:16:48.5643892Z Site's appCommandLine: python -m uvicorn src.api.server:app --host 0.0.0.0 --port 8000
+2026-05-22T01:16:49.2580983Z Starting periodic command scheduler: cron.
+2026-05-22T01:16:49.2602097Z Launching oryx with: create-script -appPath /home/site/wwwroot -output /opt/startup/startup.sh -virtualEnvName antenv -defaultApp /opt/defaultsite -userStartupCommand 'python -m uvicorn src.api.server:app --host 0.0.0.0 --port 8000'
+2026-05-22T01:16:49.8556019Z Found build manifest file at '/home/site/wwwroot/oryx-manifest.toml'. Deserializing it...
+2026-05-22T01:16:49.8589278Z Build Operation ID: de87cc0ad6ee7138
+2026-05-22T01:16:49.8843883Z Oryx Version: 0.2.20260504.2, Commit: a776ec9f2fd225b305599e35443ecb3533bcdb26, ReleaseTagName: 20260504.2
+2026-05-22T01:16:49.8844270Z Output is compressed. Extracting it...
+2026-05-22T01:16:49.8844317Z Found zstd-compressed tarball.
+2026-05-22T01:16:49.8844350Z Extracting '/home/site/wwwroot/output.tar.zst' to directory '/tmp/8deb77929353778'...
+2026-05-22T01:16:49.8844381Z Using zstd for decompression of file: /home/site/wwwroot/output.tar.zst
+2026-05-22T01:18:19.1142804Z zstd tar Successfully extracted '/home/site/wwwroot/output.tar.zst' to '/tmp/8deb77929353778'
+2026-05-22T01:18:19.1143178Z App path is set to '/tmp/8deb77929353778'
+2026-05-22T01:18:19.1551380Z Writing output script to '/opt/startup/startup.sh'
+2026-05-22T01:18:19.3440068Z Using packages from virtual environment antenv located at /tmp/8deb77929353778/antenv.
+2026-05-22T01:18:19.3440653Z Updated PYTHONPATH to '/opt/startup/app_logs:/tmp/8deb77929353778/antenv/lib/python3.11/site-packages'
+2026-05-22T01:18:34.0692929Z [2m2026-05-22T01:18:34.063358Z[0m [[32m[1minfo     [0m] [1mcreating_llm_client           [0m [36mmodel[0m=[35mgroq-llama-70b[0m [36mprovider[0m=[35mgroq[0m
+2026-05-22T01:18:34.0815555Z [2m2026-05-22T01:18:34.081327Z[0m [[32m[1minfo     [0m] [1mcreating_llm_client           [0m [36mmodel[0m=[35mgroq-llama-70b[0m [36mprovider[0m=[35mgroq[0m
+2026-05-22T01:18:34.0917055Z [2m2026-05-22T01:18:34.091226Z[0m [[32m[1minfo     [0m] [1mcreating_llm_client           [0m [36mmodel[0m=[35mgroq-llama-70b[0m [36mprovider[0m=[35mgroq[0m
+2026-05-22T01:18:34.3600930Z Traceback (most recent call last):
+2026-05-22T01:18:34.3611298Z   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-05-22T01:18:34.3616133Z   File "<frozen runpy>", line 88, in _run_code
+2026-05-22T01:18:34.3616275Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/__main__.py", line 4, in <module>
+2026-05-22T01:18:34.3620148Z     uvicorn.main()
+2026-05-22T01:18:34.3698238Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 1524, in __call__
+2026-05-22T01:18:34.3787468Z     return self.main(*args, **kwargs)
+2026-05-22T01:18:34.3787824Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T01:18:34.3787865Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 1445, in main
+2026-05-22T01:18:34.3787898Z     rv = self.invoke(ctx)
+2026-05-22T01:18:34.3787927Z          ^^^^^^^^^^^^^^^^
+2026-05-22T01:18:34.3787959Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 1308, in invoke
+2026-05-22T01:18:34.3787989Z     return ctx.invoke(self.callback, **ctx.params)
+2026-05-22T01:18:34.3788017Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T01:18:34.3788050Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 877, in invoke
+2026-05-22T01:18:34.3788080Z     return callback(*args, **kwargs)
+2026-05-22T01:18:34.3788109Z            ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T01:18:34.3788196Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/main.py", line 441, in main
+2026-05-22T01:18:34.3806993Z     run(
+2026-05-22T01:18:34.3820366Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/main.py", line 609, in run
+2026-05-22T01:18:34.3898924Z     config.load_app()
+2026-05-22T01:18:34.3899214Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/config.py", line 415, in load_app
+2026-05-22T01:18:34.3899435Z     return import_from_string(self.app)
+2026-05-22T01:18:34.3899476Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T01:18:34.3899511Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/importer.py", line 22, in import_from_string
+2026-05-22T01:18:34.3899539Z     raise exc from None
+2026-05-22T01:18:34.3899636Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/importer.py", line 19, in import_from_string
+2026-05-22T01:18:34.3899668Z     module = importlib.import_module(module_str)
+2026-05-22T01:18:34.3899838Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T01:18:34.3899870Z   File "/opt/python/3.11.15/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2026-05-22T01:18:34.3918552Z     return _bootstrap._gcd_import(name[level:], package, level)
+2026-05-22T01:18:34.4084112Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T01:18:34.4084444Z   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2026-05-22T01:18:34.4084483Z   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2026-05-22T01:18:34.4084514Z   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2026-05-22T01:18:34.4084632Z   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2026-05-22T01:18:34.4084665Z   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+2026-05-22T01:18:34.4084697Z   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2026-05-22T01:18:34.4084727Z   File "/tmp/8deb77929353778/src/api/server.py", line 89, in <module>
+2026-05-22T01:18:34.4084757Z     from src.api.routes import (
+2026-05-22T01:18:34.4084788Z   File "/tmp/8deb77929353778/src/api/routes/documents.py", line 2, in <module>
+2026-05-22T01:18:34.4084818Z     from src.document_engine.factory import router as document_engine_router
+2026-05-22T01:18:34.4084849Z   File "/tmp/8deb77929353778/src/document_engine/factory.py", line 6, in <module>
+2026-05-22T01:18:34.4084880Z     from src.document_engine.folio import generate_folio_atomic
+2026-05-22T01:18:34.4084911Z   File "/tmp/8deb77929353778/src/document_engine/folio.py", line 2, in <module>
+2026-05-22T01:18:34.4084940Z     from supabase import create_client
+2026-05-22T01:18:34.4084990Z ModuleNotFoundError: No module named 'supabase'
+2026-05-22T01:59:08.4460168Z    _____                               
+2026-05-22T01:59:08.4460729Z   /  _  \ __________ _________   ____  
+2026-05-22T01:59:08.4460771Z  /  /_\  \\___   /  |  \_  __ \_/ __ \ 
+2026-05-22T01:59:08.4460804Z /    |    \/    /|  |  /|  | \/\  ___/ 
+2026-05-22T01:59:08.4460835Z \____|__  /_____ \____/ |__|    \___  >
+2026-05-22T01:59:08.4460951Z         \/      \/                  \/ 
+2026-05-22T01:59:08.4460983Z A P P   S E R V I C E   O N   L I N U X
+2026-05-22T01:59:08.4461011Z 
+2026-05-22T01:59:08.4461041Z Documentation     : https://aka.ms/webapp-linux
+2026-05-22T01:59:08.4461069Z Python quickstart : https://aka.ms/python-qs
+2026-05-22T01:59:08.4461098Z Python version    : 3.11.15
+2026-05-22T01:59:08.4461127Z Instance name     : lw1sdlwk00071B
+2026-05-22T01:59:08.4461161Z Instance id       : 9d9ad26f55314832f40453d107bc280606f9336225ee3827727ea25821b4efdd
+2026-05-22T01:59:08.4461187Z 
+2026-05-22T01:59:08.4461216Z App port          : 8000
+2026-05-22T01:59:08.4461245Z Port selected by  : Default for this image
+2026-05-22T01:59:08.4461298Z (Learn more about the PORT appsetting https://aka.ms/webapp-python-settings)
+2026-05-22T01:59:08.4461326Z 
+2026-05-22T01:59:08.4461356Z Note: Any data outside '/home' is not persisted
+2026-05-22T01:59:08.4461382Z 
+2026-05-22T01:59:08.4461428Z ────────────────────────────────────────────────────────────────
+2026-05-22T01:59:08.4461458Z  Run 'apphelp' for available commands and aliases.
+2026-05-22T01:59:08.4461488Z  Run 'install-nettools' to install networking utilities.
+2026-05-22T01:59:08.4461738Z ────────────────────────────────────────────────────────────────
+2026-05-22T01:59:10.3664883Z Starting OpenBSD Secure Shell server: sshd.
+2026-05-22T01:59:10.3961035Z WEBSITES_INCLUDE_CLOUD_CERTS is not set to true.
+2026-05-22T01:59:10.4761097Z Updating certificates in /etc/ssl/certs...
+2026-05-22T01:59:33.7211458Z rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+2026-05-22T01:59:33.8015010Z rehash: warning: skipping duplicate certificate in azl_SSL.com_TLS_ECC_Root_CA_2022.pem
+2026-05-22T01:59:33.8608416Z rehash: warning: skipping duplicate certificate in azl_SSL.com_TLS_RSA_Root_CA_2022.pem
+2026-05-22T01:59:34.0202570Z 4 added, 0 removed; done.
+2026-05-22T01:59:34.0203394Z Running hooks in /etc/ca-certificates/update.d...
+2026-05-22T01:59:34.0214719Z done.
+2026-05-22T01:59:34.1086427Z CA certificates copied and updated successfully.
+2026-05-22T01:59:34.4477994Z Site's appCommandLine: python -m uvicorn src.api.server:app --host 0.0.0.0 --port 8000
+2026-05-22T01:59:35.2159135Z Starting periodic command scheduler: cron.
+2026-05-22T01:59:35.2175345Z Launching oryx with: create-script -appPath /home/site/wwwroot -output /opt/startup/startup.sh -virtualEnvName antenv -defaultApp /opt/defaultsite -userStartupCommand 'python -m uvicorn src.api.server:app --host 0.0.0.0 --port 8000'
+2026-05-22T01:59:35.8030589Z Found build manifest file at '/home/site/wwwroot/oryx-manifest.toml'. Deserializing it...
+2026-05-22T01:59:35.8530861Z Build Operation ID: de87cc0ad6ee7138
+2026-05-22T01:59:35.8531201Z Oryx Version: 0.2.20260504.2, Commit: a776ec9f2fd225b305599e35443ecb3533bcdb26, ReleaseTagName: 20260504.2
+2026-05-22T01:59:35.8603010Z Output is compressed. Extracting it...
+2026-05-22T01:59:35.8603367Z Found zstd-compressed tarball.
+2026-05-22T01:59:35.8603412Z Extracting '/home/site/wwwroot/output.tar.zst' to directory '/tmp/8deb77929353778'...
+2026-05-22T01:59:35.8603443Z Using zstd for decompression of file: /home/site/wwwroot/output.tar.zst
+2026-05-22T02:00:43.9743175Z zstd tar Successfully extracted '/home/site/wwwroot/output.tar.zst' to '/tmp/8deb77929353778'
+2026-05-22T02:00:43.9832331Z App path is set to '/tmp/8deb77929353778'
+2026-05-22T02:00:44.0238076Z Writing output script to '/opt/startup/startup.sh'
+2026-05-22T02:00:44.2239631Z Using packages from virtual environment antenv located at /tmp/8deb77929353778/antenv.
+2026-05-22T02:00:44.2240584Z Updated PYTHONPATH to '/opt/startup/app_logs:/tmp/8deb77929353778/antenv/lib/python3.11/site-packages'
+2026-05-22T02:00:56.6313197Z [2m2026-05-22T02:00:56.631005Z[0m [[32m[1minfo     [0m] [1mcreating_llm_client           [0m [36mmodel[0m=[35mgroq-llama-70b[0m [36mprovider[0m=[35mgroq[0m
+2026-05-22T02:00:56.6428762Z [2m2026-05-22T02:00:56.642620Z[0m [[32m[1minfo     [0m] [1mcreating_llm_client           [0m [36mmodel[0m=[35mgroq-llama-70b[0m [36mprovider[0m=[35mgroq[0m
+2026-05-22T02:00:56.6517740Z [2m2026-05-22T02:00:56.651258Z[0m [[32m[1minfo     [0m] [1mcreating_llm_client           [0m [36mmodel[0m=[35mgroq-llama-70b[0m [36mprovider[0m=[35mgroq[0m
+2026-05-22T02:00:56.9318488Z Traceback (most recent call last):
+2026-05-22T02:00:56.9322227Z   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-05-22T02:00:56.9323116Z   File "<frozen runpy>", line 88, in _run_code
+2026-05-22T02:00:56.9323654Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/__main__.py", line 4, in <module>
+2026-05-22T02:00:56.9331625Z     uvicorn.main()
+2026-05-22T02:00:56.9333047Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 1524, in __call__
+2026-05-22T02:00:56.9346083Z     return self.main(*args, **kwargs)
+2026-05-22T02:00:56.9348699Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T02:00:56.9349503Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 1445, in main
+2026-05-22T02:00:56.9354965Z     rv = self.invoke(ctx)
+2026-05-22T02:00:56.9357140Z          ^^^^^^^^^^^^^^^^
+2026-05-22T02:00:56.9357239Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 1308, in invoke
+2026-05-22T02:00:56.9423024Z     return ctx.invoke(self.callback, **ctx.params)
+2026-05-22T02:00:56.9423216Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T02:00:56.9423309Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 877, in invoke
+2026-05-22T02:00:56.9425718Z     return callback(*args, **kwargs)
+2026-05-22T02:00:56.9426861Z            ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T02:00:56.9429216Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/main.py", line 441, in main
+2026-05-22T02:00:56.9438457Z     run(
+2026-05-22T02:00:56.9438582Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/main.py", line 609, in run
+2026-05-22T02:00:56.9438615Z     config.load_app()
+2026-05-22T02:00:56.9438649Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/config.py", line 415, in load_app
+2026-05-22T02:00:56.9444387Z     return import_from_string(self.app)
+2026-05-22T02:00:56.9444638Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T02:00:56.9444721Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/importer.py", line 22, in import_from_string
+2026-05-22T02:00:56.9446054Z     raise exc from None
+2026-05-22T02:00:56.9447095Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/importer.py", line 19, in import_from_string
+2026-05-22T02:00:56.9450338Z     module = importlib.import_module(module_str)
+2026-05-22T02:00:56.9450434Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T02:00:56.9452202Z   File "/opt/python/3.11.15/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2026-05-22T02:00:56.9514844Z     return _bootstrap._gcd_import(name[level:], package, level)
+2026-05-22T02:00:56.9515036Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T02:00:56.9515073Z   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2026-05-22T02:00:56.9515103Z   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2026-05-22T02:00:56.9515134Z   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2026-05-22T02:00:56.9515165Z   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2026-05-22T02:00:56.9515195Z   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+2026-05-22T02:00:56.9515225Z   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2026-05-22T02:00:56.9515255Z   File "/tmp/8deb77929353778/src/api/server.py", line 89, in <module>
+2026-05-22T02:00:56.9517865Z     from src.api.routes import (
+2026-05-22T02:00:56.9518746Z   File "/tmp/8deb77929353778/src/api/routes/documents.py", line 2, in <module>
+2026-05-22T02:00:56.9521964Z     from src.document_engine.factory import router as document_engine_router
+2026-05-22T02:00:56.9523576Z   File "/tmp/8deb77929353778/src/document_engine/factory.py", line 6, in <module>
+2026-05-22T02:00:56.9525460Z     from src.document_engine.folio import generate_folio_atomic
+2026-05-22T02:00:56.9527611Z   File "/tmp/8deb77929353778/src/document_engine/folio.py", line 2, in <module>
+2026-05-22T02:00:56.9529214Z     from supabase import create_client
+2026-05-22T02:00:56.9530087Z ModuleNotFoundError: No module named 'supabase'
+2026-05-22T02:06:31.7936237Z    _____                               
+2026-05-22T02:06:31.7936890Z   /  _  \ __________ _________   ____  
+2026-05-22T02:06:31.7936932Z  /  /_\  \\___   /  |  \_  __ \_/ __ \ 
+2026-05-22T02:06:31.7936970Z /    |    \/    /|  |  /|  | \/\  ___/ 
+2026-05-22T02:06:31.7937004Z \____|__  /_____ \____/ |__|    \___  >
+2026-05-22T02:06:31.7937031Z         \/      \/                  \/ 
+2026-05-22T02:06:31.7937059Z A P P   S E R V I C E   O N   L I N U X
+2026-05-22T02:06:31.7937086Z 
+2026-05-22T02:06:31.7937192Z Documentation     : https://aka.ms/webapp-linux
+2026-05-22T02:06:31.7937222Z Python quickstart : https://aka.ms/python-qs
+2026-05-22T02:06:31.7937250Z Python version    : 3.11.15
+2026-05-22T02:06:31.7937279Z Instance name     : lw1sdlwk00071B
+2026-05-22T02:06:31.7937310Z Instance id       : 9d9ad26f55314832f40453d107bc280606f9336225ee3827727ea25821b4efdd
+2026-05-22T02:06:31.7937337Z 
+2026-05-22T02:06:31.7937366Z App port          : 8000
+2026-05-22T02:06:31.7937394Z Port selected by  : Default for this image
+2026-05-22T02:06:31.7937424Z (Learn more about the PORT appsetting https://aka.ms/webapp-python-settings)
+2026-05-22T02:06:31.7937451Z 
+2026-05-22T02:06:31.7937480Z Note: Any data outside '/home' is not persisted
+2026-05-22T02:06:31.7937526Z 
+2026-05-22T02:06:31.7937572Z ────────────────────────────────────────────────────────────────
+2026-05-22T02:06:31.7937602Z  Run 'apphelp' for available commands and aliases.
+2026-05-22T02:06:31.7937631Z  Run 'install-nettools' to install networking utilities.
+2026-05-22T02:06:31.7937671Z ────────────────────────────────────────────────────────────────
+2026-05-22T02:06:33.4670289Z Starting OpenBSD Secure Shell server: sshd.
+2026-05-22T02:06:33.4948134Z WEBSITES_INCLUDE_CLOUD_CERTS is not set to true.
+2026-05-22T02:06:33.5743721Z Updating certificates in /etc/ssl/certs...
+2026-05-22T02:06:58.4663499Z rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+2026-05-22T02:06:58.5080527Z rehash: warning: skipping duplicate certificate in azl_SSL.com_TLS_ECC_Root_CA_2022.pem
+2026-05-22T02:06:58.5346084Z rehash: warning: skipping duplicate certificate in azl_SSL.com_TLS_RSA_Root_CA_2022.pem
+2026-05-22T02:06:58.6805308Z 4 added, 0 removed; done.
+2026-05-22T02:06:58.6805676Z Running hooks in /etc/ca-certificates/update.d...
+2026-05-22T02:06:58.6805713Z done.
+2026-05-22T02:06:58.7415415Z CA certificates copied and updated successfully.
+2026-05-22T02:06:59.0023609Z Site's appCommandLine: python -m uvicorn src.api.server:app --host 0.0.0.0 --port 8000
+2026-05-22T02:06:59.7989955Z Starting periodic command scheduler: cron.
+2026-05-22T02:06:59.8997698Z Launching oryx with: create-script -appPath /home/site/wwwroot -output /opt/startup/startup.sh -virtualEnvName antenv -defaultApp /opt/defaultsite -userStartupCommand 'python -m uvicorn src.api.server:app --host 0.0.0.0 --port 8000'
+2026-05-22T02:07:00.6758825Z Found build manifest file at '/home/site/wwwroot/oryx-manifest.toml'. Deserializing it...
+2026-05-22T02:07:00.6759664Z Output is compressed. Extracting it...
+2026-05-22T02:07:00.7557398Z Found zstd-compressed tarball.
+2026-05-22T02:07:00.7557755Z Extracting '/home/site/wwwroot/output.tar.zst' to directory '/tmp/8deb77929353778'...
+2026-05-22T02:07:00.7557796Z Using zstd for decompression of file: /home/site/wwwroot/output.tar.zst
+2026-05-22T02:07:00.7561871Z Build Operation ID: de87cc0ad6ee7138
+2026-05-22T02:07:00.7561968Z Oryx Version: 0.2.20260504.2, Commit: a776ec9f2fd225b305599e35443ecb3533bcdb26, ReleaseTagName: 20260504.2
+2026-05-22T02:08:24.4315925Z zstd tar Successfully extracted '/home/site/wwwroot/output.tar.zst' to '/tmp/8deb77929353778'
+2026-05-22T02:08:24.4319610Z App path is set to '/tmp/8deb77929353778'
+2026-05-22T02:08:24.4721807Z Writing output script to '/opt/startup/startup.sh'
+2026-05-22T02:08:24.6307249Z Using packages from virtual environment antenv located at /tmp/8deb77929353778/antenv.
+2026-05-22T02:08:24.6565998Z Updated PYTHONPATH to '/opt/startup/app_logs:/tmp/8deb77929353778/antenv/lib/python3.11/site-packages'
+2026-05-22T02:08:36.4860883Z [2m2026-05-22T02:08:36.485790Z[0m [[32m[1minfo     [0m] [1mcreating_llm_client           [0m [36mmodel[0m=[35mgroq-llama-70b[0m [36mprovider[0m=[35mgroq[0m
+2026-05-22T02:08:36.4976776Z [2m2026-05-22T02:08:36.497410Z[0m [[32m[1minfo     [0m] [1mcreating_llm_client           [0m [36mmodel[0m=[35mgroq-llama-70b[0m [36mprovider[0m=[35mgroq[0m
+2026-05-22T02:08:36.5072153Z [2m2026-05-22T02:08:36.506704Z[0m [[32m[1minfo     [0m] [1mcreating_llm_client           [0m [36mmodel[0m=[35mgroq-llama-70b[0m [36mprovider[0m=[35mgroq[0m
+2026-05-22T02:08:36.8310019Z Traceback (most recent call last):
+2026-05-22T02:08:36.8310605Z   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-05-22T02:08:36.8310645Z   File "<frozen runpy>", line 88, in _run_code
+2026-05-22T02:08:36.8310682Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/__main__.py", line 4, in <module>
+2026-05-22T02:08:36.8412653Z     uvicorn.main()
+2026-05-22T02:08:36.8422385Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 1524, in __call__
+2026-05-22T02:08:36.8422566Z     return self.main(*args, **kwargs)
+2026-05-22T02:08:36.8423431Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T02:08:36.8423542Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 1445, in main
+2026-05-22T02:08:36.8423574Z     rv = self.invoke(ctx)
+2026-05-22T02:08:36.8423603Z          ^^^^^^^^^^^^^^^^
+2026-05-22T02:08:36.8423635Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 1308, in invoke
+2026-05-22T02:08:36.8423666Z     return ctx.invoke(self.callback, **ctx.params)
+2026-05-22T02:08:36.8505184Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T02:08:36.8505282Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 877, in invoke
+2026-05-22T02:08:36.8505314Z     return callback(*args, **kwargs)
+2026-05-22T02:08:36.8505344Z            ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T02:08:36.8505377Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/main.py", line 441, in main
+2026-05-22T02:08:36.8505406Z     run(
+2026-05-22T02:08:36.8505470Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/main.py", line 609, in run
+2026-05-22T02:08:36.8505851Z     config.load_app()
+2026-05-22T02:08:36.8505889Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/config.py", line 415, in load_app
+2026-05-22T02:08:36.8505919Z     return import_from_string(self.app)
+2026-05-22T02:08:36.8505947Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T02:08:36.8505979Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/importer.py", line 22, in import_from_string
+2026-05-22T02:08:36.8506009Z     raise exc from None
+2026-05-22T02:08:36.8506041Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/importer.py", line 19, in import_from_string
+2026-05-22T02:08:36.8506070Z     module = importlib.import_module(module_str)
+2026-05-22T02:08:36.8506099Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T02:08:36.8506152Z   File "/opt/python/3.11.15/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2026-05-22T02:08:36.8506183Z     return _bootstrap._gcd_import(name[level:], package, level)
+2026-05-22T02:08:36.8506212Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T02:08:36.8506241Z   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2026-05-22T02:08:36.8506272Z   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2026-05-22T02:08:36.8506302Z   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2026-05-22T02:08:36.8506332Z   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2026-05-22T02:08:36.8506362Z   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+2026-05-22T02:08:36.8506392Z   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2026-05-22T02:08:36.8506422Z   File "/tmp/8deb77929353778/src/api/server.py", line 89, in <module>
+2026-05-22T02:08:36.8506495Z     from src.api.routes import (
+2026-05-22T02:08:36.8506526Z   File "/tmp/8deb77929353778/src/api/routes/documents.py", line 2, in <module>
+2026-05-22T02:08:36.8506556Z     from src.document_engine.factory import router as document_engine_router
+2026-05-22T02:08:36.8506586Z   File "/tmp/8deb77929353778/src/document_engine/factory.py", line 6, in <module>
+2026-05-22T02:08:36.8506615Z     from src.document_engine.folio import generate_folio_atomic
+2026-05-22T02:08:36.8506645Z   File "/tmp/8deb77929353778/src/document_engine/folio.py", line 2, in <module>
+2026-05-22T02:08:36.8506674Z     from supabase import create_client
+2026-05-22T02:08:36.8506702Z ModuleNotFoundError: No module named 'supabase'
+2026-05-22T02:20:17.4656563Z    _____                               
+2026-05-22T02:20:17.4656957Z   /  _  \ __________ _________   ____  
+2026-05-22T02:20:17.4656997Z  /  /_\  \\___   /  |  \_  __ \_/ __ \ 
+2026-05-22T02:20:17.4657027Z /    |    \/    /|  |  /|  | \/\  ___/ 
+2026-05-22T02:20:17.4657056Z \____|__  /_____ \____/ |__|    \___  >
+2026-05-22T02:20:17.4657087Z         \/      \/                  \/ 
+2026-05-22T02:20:17.4657118Z A P P   S E R V I C E   O N   L I N U X
+2026-05-22T02:20:17.4657145Z 
+2026-05-22T02:20:17.4657257Z Documentation     : https://aka.ms/webapp-linux
+2026-05-22T02:20:17.4657287Z Python quickstart : https://aka.ms/python-qs
+2026-05-22T02:20:17.4657316Z Python version    : 3.11.15
+2026-05-22T02:20:17.4657345Z Instance name     : lw1sdlwk00071B
+2026-05-22T02:20:17.4657377Z Instance id       : 9d9ad26f55314832f40453d107bc280606f9336225ee3827727ea25821b4efdd
+2026-05-22T02:20:17.4657404Z 
+2026-05-22T02:20:17.4657433Z App port          : 8000
+2026-05-22T02:20:17.4657462Z Port selected by  : Default for this image
+2026-05-22T02:20:17.4657491Z (Learn more about the PORT appsetting https://aka.ms/webapp-python-settings)
+2026-05-22T02:20:17.4657518Z 
+2026-05-22T02:20:17.4657546Z Note: Any data outside '/home' is not persisted
+2026-05-22T02:20:17.4657592Z 
+2026-05-22T02:20:17.4657638Z ────────────────────────────────────────────────────────────────
+2026-05-22T02:20:17.4657668Z  Run 'apphelp' for available commands and aliases.
+2026-05-22T02:20:17.4657698Z  Run 'install-nettools' to install networking utilities.
+2026-05-22T02:20:17.4657738Z ────────────────────────────────────────────────────────────────
+2026-05-22T02:20:19.0192401Z Starting OpenBSD Secure Shell server: sshd.
+2026-05-22T02:20:19.0393797Z WEBSITES_INCLUDE_CLOUD_CERTS is not set to true.
+2026-05-22T02:20:19.1174100Z Updating certificates in /etc/ssl/certs...
+2026-05-22T02:20:42.2399020Z rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+2026-05-22T02:20:42.3014854Z rehash: warning: skipping duplicate certificate in azl_SSL.com_TLS_ECC_Root_CA_2022.pem
+2026-05-22T02:20:42.3815645Z rehash: warning: skipping duplicate certificate in azl_SSL.com_TLS_RSA_Root_CA_2022.pem
+2026-05-22T02:20:42.5437710Z 4 added, 0 removed; done.
+2026-05-22T02:20:42.5438337Z Running hooks in /etc/ca-certificates/update.d...
+2026-05-22T02:20:42.5699108Z done.
+2026-05-22T02:20:42.5908229Z CA certificates copied and updated successfully.
+2026-05-22T02:20:42.8380974Z Site's appCommandLine: python -m uvicorn src.api.server:app --host 0.0.0.0 --port 8000
+2026-05-22T02:20:43.6909682Z Starting periodic command scheduler: cron.
+2026-05-22T02:20:43.7080482Z Launching oryx with: create-script -appPath /home/site/wwwroot -output /opt/startup/startup.sh -virtualEnvName antenv -defaultApp /opt/defaultsite -userStartupCommand 'python -m uvicorn src.api.server:app --host 0.0.0.0 --port 8000'
+2026-05-22T02:20:44.4247257Z Output is compressed. Extracting it...
+2026-05-22T02:20:44.4247844Z Found zstd-compressed tarball.
+2026-05-22T02:20:44.4247887Z Extracting '/home/site/wwwroot/output.tar.zst' to directory '/tmp/8deb77929353778'...
+2026-05-22T02:20:44.4247919Z Using zstd for decompression of file: /home/site/wwwroot/output.tar.zst
+2026-05-22T02:20:44.4248967Z Found build manifest file at '/home/site/wwwroot/oryx-manifest.toml'. Deserializing it...
+2026-05-22T02:20:44.4249114Z Build Operation ID: de87cc0ad6ee7138
+2026-05-22T02:20:44.4249152Z Oryx Version: 0.2.20260504.2, Commit: a776ec9f2fd225b305599e35443ecb3533bcdb26, ReleaseTagName: 20260504.2
+2026-05-22T02:22:15.3481942Z zstd tar Successfully extracted '/home/site/wwwroot/output.tar.zst' to '/tmp/8deb77929353778'
+2026-05-22T02:22:15.3544474Z App path is set to '/tmp/8deb77929353778'
+2026-05-22T02:22:15.5676031Z Writing output script to '/opt/startup/startup.sh'
+2026-05-22T02:22:16.7524383Z Using packages from virtual environment antenv located at /tmp/8deb77929353778/antenv.
+2026-05-22T02:22:16.7524761Z Updated PYTHONPATH to '/opt/startup/app_logs:/tmp/8deb77929353778/antenv/lib/python3.11/site-packages'
+2026-05-22T02:23:00.8840706Z [2m2026-05-22T02:23:00.874107Z[0m [[32m[1minfo     [0m] [1mcreating_llm_client           [0m [36mmodel[0m=[35mgroq-llama-70b[0m [36mprovider[0m=[35mgroq[0m
+2026-05-22T02:23:01.0048299Z [2m2026-05-22T02:23:00.974474Z[0m [[32m[1minfo     [0m] [1mcreating_llm_client           [0m [36mmodel[0m=[35mgroq-llama-70b[0m [36mprovider[0m=[35mgroq[0m
+2026-05-22T02:23:01.0048694Z [2m2026-05-22T02:23:01.003886Z[0m [[32m[1minfo     [0m] [1mcreating_llm_client           [0m [36mmodel[0m=[35mgroq-llama-70b[0m [36mprovider[0m=[35mgroq[0m
+2026-05-22T02:23:01.8198367Z Traceback (most recent call last):
+2026-05-22T02:23:01.8283792Z   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-05-22T02:23:01.8284142Z   File "<frozen runpy>", line 88, in _run_code
+2026-05-22T02:23:01.8284185Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/__main__.py", line 4, in <module>
+2026-05-22T02:23:01.8289681Z     uvicorn.main()
+2026-05-22T02:23:01.8289826Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 1524, in __call__
+2026-05-22T02:23:01.8300750Z     return self.main(*args, **kwargs)
+2026-05-22T02:23:01.8314209Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T02:23:01.8314352Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 1445, in main
+2026-05-22T02:23:01.8314425Z     rv = self.invoke(ctx)
+2026-05-22T02:23:01.8317841Z          ^^^^^^^^^^^^^^^^
+2026-05-22T02:23:01.8319199Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 1308, in invoke
+2026-05-22T02:23:01.8415966Z     return ctx.invoke(self.callback, **ctx.params)
+2026-05-22T02:23:01.8416144Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T02:23:01.8416184Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 877, in invoke
+2026-05-22T02:23:01.8416213Z     return callback(*args, **kwargs)
+2026-05-22T02:23:01.8416241Z            ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T02:23:01.8416272Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/main.py", line 441, in main
+2026-05-22T02:23:01.8416305Z     run(
+2026-05-22T02:23:01.8416378Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/main.py", line 609, in run
+2026-05-22T02:23:01.8416407Z     config.load_app()
+2026-05-22T02:23:01.8416440Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/config.py", line 415, in load_app
+2026-05-22T02:23:01.8416470Z     return import_from_string(self.app)
+2026-05-22T02:23:01.8416498Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T02:23:01.8416530Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/importer.py", line 22, in import_from_string
+2026-05-22T02:23:01.8416558Z     raise exc from None
+2026-05-22T02:23:01.8416594Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/importer.py", line 19, in import_from_string
+2026-05-22T02:23:01.8480031Z     module = importlib.import_module(module_str)
+2026-05-22T02:23:01.8480252Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T02:23:01.8480561Z   File "/opt/python/3.11.15/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2026-05-22T02:23:01.8516842Z     return _bootstrap._gcd_import(name[level:], package, level)
+2026-05-22T02:23:01.8517024Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T02:23:01.8517060Z   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2026-05-22T02:23:01.8517094Z   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2026-05-22T02:23:01.8517128Z   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2026-05-22T02:23:01.8517160Z   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2026-05-22T02:23:01.8517192Z   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+2026-05-22T02:23:01.8517223Z   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2026-05-22T02:23:01.8517255Z   File "/tmp/8deb77929353778/src/api/server.py", line 89, in <module>
+2026-05-22T02:23:01.8517333Z     from src.api.routes import (
+2026-05-22T02:23:01.8517364Z   File "/tmp/8deb77929353778/src/api/routes/documents.py", line 2, in <module>
+2026-05-22T02:23:01.8517395Z     from src.document_engine.factory import router as document_engine_router
+2026-05-22T02:23:01.8517427Z   File "/tmp/8deb77929353778/src/document_engine/factory.py", line 6, in <module>
+2026-05-22T02:23:01.8517456Z     from src.document_engine.folio import generate_folio_atomic
+2026-05-22T02:23:01.8517486Z   File "/tmp/8deb77929353778/src/document_engine/folio.py", line 2, in <module>
+2026-05-22T02:23:01.8517515Z     from supabase import create_client
+2026-05-22T02:23:01.8517545Z ModuleNotFoundError: No module named 'supabase'
+2026-05-22T04:19:59.4275775Z    _____                               
+2026-05-22T04:19:59.4276182Z   /  _  \ __________ _________   ____  
+2026-05-22T04:19:59.4276222Z  /  /_\  \\___   /  |  \_  __ \_/ __ \ 
+2026-05-22T04:19:59.4276258Z /    |    \/    /|  |  /|  | \/\  ___/ 
+2026-05-22T04:19:59.4276941Z \____|__  /_____ \____/ |__|    \___  >
+2026-05-22T04:19:59.4276973Z         \/      \/                  \/ 
+2026-05-22T04:19:59.4277001Z A P P   S E R V I C E   O N   L I N U X
+2026-05-22T04:19:59.4277029Z 
+2026-05-22T04:19:59.4277059Z Documentation     : https://aka.ms/webapp-linux
+2026-05-22T04:19:59.4277089Z Python quickstart : https://aka.ms/python-qs
+2026-05-22T04:19:59.4277118Z Python version    : 3.11.15
+2026-05-22T04:19:59.4277148Z Instance name     : lw1sdlwk00071B
+2026-05-22T04:19:59.4277181Z Instance id       : 9d9ad26f55314832f40453d107bc280606f9336225ee3827727ea25821b4efdd
+2026-05-22T04:19:59.4277208Z 
+2026-05-22T04:19:59.4277237Z App port          : 8000
+2026-05-22T04:19:59.4277283Z Port selected by  : Default for this image
+2026-05-22T04:19:59.4277316Z (Learn more about the PORT appsetting https://aka.ms/webapp-python-settings)
+2026-05-22T04:19:59.4277342Z 
+2026-05-22T04:19:59.4277373Z Note: Any data outside '/home' is not persisted
+2026-05-22T04:19:59.4277400Z 
+2026-05-22T04:19:59.4277444Z ────────────────────────────────────────────────────────────────
+2026-05-22T04:19:59.4277475Z  Run 'apphelp' for available commands and aliases.
+2026-05-22T04:19:59.4277504Z  Run 'install-nettools' to install networking utilities.
+2026-05-22T04:19:59.4277544Z ────────────────────────────────────────────────────────────────
+2026-05-22T04:20:01.6611458Z Starting OpenBSD Secure Shell server: sshd.
+2026-05-22T04:20:01.6994968Z WEBSITES_INCLUDE_CLOUD_CERTS is not set to true.
+2026-05-22T04:20:01.8598271Z Updating certificates in /etc/ssl/certs...
+2026-05-22T04:20:29.0670501Z rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+2026-05-22T04:20:29.1039892Z rehash: warning: skipping duplicate certificate in azl_SSL.com_TLS_ECC_Root_CA_2022.pem
+2026-05-22T04:20:29.1926333Z rehash: warning: skipping duplicate certificate in azl_SSL.com_TLS_RSA_Root_CA_2022.pem
+2026-05-22T04:20:29.3833914Z 4 added, 0 removed; done.
+2026-05-22T04:20:29.3834485Z Running hooks in /etc/ca-certificates/update.d...
+2026-05-22T04:20:29.4040604Z done.
+2026-05-22T04:20:29.4420007Z CA certificates copied and updated successfully.
+2026-05-22T04:20:29.6892672Z Site's appCommandLine: python -m uvicorn src.api.server:app --host 0.0.0.0 --port 8000
+2026-05-22T04:20:30.5322930Z Starting periodic command scheduler: cron.
+2026-05-22T04:20:30.5323326Z Launching oryx with: create-script -appPath /home/site/wwwroot -output /opt/startup/startup.sh -virtualEnvName antenv -defaultApp /opt/defaultsite -userStartupCommand 'python -m uvicorn src.api.server:app --host 0.0.0.0 --port 8000'
+2026-05-22T04:20:31.3568964Z Found build manifest file at '/home/site/wwwroot/oryx-manifest.toml'. Deserializing it...
+2026-05-22T04:20:31.4431729Z Build Operation ID: de87cc0ad6ee7138
+2026-05-22T04:20:31.4559307Z Oryx Version: 0.2.20260504.2, Commit: a776ec9f2fd225b305599e35443ecb3533bcdb26, ReleaseTagName: 20260504.2
+2026-05-22T04:20:31.4843274Z Output is compressed. Extracting it...
+2026-05-22T04:20:31.4843632Z Found zstd-compressed tarball.
+2026-05-22T04:20:31.4843679Z Extracting '/home/site/wwwroot/output.tar.zst' to directory '/tmp/8deb77929353778'...
+2026-05-22T04:20:31.4843713Z Using zstd for decompression of file: /home/site/wwwroot/output.tar.zst
+2026-05-22T04:21:55.3604681Z zstd tar Successfully extracted '/home/site/wwwroot/output.tar.zst' to '/tmp/8deb77929353778'
+2026-05-22T04:21:55.3906101Z App path is set to '/tmp/8deb77929353778'
+2026-05-22T04:21:55.4867661Z Writing output script to '/opt/startup/startup.sh'
+2026-05-22T04:21:56.2976366Z Using packages from virtual environment antenv located at /tmp/8deb77929353778/antenv.
+2026-05-22T04:21:56.3143188Z Updated PYTHONPATH to '/opt/startup/app_logs:/tmp/8deb77929353778/antenv/lib/python3.11/site-packages'
+2026-05-22T04:22:37.6599396Z [2m2026-05-22T04:22:37.650494Z[0m [[32m[1minfo     [0m] [1mcreating_llm_client           [0m [36mmodel[0m=[35mgroq-llama-70b[0m [36mprovider[0m=[35mgroq[0m
+2026-05-22T04:22:37.6983548Z [2m2026-05-22T04:22:37.698011Z[0m [[32m[1minfo     [0m] [1mcreating_llm_client           [0m [36mmodel[0m=[35mgroq-llama-70b[0m [36mprovider[0m=[35mgroq[0m
+2026-05-22T04:22:37.7185950Z [2m2026-05-22T04:22:37.716497Z[0m [[32m[1minfo     [0m] [1mcreating_llm_client           [0m [36mmodel[0m=[35mgroq-llama-70b[0m [36mprovider[0m=[35mgroq[0m
+2026-05-22T04:22:39.0060095Z Traceback (most recent call last):
+2026-05-22T04:22:39.0060584Z   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-05-22T04:22:39.0060626Z   File "<frozen runpy>", line 88, in _run_code
+2026-05-22T04:22:39.0060659Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/__main__.py", line 4, in <module>
+2026-05-22T04:22:39.0060689Z     uvicorn.main()
+2026-05-22T04:22:39.0060721Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 1524, in __call__
+2026-05-22T04:22:39.0366487Z     return self.main(*args, **kwargs)
+2026-05-22T04:22:39.0367034Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T04:22:39.0367085Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 1445, in main
+2026-05-22T04:22:39.0367115Z     rv = self.invoke(ctx)
+2026-05-22T04:22:39.0367148Z          ^^^^^^^^^^^^^^^^
+2026-05-22T04:22:39.0367256Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 1308, in invoke
+2026-05-22T04:22:39.0367288Z     return ctx.invoke(self.callback, **ctx.params)
+2026-05-22T04:22:39.0367318Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T04:22:39.0367350Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/click/core.py", line 877, in invoke
+2026-05-22T04:22:39.0367380Z     return callback(*args, **kwargs)
+2026-05-22T04:22:39.0367408Z            ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T04:22:39.0367439Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/main.py", line 441, in main
+2026-05-22T04:22:39.0367467Z     run(
+2026-05-22T04:22:39.0367499Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/main.py", line 609, in run
+2026-05-22T04:22:39.0367528Z     config.load_app()
+2026-05-22T04:22:39.0367585Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/config.py", line 415, in load_app
+2026-05-22T04:22:39.0633108Z     return import_from_string(self.app)
+2026-05-22T04:22:39.0633435Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T04:22:39.0633475Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/importer.py", line 22, in import_from_string
+2026-05-22T04:22:39.0633508Z     raise exc from None
+2026-05-22T04:22:39.0633543Z   File "/tmp/8deb77929353778/antenv/lib/python3.11/site-packages/uvicorn/importer.py", line 19, in import_from_string
+2026-05-22T04:22:39.0633572Z     module = importlib.import_module(module_str)
+2026-05-22T04:22:39.0633601Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T04:22:39.0633632Z   File "/opt/python/3.11.15/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2026-05-22T04:22:39.0633665Z     return _bootstrap._gcd_import(name[level:], package, level)
+2026-05-22T04:22:39.0633766Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T04:22:39.0633798Z   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2026-05-22T04:22:39.0633828Z   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2026-05-22T04:22:39.0633858Z   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2026-05-22T04:22:39.0633888Z   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2026-05-22T04:22:39.0633919Z   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+2026-05-22T04:22:39.0633949Z   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2026-05-22T04:22:39.0633979Z   File "/tmp/8deb77929353778/src/api/server.py", line 89, in <module>
+2026-05-22T04:22:39.0634008Z     from src.api.routes import (
+2026-05-22T04:22:39.0634038Z   File "/tmp/8deb77929353778/src/api/routes/documents.py", line 2, in <module>
+2026-05-22T04:22:39.0634068Z     from src.document_engine.factory import router as document_engine_router
+2026-05-22T04:22:39.0634123Z   File "/tmp/8deb77929353778/src/document_engine/factory.py", line 6, in <module>
+2026-05-22T04:22:39.0634153Z     from src.document_engine.folio import generate_folio_atomic
+2026-05-22T04:22:39.0634184Z   File "/tmp/8deb77929353778/src/document_engine/folio.py", line 2, in <module>
+2026-05-22T04:22:39.0634213Z     from supabase import create_client
+2026-05-22T04:22:39.0634243Z ModuleNotFoundError: No module named 'supabase'
+2026-05-22T04:53:53.0159128Z    _____                               
+2026-05-22T04:53:53.0159582Z   /  _  \ __________ _________   ____  
+2026-05-22T04:53:53.0159626Z  /  /_\  \\___   /  |  \_  __ \_/ __ \ 
+2026-05-22T04:53:53.0159658Z /    |    \/    /|  |  /|  | \/\  ___/ 
+2026-05-22T04:53:53.0159692Z \____|__  /_____ \____/ |__|    \___  >
+2026-05-22T04:53:53.0159725Z         \/      \/                  \/ 
+2026-05-22T04:53:53.0159754Z A P P   S E R V I C E   O N   L I N U X
+2026-05-22T04:53:53.0159781Z 
+2026-05-22T04:53:53.0159811Z Documentation     : https://aka.ms/webapp-linux
+2026-05-22T04:53:53.0159922Z Python quickstart : https://aka.ms/python-qs
+2026-05-22T04:53:53.0159953Z Python version    : 3.11.15
+2026-05-22T04:53:53.0159984Z Instance name     : lw1sdlwk00071B
+2026-05-22T04:53:53.0160017Z Instance id       : 9d9ad26f55314832f40453d107bc280606f9336225ee3827727ea25821b4efdd
+2026-05-22T04:53:53.0160045Z 
+2026-05-22T04:53:53.0160073Z App port          : 8000
+2026-05-22T04:53:53.0160102Z Port selected by  : Default for this image
+2026-05-22T04:53:53.0160132Z (Learn more about the PORT appsetting https://aka.ms/webapp-python-settings)
+2026-05-22T04:53:53.0160160Z 
+2026-05-22T04:53:53.0160189Z Note: Any data outside '/home' is not persisted
+2026-05-22T04:53:53.0160216Z 
+2026-05-22T04:53:53.0160283Z ────────────────────────────────────────────────────────────────
+2026-05-22T04:53:53.0160313Z  Run 'apphelp' for available commands and aliases.
+2026-05-22T04:53:53.0160343Z  Run 'install-nettools' to install networking utilities.
+2026-05-22T04:53:53.0160383Z ────────────────────────────────────────────────────────────────
+2026-05-22T04:53:55.3716186Z Starting OpenBSD Secure Shell server: sshd.
+2026-05-22T04:53:55.3923238Z WEBSITES_INCLUDE_CLOUD_CERTS is not set to true.
+2026-05-22T04:53:55.4774392Z Updating certificates in /etc/ssl/certs...
+2026-05-22T04:54:27.5872213Z rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+2026-05-22T04:54:27.6479657Z rehash: warning: skipping duplicate certificate in azl_SSL.com_TLS_ECC_Root_CA_2022.pem
+2026-05-22T04:54:27.7472932Z rehash: warning: skipping duplicate certificate in azl_SSL.com_TLS_RSA_Root_CA_2022.pem
+2026-05-22T04:54:27.9140202Z 4 added, 0 removed; done.
+2026-05-22T04:54:27.9227431Z Running hooks in /etc/ca-certificates/update.d...
+2026-05-22T04:54:27.9443576Z done.
+2026-05-22T04:54:27.9741997Z CA certificates copied and updated successfully.
+2026-05-22T04:54:28.2537874Z Site's appCommandLine: python -m uvicorn src.api.server:app --host 0.0.0.0 --port 8000
+2026-05-22T04:54:28.8051094Z Starting periodic command scheduler: cron.
+2026-05-22T04:54:28.8795754Z Launching oryx with: create-script -appPath /home/site/wwwroot -output /opt/startup/startup.sh -virtualEnvName antenv -defaultApp /opt/defaultsite -userStartupCommand 'python -m uvicorn src.api.server:app --host 0.0.0.0 --port 8000'
+2026-05-22T04:54:29.3352618Z Found build manifest file at '/home/site/wwwroot/oryx-manifest.toml'. Deserializing it...
+2026-05-22T04:54:29.3448038Z Build Operation ID: 957034e05e442091
+2026-05-22T04:54:29.3457593Z Oryx Version: 0.2.20260504.2, Commit: a776ec9f2fd225b305599e35443ecb3533bcdb26, ReleaseTagName: 20260504.2
+2026-05-22T04:54:29.3457893Z Output is compressed. Extracting it...
+2026-05-22T04:54:29.3457944Z Found zstd-compressed tarball.
+2026-05-22T04:54:29.3478570Z Extracting '/home/site/wwwroot/output.tar.zst' to directory '/tmp/8deb7bcb0ee575c'...
+2026-05-22T04:54:29.3650695Z Using zstd for decompression of file: /home/site/wwwroot/output.tar.zst
+2026-05-22T04:55:35.2287743Z zstd tar Successfully extracted '/home/site/wwwroot/output.tar.zst' to '/tmp/8deb7bcb0ee575c'
+2026-05-22T04:55:35.2288218Z App path is set to '/tmp/8deb7bcb0ee575c'
+2026-05-22T04:55:35.2661085Z Writing output script to '/opt/startup/startup.sh'
+2026-05-22T04:55:35.4653646Z Using packages from virtual environment antenv located at /tmp/8deb7bcb0ee575c/antenv.
+2026-05-22T04:55:35.4654220Z Updated PYTHONPATH to '/opt/startup/app_logs:/tmp/8deb7bcb0ee575c/antenv/lib/python3.11/site-packages'
+2026-05-22T04:55:47.0809795Z [2m2026-05-22T04:55:47.080655Z[0m [[32m[1minfo     [0m] [1mcreating_llm_client           [0m [36mmodel[0m=[35mgroq-llama-70b[0m [36mprovider[0m=[35mgroq[0m
+2026-05-22T04:55:47.1010511Z [2m2026-05-22T04:55:47.100772Z[0m [[32m[1minfo     [0m] [1mcreating_llm_client           [0m [36mmodel[0m=[35mgroq-llama-70b[0m [36mprovider[0m=[35mgroq[0m
+2026-05-22T04:55:47.1115801Z [2m2026-05-22T04:55:47.110963Z[0m [[32m[1minfo     [0m] [1mcreating_llm_client           [0m [36mmodel[0m=[35mgroq-llama-70b[0m [36mprovider[0m=[35mgroq[0m
+2026-05-22T04:55:47.4510342Z Traceback (most recent call last):
+2026-05-22T04:55:47.4511203Z   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-05-22T04:55:47.4511245Z   File "<frozen runpy>", line 88, in _run_code
+2026-05-22T04:55:47.4511278Z   File "/tmp/8deb7bcb0ee575c/antenv/lib/python3.11/site-packages/uvicorn/__main__.py", line 4, in <module>
+2026-05-22T04:55:47.4575516Z     uvicorn.main()
+2026-05-22T04:55:47.4603249Z   File "/tmp/8deb7bcb0ee575c/antenv/lib/python3.11/site-packages/click/core.py", line 1524, in __call__
+2026-05-22T04:55:47.4690503Z     return self.main(*args, **kwargs)
+2026-05-22T04:55:47.4694929Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T04:55:47.4695070Z   File "/tmp/8deb7bcb0ee575c/antenv/lib/python3.11/site-packages/click/core.py", line 1445, in main
+2026-05-22T04:55:47.4703299Z     rv = self.invoke(ctx)
+2026-05-22T04:55:47.4707090Z          ^^^^^^^^^^^^^^^^
+2026-05-22T04:55:47.4709238Z   File "/tmp/8deb7bcb0ee575c/antenv/lib/python3.11/site-packages/click/core.py", line 1308, in invoke
+2026-05-22T04:55:47.4783165Z     return ctx.invoke(self.callback, **ctx.params)
+2026-05-22T04:55:47.4783356Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T04:55:47.4783398Z   File "/tmp/8deb7bcb0ee575c/antenv/lib/python3.11/site-packages/click/core.py", line 877, in invoke
+2026-05-22T04:55:47.4783427Z     return callback(*args, **kwargs)
+2026-05-22T04:55:47.4783484Z            ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T04:55:47.4783518Z   File "/tmp/8deb7bcb0ee575c/antenv/lib/python3.11/site-packages/uvicorn/main.py", line 441, in main
+2026-05-22T04:55:47.4795593Z     run(
+2026-05-22T04:55:47.4795760Z   File "/tmp/8deb7bcb0ee575c/antenv/lib/python3.11/site-packages/uvicorn/main.py", line 609, in run
+2026-05-22T04:55:47.4795793Z     config.load_app()
+2026-05-22T04:55:47.4795829Z   File "/tmp/8deb7bcb0ee575c/antenv/lib/python3.11/site-packages/uvicorn/config.py", line 415, in load_app
+2026-05-22T04:55:47.4797071Z     return import_from_string(self.app)
+2026-05-22T04:55:47.4802392Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T04:55:47.4802530Z   File "/tmp/8deb7bcb0ee575c/antenv/lib/python3.11/site-packages/uvicorn/importer.py", line 22, in import_from_string
+2026-05-22T04:55:47.4806749Z     raise exc from None
+2026-05-22T04:55:47.4806867Z   File "/tmp/8deb7bcb0ee575c/antenv/lib/python3.11/site-packages/uvicorn/importer.py", line 19, in import_from_string
+2026-05-22T04:55:47.4808480Z     module = importlib.import_module(module_str)
+2026-05-22T04:55:47.4812171Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T04:55:47.4812268Z   File "/opt/python/3.11.15/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2026-05-22T04:55:47.4975482Z     return _bootstrap._gcd_import(name[level:], package, level)
+2026-05-22T04:55:47.4975839Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-22T04:55:47.4975879Z   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2026-05-22T04:55:47.4975911Z   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2026-05-22T04:55:47.4976049Z   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2026-05-22T04:55:47.4976081Z   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2026-05-22T04:55:47.4976112Z   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+2026-05-22T04:55:47.4976144Z   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2026-05-22T04:55:47.4976173Z   File "/tmp/8deb7bcb0ee575c/src/api/server.py", line 89, in <module>
+2026-05-22T04:55:47.4976204Z     from src.api.routes import (
+2026-05-22T04:55:47.4976237Z   File "/tmp/8deb7bcb0ee575c/src/api/routes/documents.py", line 2, in <module>
+2026-05-22T04:55:47.4976268Z     from src.document_engine.factory import router as document_engine_router
+2026-05-22T04:55:47.4976299Z   File "/tmp/8deb7bcb0ee575c/src/document_engine/factory.py", line 6, in <module>
+2026-05-22T04:55:47.4976328Z     from src.document_engine.folio import generate_folio_atomic
+2026-05-22T04:55:47.4976375Z   File "/tmp/8deb7bcb0ee575c/src/document_engine/folio.py", line 2, in <module>
+2026-05-22T04:55:47.4976410Z     from supabase import create_client
+2026-05-22T04:55:47.4976439Z ModuleNotFoundError: No module named 'supabase'
+2026-05-22T05:07:45.6820371Z    _____                               
+2026-05-22T05:07:45.6821775Z   /  _  \ __________ _________   ____  
+2026-05-22T05:07:45.6821826Z  /  /_\  \\___   /  |  \_  __ \_/ __ \ 
+2026-05-22T05:07:45.6821856Z /    |    \/    /|  |  /|  | \/\  ___/ 
+2026-05-22T05:07:45.6821884Z \____|__  /_____ \____/ |__|    \___  >
+2026-05-22T05:07:45.6821912Z         \/      \/                  \/ 
+2026-05-22T05:07:45.6821940Z A P P   S E R V I C E   O N   L I N U X
+2026-05-22T05:07:45.6821966Z 
+2026-05-22T05:07:45.6821999Z Documentation     : https://aka.ms/webapp-linux
+2026-05-22T05:07:45.6822028Z Python quickstart : https://aka.ms/python-qs
+2026-05-22T05:07:45.6822056Z Python version    : 3.11.15
+2026-05-22T05:07:45.6822084Z Instance name     : lw1sdlwk00071B
+2026-05-22T05:07:45.6832302Z Instance id       : 9d9ad26f55314832f40453d107bc280606f9336225ee3827727ea25821b4efdd
+2026-05-22T05:07:45.6832363Z 
+2026-05-22T05:07:45.6832394Z App port          : 8000
+2026-05-22T05:07:45.6832425Z Port selected by  : Default for this image
+2026-05-22T05:07:45.6832456Z (Learn more about the PORT appsetting https://aka.ms/webapp-python-settings)
+2026-05-22T05:07:45.6832482Z 
+2026-05-22T05:07:45.6832511Z Note: Any data outside '/home' is not persisted
+2026-05-22T05:07:45.6832536Z 
+2026-05-22T05:07:45.6832581Z ────────────────────────────────────────────────────────────────
+2026-05-22T05:07:45.6832611Z  Run 'apphelp' for available commands and aliases.
+2026-05-22T05:07:45.6832682Z  Run 'install-nettools' to install networking utilities.
+2026-05-22T05:07:45.6832723Z ────────────────────────────────────────────────────────────────
+2026-05-22T05:07:54.2228244Z Starting OpenBSD Secure Shell server: sshd.
+2026-05-22T05:07:54.8569783Z WEBSITES_INCLUDE_CLOUD_CERTS is not set to true.
+2026-05-22T05:07:54.8570686Z Updating certificates in /etc/ssl/certs...
+2026-05-22T05:08:35.3597909Z rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+2026-05-22T05:08:35.4302064Z rehash: warning: skipping duplicate certificate in azl_SSL.com_TLS_ECC_Root_CA_2022.pem
+2026-05-22T05:08:35.4783965Z rehash: warning: skipping duplicate certificate in azl_SSL.com_TLS_RSA_Root_CA_2022.pem
+2026-05-22T05:08:35.5475045Z 4 added, 0 removed; done.
+2026-05-22T05:08:35.5490880Z Running hooks in /etc/ca-certificates/update.d...
+2026-05-22T05:08:35.5792840Z done.
+2026-05-22T05:08:35.6391347Z CA certificates copied and updated successfully.
+2026-05-22T05:08:35.8962478Z Site's appCommandLine: python -m uvicorn src.api.server:app --host 0.0.0.0 --port 8000
+2026-05-22T05:08:37.3948014Z Starting periodic command scheduler: cron.
+2026-05-22T05:08:37.4738088Z Launching oryx with: create-script -appPath /home/site/wwwroot -output /opt/startup/startup.sh -virtualEnvName antenv -defaultApp /opt/defaultsite -userStartupCommand 'python -m uvicorn src.api.server:app --host 0.0.0.0 --port 8000'
+2026-05-22T05:08:39.3208779Z Could not find build manifest file at '/home/site/wwwroot/oryx-manifest.toml'
+2026-05-22T05:08:39.3209234Z Could not find operation ID in manifest. Generating an operation id...
+2026-05-22T05:08:39.3209277Z Build Operation ID: d8c2f004-5483-4131-b933-09ef1ace690a
+2026-05-22T05:08:40.6304475Z Oryx Version: 0.2.20260504.2, Commit: a776ec9f2fd225b305599e35443ecb3533bcdb26, ReleaseTagName: 20260504.2
+2026-05-22T05:08:40.7014225Z Writing output script to '/opt/startup/startup.sh'
+2026-05-22T05:08:40.8092053Z WARNING: Could not find virtual environment directory /home/site/wwwroot/antenv.
+2026-05-22T05:08:40.8170426Z WARNING: Could not find package directory /home/site/wwwroot/__oryx_packages__.
+2026-05-22T05:08:41.8707706Z /opt/python/3.11.15/bin/python: No module named uvicorn

@@ -1,6 +1,5 @@
 import pandas as pd
 import logging
-from supabase import create_client, Client
 
 class DataExtractionEngine:
     def __init__(self, supabase_creds: dict, config):
@@ -15,6 +14,9 @@ class DataExtractionEngine:
     def extract_data(self, table_name: str) -> pd.DataFrame:
         logging.info(f"Iniciando extracción API (service_role) para cliente {self.client_id} | Tabla: {table_name}")
         try:
+            # Lazy import to prevent module loading errors
+            from supabase import create_client, Client
+
             # 1. Tomamos las llaves directamente de la memoria inyectada
             url = self.supabase_creds.get("url")
             key = self.supabase_creds.get("key")

@@ -1,0 +1,643 @@
+2026-05-21T22:59:53.6061342Z State: Stopping, Action: UnmountingVolumes, LastError: ContainerTimeout, LastErrorTimestamp: 05/21/2026 22:59:53, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-21T22:59:54.4708096Z State: Stopping, Action: StoppingSiteNetworks, LastError: ContainerTimeout, LastErrorTimestamp: 05/21/2026 22:59:53, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-21T22:59:55.0420398Z Site: app-evangelista-backend-19863 will be blocked for 2 minutes till 05/21/2026 23:01:55
+2026-05-21T22:59:55.0424807Z State: Blocked, Action: StoppingSiteNetworks, LastError: ContainerTimeout, LastErrorTimestamp: 05/21/2026 22:59:53, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site: app-evangelista-backend-19863 will be blocked for 2 minutes till 05/21/2026 23:01:55, DetailsLevel: WARN
+2026-05-21T22:59:55.0790163Z State: Stopped, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/21/2026 22:59:53, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/21/2026 22:59:55 (UTC), DetailsLevel: WARN
+2026-05-21T22:59:55.3971383Z State: Stopped, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/21/2026 22:59:53, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/21/2026 22:59:55 (UTC), DetailsLevel: WARN
+2026-05-21T23:01:55.0412152Z Site: app-evangelista-backend-19863 is unblocked.
+2026-05-22T00:55:03.4702602Z State: Starting, Action: EstablishingSiteNetworks, LastError: ContainerTimeout, LastErrorTimestamp: 05/21/2026 22:59:53, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/21/2026 22:59:55 (UTC), DetailsLevel: WARN
+2026-05-22T00:55:05.6998147Z State: Starting, Action: StartingSiteContainers, LastError: ContainerTimeout, LastErrorTimestamp: 05/21/2026 22:59:53, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/21/2026 22:59:55 (UTC), DetailsLevel: WARN
+2026-05-22T00:55:05.7204514Z Container start method called.
+2026-05-22T00:55:05.7655496Z State: Starting, Action: PullingImage, LastError: ContainerTimeout, LastErrorTimestamp: 05/21/2026 22:59:53, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Pulling image 10.1.0.7:13209/appsvc/python:3.11_20260504.4.tuxprod for app-evangelista-backend-19863., DetailsLevel: INFO
+2026-05-22T00:55:05.7658477Z Establishing network.
+2026-05-22T00:55:05.7773607Z Pulling image: appsvc/python:3.11_20260504.4.tuxprod.
+2026-05-22T00:55:06.1804849Z Container is starting.
+2026-05-22T00:55:06.1809511Z State: Starting, Action: MountingVolumes, LastError: ContainerTimeout, LastErrorTimestamp: 05/21/2026 22:59:53, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Mounting volumes for app-evangelista-backend-19863., DetailsLevel: INFO
+2026-05-22T00:55:06.1857709Z Establishing user namespace if not established already.
+2026-05-22T00:55:06.1858920Z Establishing network if not established already.
+2026-05-22T00:55:06.1860198Z Mounting volumes.
+2026-05-22T00:55:06.1953736Z Nested mountpoint 
+2026-05-22T00:55:06.3230409Z Nested mountpoint volatile/logs
+2026-05-22T00:55:06.3513429Z Nested mountpoint 
+2026-05-22T00:55:06.3628277Z Nested mountpoint 
+2026-05-22T00:55:06.3840430Z Nested mountpoint 
+2026-05-22T00:55:07.0883389Z State: Starting, Action: CreatingContainer, LastError: ContainerTimeout, LastErrorTimestamp: 05/21/2026 22:59:53, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Finished pulling container image and mounting volumes for app-evangelista-backend-19863. Allocatinng the rest of the container resources to finish container creation., DetailsLevel: INFO
+2026-05-22T00:55:07.0886004Z Creating container.
+2026-05-22T00:55:07.1152603Z Creating pipes for streaming container io.
+2026-05-22T00:55:07.1159067Z Creating stdout named pipe at /podr/container/pipe/4c957783419a_app-evangelista-backend-19863/stdout_32985b7958ef47e9885826b12258abf8.
+2026-05-22T00:55:07.1187157Z Successfully created stdout named pipe at: /podr/container/pipe/4c957783419a_app-evangelista-backend-19863/stdout_32985b7958ef47e9885826b12258abf8.
+2026-05-22T00:55:07.1188243Z Opening named pipe /podr/container/pipe/4c957783419a_app-evangelista-backend-19863/stdout_32985b7958ef47e9885826b12258abf8 for reading in non-blocking mode.
+2026-05-22T00:55:07.1189428Z Successfully opened named pipe: /podr/container/pipe/4c957783419a_app-evangelista-backend-19863/stdout_32985b7958ef47e9885826b12258abf8.
+2026-05-22T00:55:07.1280827Z Successfully removed non-blocking flag from /podr/container/pipe/4c957783419a_app-evangelista-backend-19863/stdout_32985b7958ef47e9885826b12258abf8.
+2026-05-22T00:55:07.1481210Z Creating stderr named pipe at /podr/container/pipe/4c957783419a_app-evangelista-backend-19863/stderr_01049993ecde4883b4086fe0022b88f0.
+2026-05-22T00:55:07.1839694Z Successfully created stderr named pipe at: /podr/container/pipe/4c957783419a_app-evangelista-backend-19863/stderr_01049993ecde4883b4086fe0022b88f0.
+2026-05-22T00:55:07.1940687Z Opening named pipe /podr/container/pipe/4c957783419a_app-evangelista-backend-19863/stderr_01049993ecde4883b4086fe0022b88f0 for reading in non-blocking mode.
+2026-05-22T00:55:07.1962980Z Successfully opened named pipe: /podr/container/pipe/4c957783419a_app-evangelista-backend-19863/stderr_01049993ecde4883b4086fe0022b88f0.
+2026-05-22T00:55:07.1976109Z Successfully removed non-blocking flag from /podr/container/pipe/4c957783419a_app-evangelista-backend-19863/stderr_01049993ecde4883b4086fe0022b88f0.
+2026-05-22T00:55:07.2067641Z Creating container with image: appsvc/python:3.11_20260504.4.tuxprod from registry: 10.1.0.7:13209 and fully qualified image name: 10.1.0.7:13209/appsvc/python:3.11_20260504.4.tuxprod
+2026-05-22T00:55:08.6105029Z Starting container: 4c957783419a_app-evangelista-backend-19863.
+2026-05-22T00:55:08.9691856Z Starting watchers and probes.
+2026-05-22T00:55:09.0858971Z Starting metrics collection.
+2026-05-22T00:55:09.0973595Z Container is running.
+2026-05-22T00:55:09.1053586Z State: Starting, Action: CreatingContainer, LastError: ContainerTimeout, LastErrorTimestamp: 05/21/2026 22:59:53, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Container app-evangelista-backend-19863 successfully created and is running., DetailsLevel: INFO
+2026-05-22T00:55:09.7432791Z Container start method finished after 4021 ms.
+2026-05-22T00:55:09.7502536Z State: Starting, Action: InitiatingSiteWarmUpProbe, LastError: ContainerTimeout, LastErrorTimestamp: 05/21/2026 22:59:53, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Container app-evangelista-backend-19863 successfully created and is running., DetailsLevel: INFO
+2026-05-22T00:55:09.7918573Z State: Starting, Action: WaitingForSiteWarmUpProbeSuccess, LastError: ContainerTimeout, LastErrorTimestamp: 05/21/2026 22:59:53, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Pinging warmup path to ensure container is ready to receive requests., DetailsLevel: INFO
+2026-05-22T00:57:04.4573219Z Container has finished running with exit code: 1.
+2026-05-22T00:57:04.4737421Z Container is terminating. Grace period: 5 seconds.
+2026-05-22T00:57:04.4862784Z Stop and delete container. Retry count = 0
+2026-05-22T00:57:04.4866925Z Stopping container: 4c957783419a_app-evangelista-backend-19863.
+2026-05-22T00:57:04.5924650Z Deleting container: 4c957783419a_app-evangelista-backend-19863. Retry count = 0
+2026-05-22T00:57:12.4232716Z Container get mounts received unexpected exception.
+2026-05-22T00:57:12.4433601Z Container get processes received unexpected exception.
+2026-05-22T00:57:13.2341016Z Container spec TerminationMessagePolicy  path 
+2026-05-22T00:57:13.2458385Z Container is terminated. Total time elapsed: 8768 ms.
+2026-05-22T00:57:13.2464323Z Site container: app-evangelista-backend-19863 terminated during site startup.
+2026-05-22T00:57:13.2546356Z State: Stopping, Action: CancellingStartup, LastError: ContainerTimeout, LastErrorTimestamp: 05/21/2026 22:59:53, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T00:57:13.6504005Z Site startup probe failed after 123.7983103 seconds.
+2026-05-22T00:57:14.7800503Z State: Stopping, Action: CancellingStartup, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 00:57:14, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T00:57:14.8499095Z Failed to start site. Revert by stopping site.
+2026-05-22T00:57:14.8694239Z State: Stopping, Action: StoppingSite, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 00:57:14, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T00:57:14.8752662Z State: Stopping, Action: StoppingSiteContainers, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 00:57:14, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T00:57:14.8756035Z Site: app-evangelista-backend-19863 stopped.
+2026-05-22T00:57:14.8863365Z State: Stopping, Action: UnmountingVolumes, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 00:57:14, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T00:57:16.1211994Z State: Stopping, Action: StoppingSiteNetworks, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 00:57:14, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T00:57:16.8792327Z Site: app-evangelista-backend-19863 will be blocked for 2 minutes till 05/22/2026 00:59:16
+2026-05-22T00:57:16.8802230Z State: Blocked, Action: StoppingSiteNetworks, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 00:57:14, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site: app-evangelista-backend-19863 will be blocked for 2 minutes till 05/22/2026 00:59:16, DetailsLevel: WARN
+2026-05-22T00:57:17.0283177Z State: Stopped, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 00:57:14, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/22/2026 00:57:17 (UTC), DetailsLevel: WARN
+2026-05-22T00:57:17.8599315Z State: Stopped, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 00:57:14, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/22/2026 00:57:17 (UTC), DetailsLevel: WARN
+2026-05-22T00:59:16.8501940Z Site: app-evangelista-backend-19863 is unblocked.
+2026-05-22T01:01:43.8043337Z State: Starting, Action: EstablishingSiteNetworks, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 00:57:14, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/22/2026 00:57:17 (UTC), DetailsLevel: WARN
+2026-05-22T01:01:45.6164293Z State: Starting, Action: StartingSiteContainers, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 00:57:14, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/22/2026 00:57:17 (UTC), DetailsLevel: WARN
+2026-05-22T01:01:45.6224822Z Container start method called.
+2026-05-22T01:01:45.6232445Z State: Starting, Action: PullingImage, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 00:57:14, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Pulling image 10.1.0.7:13209/appsvc/python:3.11_20260504.4.tuxprod for app-evangelista-backend-19863., DetailsLevel: INFO
+2026-05-22T01:01:45.6237102Z Establishing network.
+2026-05-22T01:01:45.6247411Z Pulling image: appsvc/python:3.11_20260504.4.tuxprod.
+2026-05-22T01:01:45.8743239Z Container is starting.
+2026-05-22T01:01:45.8744329Z State: Starting, Action: MountingVolumes, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 00:57:14, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Mounting volumes for app-evangelista-backend-19863., DetailsLevel: INFO
+2026-05-22T01:01:45.8745384Z Establishing user namespace if not established already.
+2026-05-22T01:01:45.8746317Z Establishing network if not established already.
+2026-05-22T01:01:45.8747519Z Mounting volumes.
+2026-05-22T01:01:45.8748999Z Nested mountpoint 
+2026-05-22T01:01:45.8962897Z Nested mountpoint volatile/logs
+2026-05-22T01:01:45.9265740Z Nested mountpoint 
+2026-05-22T01:01:45.9364602Z Nested mountpoint 
+2026-05-22T01:01:45.9442054Z Nested mountpoint 
+2026-05-22T01:01:46.4504270Z State: Starting, Action: CreatingContainer, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 00:57:14, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Finished pulling container image and mounting volumes for app-evangelista-backend-19863. Allocatinng the rest of the container resources to finish container creation., DetailsLevel: INFO
+2026-05-22T01:01:46.4697915Z Creating container.
+2026-05-22T01:01:46.4703764Z Creating pipes for streaming container io.
+2026-05-22T01:01:46.4708176Z Creating stdout named pipe at /podr/container/pipe/079a09fd7a28_app-evangelista-backend-19863/stdout_d74bc324b4914e3893080eac325a4758.
+2026-05-22T01:01:46.4724365Z Successfully created stdout named pipe at: /podr/container/pipe/079a09fd7a28_app-evangelista-backend-19863/stdout_d74bc324b4914e3893080eac325a4758.
+2026-05-22T01:01:46.4790021Z Opening named pipe /podr/container/pipe/079a09fd7a28_app-evangelista-backend-19863/stdout_d74bc324b4914e3893080eac325a4758 for reading in non-blocking mode.
+2026-05-22T01:01:46.4793382Z Successfully opened named pipe: /podr/container/pipe/079a09fd7a28_app-evangelista-backend-19863/stdout_d74bc324b4914e3893080eac325a4758.
+2026-05-22T01:01:46.4794551Z Successfully removed non-blocking flag from /podr/container/pipe/079a09fd7a28_app-evangelista-backend-19863/stdout_d74bc324b4914e3893080eac325a4758.
+2026-05-22T01:01:46.4822036Z Creating stderr named pipe at /podr/container/pipe/079a09fd7a28_app-evangelista-backend-19863/stderr_239d60a13d99484db07571f5d14e5fa8.
+2026-05-22T01:01:46.5006179Z Successfully created stderr named pipe at: /podr/container/pipe/079a09fd7a28_app-evangelista-backend-19863/stderr_239d60a13d99484db07571f5d14e5fa8.
+2026-05-22T01:01:46.5015611Z Opening named pipe /podr/container/pipe/079a09fd7a28_app-evangelista-backend-19863/stderr_239d60a13d99484db07571f5d14e5fa8 for reading in non-blocking mode.
+2026-05-22T01:01:46.5085911Z Successfully opened named pipe: /podr/container/pipe/079a09fd7a28_app-evangelista-backend-19863/stderr_239d60a13d99484db07571f5d14e5fa8.
+2026-05-22T01:01:46.5097179Z Successfully removed non-blocking flag from /podr/container/pipe/079a09fd7a28_app-evangelista-backend-19863/stderr_239d60a13d99484db07571f5d14e5fa8.
+2026-05-22T01:01:46.5108039Z Creating container with image: appsvc/python:3.11_20260504.4.tuxprod from registry: 10.1.0.7:13209 and fully qualified image name: 10.1.0.7:13209/appsvc/python:3.11_20260504.4.tuxprod
+2026-05-22T01:01:47.1967013Z Starting container: 079a09fd7a28_app-evangelista-backend-19863.
+2026-05-22T01:01:47.3161190Z Starting watchers and probes.
+2026-05-22T01:01:47.3172747Z Starting metrics collection.
+2026-05-22T01:01:47.3266598Z Container is running.
+2026-05-22T01:01:47.3274600Z State: Starting, Action: CreatingContainer, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 00:57:14, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Container app-evangelista-backend-19863 successfully created and is running., DetailsLevel: INFO
+2026-05-22T01:01:47.4563482Z Container start method finished after 1831 ms.
+2026-05-22T01:01:47.5440294Z State: Starting, Action: InitiatingSiteWarmUpProbe, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 00:57:14, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Container app-evangelista-backend-19863 successfully created and is running., DetailsLevel: INFO
+2026-05-22T01:01:47.5838265Z State: Starting, Action: WaitingForSiteWarmUpProbeSuccess, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 00:57:14, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Pinging warmup path to ensure container is ready to receive requests., DetailsLevel: INFO
+2026-05-22T01:04:09.7798482Z Container has finished running with exit code: 1.
+2026-05-22T01:04:09.7813200Z Container is terminating. Grace period: 5 seconds.
+2026-05-22T01:04:09.8253389Z Stop and delete container. Retry count = 0
+2026-05-22T01:04:09.8332317Z Stopping container: 079a09fd7a28_app-evangelista-backend-19863.
+2026-05-22T01:04:09.9552301Z Deleting container: 079a09fd7a28_app-evangelista-backend-19863. Retry count = 0
+2026-05-22T01:04:12.0281333Z Container get mounts received unexpected exception.
+2026-05-22T01:04:12.0492485Z Container get processes received unexpected exception.
+2026-05-22T01:04:17.3405140Z Container spec TerminationMessagePolicy  path 
+2026-05-22T01:04:17.3430289Z Container is terminated. Total time elapsed: 7552 ms.
+2026-05-22T01:04:17.3509033Z Site container: app-evangelista-backend-19863 terminated during site startup.
+2026-05-22T01:04:17.3620384Z State: Stopping, Action: CancellingStartup, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 00:57:14, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T01:04:17.5148807Z Site startup probe failed after 149.9099493 seconds.
+2026-05-22T01:04:18.0118184Z State: Stopping, Action: CancellingStartup, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:04:18, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T01:04:18.0795579Z Failed to start site. Revert by stopping site.
+2026-05-22T01:04:18.0901639Z State: Stopping, Action: StoppingSite, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:04:18, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T01:04:18.0929828Z State: Stopping, Action: StoppingSiteContainers, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:04:18, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T01:04:18.0935084Z Site: app-evangelista-backend-19863 stopped.
+2026-05-22T01:04:18.1095559Z State: Stopping, Action: UnmountingVolumes, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:04:18, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T01:04:18.6927229Z State: Stopping, Action: StoppingSiteNetworks, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:04:18, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T01:04:18.9042232Z Site: app-evangelista-backend-19863 will be blocked for 2 minutes till 05/22/2026 01:06:18
+2026-05-22T01:04:18.9152121Z State: Blocked, Action: StoppingSiteNetworks, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:04:18, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site: app-evangelista-backend-19863 will be blocked for 2 minutes till 05/22/2026 01:06:18, DetailsLevel: WARN
+2026-05-22T01:04:18.9234857Z State: Stopped, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:04:18, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/22/2026 01:04:18 (UTC), DetailsLevel: WARN
+2026-05-22T01:04:19.1117900Z State: Stopped, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:04:18, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/22/2026 01:04:18 (UTC), DetailsLevel: WARN
+2026-05-22T01:04:52.3588518Z State: Blocked, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:04:18, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site is blocked due to multiple, consecutive cold start failures. Site scheduled to be unblocked at 05/22/2026 01:06:18, DetailsLevel: WARN
+2026-05-22T01:04:52.3588906Z Start site prohibitted because the site is being blocked.
+2026-05-22T01:04:52.6490700Z State: Blocked, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:04:18, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site is blocked due to multiple, consecutive cold start failures. Site scheduled to be unblocked at 05/22/2026 01:06:18, DetailsLevel: WARN
+2026-05-22T01:04:52.6492169Z Start site prohibitted because the site is being blocked.
+2026-05-22T01:06:18.9062787Z Site: app-evangelista-backend-19863 is unblocked.
+2026-05-22T01:10:20.3119015Z State: Starting, Action: EstablishingSiteNetworks, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:04:18, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site is blocked due to multiple, consecutive cold start failures. Site scheduled to be unblocked at 05/22/2026 01:06:18, DetailsLevel: WARN
+2026-05-22T01:10:22.0001632Z State: Starting, Action: StartingSiteContainers, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:04:18, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site is blocked due to multiple, consecutive cold start failures. Site scheduled to be unblocked at 05/22/2026 01:06:18, DetailsLevel: WARN
+2026-05-22T01:10:22.0081933Z Container start method called.
+2026-05-22T01:10:22.0093212Z State: Starting, Action: PullingImage, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:04:18, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Pulling image 10.1.0.7:13209/appsvc/python:3.11_20260504.4.tuxprod for app-evangelista-backend-19863., DetailsLevel: INFO
+2026-05-22T01:10:22.0188777Z Establishing network.
+2026-05-22T01:10:22.0205043Z Pulling image: appsvc/python:3.11_20260504.4.tuxprod.
+2026-05-22T01:10:22.3707870Z Container is starting.
+2026-05-22T01:10:22.3721169Z State: Starting, Action: MountingVolumes, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:04:18, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Mounting volumes for app-evangelista-backend-19863., DetailsLevel: INFO
+2026-05-22T01:10:22.3723363Z Establishing user namespace if not established already.
+2026-05-22T01:10:22.3732745Z Establishing network if not established already.
+2026-05-22T01:10:22.3741608Z Mounting volumes.
+2026-05-22T01:10:22.3816879Z Nested mountpoint 
+2026-05-22T01:10:22.4215623Z Nested mountpoint volatile/logs
+2026-05-22T01:10:22.4421651Z Nested mountpoint 
+2026-05-22T01:10:22.4839622Z Nested mountpoint 
+2026-05-22T01:10:22.5242508Z Nested mountpoint 
+2026-05-22T01:10:23.0993197Z State: Starting, Action: CreatingContainer, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:04:18, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Finished pulling container image and mounting volumes for app-evangelista-backend-19863. Allocatinng the rest of the container resources to finish container creation., DetailsLevel: INFO
+2026-05-22T01:10:23.1078950Z Creating container.
+2026-05-22T01:10:23.1158676Z Creating pipes for streaming container io.
+2026-05-22T01:10:23.1167522Z Creating stdout named pipe at /podr/container/pipe/908f9fa4a2da_app-evangelista-backend-19863/stdout_7321c2b0589e47f0ba0eb75ce7770ac4.
+2026-05-22T01:10:23.1178443Z Successfully created stdout named pipe at: /podr/container/pipe/908f9fa4a2da_app-evangelista-backend-19863/stdout_7321c2b0589e47f0ba0eb75ce7770ac4.
+2026-05-22T01:10:23.1183784Z Opening named pipe /podr/container/pipe/908f9fa4a2da_app-evangelista-backend-19863/stdout_7321c2b0589e47f0ba0eb75ce7770ac4 for reading in non-blocking mode.
+2026-05-22T01:10:23.1189351Z Successfully opened named pipe: /podr/container/pipe/908f9fa4a2da_app-evangelista-backend-19863/stdout_7321c2b0589e47f0ba0eb75ce7770ac4.
+2026-05-22T01:10:23.1193197Z Successfully removed non-blocking flag from /podr/container/pipe/908f9fa4a2da_app-evangelista-backend-19863/stdout_7321c2b0589e47f0ba0eb75ce7770ac4.
+2026-05-22T01:10:23.1265669Z Creating stderr named pipe at /podr/container/pipe/908f9fa4a2da_app-evangelista-backend-19863/stderr_7c5e6e99a2834436bbbd9171327289a6.
+2026-05-22T01:10:23.1269652Z Successfully created stderr named pipe at: /podr/container/pipe/908f9fa4a2da_app-evangelista-backend-19863/stderr_7c5e6e99a2834436bbbd9171327289a6.
+2026-05-22T01:10:23.1270833Z Opening named pipe /podr/container/pipe/908f9fa4a2da_app-evangelista-backend-19863/stderr_7c5e6e99a2834436bbbd9171327289a6 for reading in non-blocking mode.
+2026-05-22T01:10:23.1272038Z Successfully opened named pipe: /podr/container/pipe/908f9fa4a2da_app-evangelista-backend-19863/stderr_7c5e6e99a2834436bbbd9171327289a6.
+2026-05-22T01:10:23.1272946Z Successfully removed non-blocking flag from /podr/container/pipe/908f9fa4a2da_app-evangelista-backend-19863/stderr_7c5e6e99a2834436bbbd9171327289a6.
+2026-05-22T01:10:23.1282459Z Creating container with image: appsvc/python:3.11_20260504.4.tuxprod from registry: 10.1.0.7:13209 and fully qualified image name: 10.1.0.7:13209/appsvc/python:3.11_20260504.4.tuxprod
+2026-05-22T01:10:23.7390722Z Starting container: 908f9fa4a2da_app-evangelista-backend-19863.
+2026-05-22T01:10:23.9635047Z Starting watchers and probes.
+2026-05-22T01:10:23.9733452Z Starting metrics collection.
+2026-05-22T01:10:23.9821513Z Container is running.
+2026-05-22T01:10:23.9841005Z State: Starting, Action: CreatingContainer, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:04:18, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Container app-evangelista-backend-19863 successfully created and is running., DetailsLevel: INFO
+2026-05-22T01:10:24.1505566Z Container start method finished after 2142 ms.
+2026-05-22T01:10:24.1723535Z State: Starting, Action: InitiatingSiteWarmUpProbe, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:04:18, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Container app-evangelista-backend-19863 successfully created and is running., DetailsLevel: INFO
+2026-05-22T01:10:24.1796817Z State: Starting, Action: WaitingForSiteWarmUpProbeSuccess, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:04:18, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Pinging warmup path to ensure container is ready to receive requests., DetailsLevel: INFO
+2026-05-22T01:12:28.9418907Z Container has finished running with exit code: 1.
+2026-05-22T01:12:28.9520373Z Container is terminating. Grace period: 5 seconds.
+2026-05-22T01:12:29.0103011Z Stop and delete container. Retry count = 0
+2026-05-22T01:12:29.0105526Z Stopping container: 908f9fa4a2da_app-evangelista-backend-19863.
+2026-05-22T01:12:29.2395644Z Deleting container: 908f9fa4a2da_app-evangelista-backend-19863. Retry count = 0
+2026-05-22T01:12:44.3862086Z Container spec TerminationMessagePolicy  path 
+2026-05-22T01:12:44.3875567Z Container is terminated. Total time elapsed: 15415 ms.
+2026-05-22T01:12:44.3943209Z Site container: app-evangelista-backend-19863 terminated during site startup.
+2026-05-22T01:12:44.4187244Z State: Stopping, Action: CancellingStartup, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:04:18, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T01:12:44.6082194Z Site startup probe failed after 140.3270683 seconds.
+2026-05-22T01:12:44.9783871Z State: Stopping, Action: CancellingStartup, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:12:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T01:12:45.0279222Z Failed to start site. Revert by stopping site.
+2026-05-22T01:12:45.0376882Z State: Stopping, Action: StoppingSite, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:12:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T01:12:45.0391273Z State: Stopping, Action: StoppingSiteContainers, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:12:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T01:12:45.0391510Z Site: app-evangelista-backend-19863 stopped.
+2026-05-22T01:12:45.0791222Z State: Stopping, Action: UnmountingVolumes, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:12:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T01:12:45.5849348Z State: Stopping, Action: StoppingSiteNetworks, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:12:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T01:12:45.8121141Z Site: app-evangelista-backend-19863 will be blocked for 2 minutes till 05/22/2026 01:14:45
+2026-05-22T01:12:45.8190616Z State: Blocked, Action: StoppingSiteNetworks, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:12:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site: app-evangelista-backend-19863 will be blocked for 2 minutes till 05/22/2026 01:14:45, DetailsLevel: WARN
+2026-05-22T01:12:45.8214711Z State: Stopped, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:12:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/22/2026 01:12:45 (UTC), DetailsLevel: WARN
+2026-05-22T01:12:46.0952457Z State: Stopped, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:12:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/22/2026 01:12:45 (UTC), DetailsLevel: WARN
+2026-05-22T01:14:45.8094600Z Site: app-evangelista-backend-19863 is unblocked.
+2026-05-22T01:16:12.1120784Z State: Starting, Action: EstablishingSiteNetworks, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:12:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/22/2026 01:12:45 (UTC), DetailsLevel: WARN
+2026-05-22T01:16:16.6466028Z State: Starting, Action: StartingSiteContainers, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:12:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/22/2026 01:12:45 (UTC), DetailsLevel: WARN
+2026-05-22T01:16:16.7068074Z Container start method called.
+2026-05-22T01:16:16.7535380Z State: Starting, Action: PullingImage, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:12:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Pulling image 10.1.0.7:13209/appsvc/python:3.11_20260504.4.tuxprod for app-evangelista-backend-19863., DetailsLevel: INFO
+2026-05-22T01:16:16.7538593Z Establishing network.
+2026-05-22T01:16:16.7550488Z Pulling image: appsvc/python:3.11_20260504.4.tuxprod.
+2026-05-22T01:16:18.6417655Z Container is starting.
+2026-05-22T01:16:18.6419194Z State: Starting, Action: MountingVolumes, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:12:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Mounting volumes for app-evangelista-backend-19863., DetailsLevel: INFO
+2026-05-22T01:16:18.6421151Z Establishing user namespace if not established already.
+2026-05-22T01:16:18.6422377Z Establishing network if not established already.
+2026-05-22T01:16:18.6427373Z Mounting volumes.
+2026-05-22T01:16:18.7543987Z Nested mountpoint 
+2026-05-22T01:16:18.8250189Z Nested mountpoint volatile/logs
+2026-05-22T01:16:18.8748293Z Nested mountpoint 
+2026-05-22T01:16:18.8945502Z Nested mountpoint 
+2026-05-22T01:16:18.9645701Z Nested mountpoint 
+2026-05-22T01:16:19.7085022Z State: Starting, Action: CreatingContainer, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:12:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Finished pulling container image and mounting volumes for app-evangelista-backend-19863. Allocatinng the rest of the container resources to finish container creation., DetailsLevel: INFO
+2026-05-22T01:16:19.7086443Z Creating container.
+2026-05-22T01:16:19.7087449Z Creating pipes for streaming container io.
+2026-05-22T01:16:19.7088450Z Creating stdout named pipe at /podr/container/pipe/3675242b1c0b_app-evangelista-backend-19863/stdout_9fef811ef82245cd97eec8a8ed85b371.
+2026-05-22T01:16:19.7186347Z Successfully created stdout named pipe at: /podr/container/pipe/3675242b1c0b_app-evangelista-backend-19863/stdout_9fef811ef82245cd97eec8a8ed85b371.
+2026-05-22T01:16:19.7378318Z Opening named pipe /podr/container/pipe/3675242b1c0b_app-evangelista-backend-19863/stdout_9fef811ef82245cd97eec8a8ed85b371 for reading in non-blocking mode.
+2026-05-22T01:16:19.7381877Z Successfully opened named pipe: /podr/container/pipe/3675242b1c0b_app-evangelista-backend-19863/stdout_9fef811ef82245cd97eec8a8ed85b371.
+2026-05-22T01:16:19.7383537Z Successfully removed non-blocking flag from /podr/container/pipe/3675242b1c0b_app-evangelista-backend-19863/stdout_9fef811ef82245cd97eec8a8ed85b371.
+2026-05-22T01:16:19.7765663Z Creating stderr named pipe at /podr/container/pipe/3675242b1c0b_app-evangelista-backend-19863/stderr_3dd6ae88c5db4f2fa4cc8cfe33f87aa3.
+2026-05-22T01:16:19.7773065Z Successfully created stderr named pipe at: /podr/container/pipe/3675242b1c0b_app-evangelista-backend-19863/stderr_3dd6ae88c5db4f2fa4cc8cfe33f87aa3.
+2026-05-22T01:16:19.7775282Z Opening named pipe /podr/container/pipe/3675242b1c0b_app-evangelista-backend-19863/stderr_3dd6ae88c5db4f2fa4cc8cfe33f87aa3 for reading in non-blocking mode.
+2026-05-22T01:16:19.7776913Z Successfully opened named pipe: /podr/container/pipe/3675242b1c0b_app-evangelista-backend-19863/stderr_3dd6ae88c5db4f2fa4cc8cfe33f87aa3.
+2026-05-22T01:16:19.7777932Z Successfully removed non-blocking flag from /podr/container/pipe/3675242b1c0b_app-evangelista-backend-19863/stderr_3dd6ae88c5db4f2fa4cc8cfe33f87aa3.
+2026-05-22T01:16:19.7980382Z Creating container with image: appsvc/python:3.11_20260504.4.tuxprod from registry: 10.1.0.7:13209 and fully qualified image name: 10.1.0.7:13209/appsvc/python:3.11_20260504.4.tuxprod
+2026-05-22T01:16:21.1634940Z Starting container: 3675242b1c0b_app-evangelista-backend-19863.
+2026-05-22T01:16:21.3110821Z Starting watchers and probes.
+2026-05-22T01:16:21.3122416Z Starting metrics collection.
+2026-05-22T01:16:21.3235718Z Container is running.
+2026-05-22T01:16:21.3237334Z State: Starting, Action: CreatingContainer, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:12:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Container app-evangelista-backend-19863 successfully created and is running., DetailsLevel: INFO
+2026-05-22T01:16:21.9597835Z Container start method finished after 5245 ms.
+2026-05-22T01:16:21.9613593Z State: Starting, Action: InitiatingSiteWarmUpProbe, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:12:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Container app-evangelista-backend-19863 successfully created and is running., DetailsLevel: INFO
+2026-05-22T01:16:21.9614432Z State: Starting, Action: WaitingForSiteWarmUpProbeSuccess, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:12:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Pinging warmup path to ensure container is ready to receive requests., DetailsLevel: INFO
+2026-05-22T01:18:36.6401582Z Container has finished running with exit code: 1.
+2026-05-22T01:18:36.6415941Z Container is terminating. Grace period: 5 seconds.
+2026-05-22T01:18:36.6741629Z Stop and delete container. Retry count = 0
+2026-05-22T01:18:36.6751792Z Stopping container: 3675242b1c0b_app-evangelista-backend-19863.
+2026-05-22T01:18:36.7730070Z Deleting container: 3675242b1c0b_app-evangelista-backend-19863. Retry count = 0
+2026-05-22T01:18:43.4278267Z Container spec TerminationMessagePolicy  path 
+2026-05-22T01:18:43.4376085Z Container is terminated. Total time elapsed: 6795 ms.
+2026-05-22T01:18:43.4431403Z Site container: app-evangelista-backend-19863 terminated during site startup.
+2026-05-22T01:18:43.4676104Z State: Stopping, Action: CancellingStartup, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:12:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T01:18:43.7990768Z Site startup probe failed after 141.8369517 seconds.
+2026-05-22T01:18:44.1059133Z State: Stopping, Action: CancellingStartup, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:18:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T01:18:44.1562747Z Failed to start site. Revert by stopping site.
+2026-05-22T01:18:44.1636876Z State: Stopping, Action: StoppingSite, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:18:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T01:18:44.1647675Z State: Stopping, Action: StoppingSiteContainers, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:18:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T01:18:44.1647974Z Site: app-evangelista-backend-19863 stopped.
+2026-05-22T01:18:44.1676032Z State: Stopping, Action: UnmountingVolumes, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:18:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T01:18:44.7382028Z State: Stopping, Action: StoppingSiteNetworks, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:18:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T01:18:44.9424509Z Site: app-evangelista-backend-19863 will be blocked for 4 minutes till 05/22/2026 01:22:44
+2026-05-22T01:18:44.9504569Z State: Blocked, Action: StoppingSiteNetworks, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:18:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site: app-evangelista-backend-19863 will be blocked for 4 minutes till 05/22/2026 01:22:44, DetailsLevel: WARN
+2026-05-22T01:18:44.9538453Z State: Stopped, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:18:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/22/2026 01:18:44 (UTC), DetailsLevel: WARN
+2026-05-22T01:18:45.1580595Z State: Stopped, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:18:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/22/2026 01:18:44 (UTC), DetailsLevel: WARN
+2026-05-22T01:20:20.0095264Z State: Blocked, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:18:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site is blocked due to multiple, consecutive cold start failures. Site scheduled to be unblocked at 05/22/2026 01:22:44, DetailsLevel: WARN
+2026-05-22T01:20:20.0108605Z Start site prohibitted because the site is being blocked.
+2026-05-22T01:20:31.4354780Z State: Blocked, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:18:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site is blocked due to multiple, consecutive cold start failures. Site scheduled to be unblocked at 05/22/2026 01:22:44, DetailsLevel: WARN
+2026-05-22T01:20:31.4355130Z Start site prohibitted because the site is being blocked.
+2026-05-22T01:20:41.5372116Z State: Blocked, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:18:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site is blocked due to multiple, consecutive cold start failures. Site scheduled to be unblocked at 05/22/2026 01:22:44, DetailsLevel: WARN
+2026-05-22T01:20:41.5372460Z Start site prohibitted because the site is being blocked.
+2026-05-22T01:20:41.7095460Z State: Blocked, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:18:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site is blocked due to multiple, consecutive cold start failures. Site scheduled to be unblocked at 05/22/2026 01:22:44, DetailsLevel: WARN
+2026-05-22T01:20:41.7095802Z Start site prohibitted because the site is being blocked.
+2026-05-22T01:20:45.4160263Z State: Blocked, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:18:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site is blocked due to multiple, consecutive cold start failures. Site scheduled to be unblocked at 05/22/2026 01:22:44, DetailsLevel: WARN
+2026-05-22T01:20:45.4163154Z Start site prohibitted because the site is being blocked.
+2026-05-22T01:20:48.5677142Z State: Blocked, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:18:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site is blocked due to multiple, consecutive cold start failures. Site scheduled to be unblocked at 05/22/2026 01:22:44, DetailsLevel: WARN
+2026-05-22T01:20:48.5677509Z Start site prohibitted because the site is being blocked.
+2026-05-22T01:22:44.9432186Z Site: app-evangelista-backend-19863 is unblocked.
+2026-05-22T01:59:03.6478842Z State: Starting, Action: EstablishingSiteNetworks, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:18:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site is blocked due to multiple, consecutive cold start failures. Site scheduled to be unblocked at 05/22/2026 01:22:44, DetailsLevel: WARN
+2026-05-22T01:59:05.7470808Z State: Starting, Action: StartingSiteContainers, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:18:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site is blocked due to multiple, consecutive cold start failures. Site scheduled to be unblocked at 05/22/2026 01:22:44, DetailsLevel: WARN
+2026-05-22T01:59:05.7490593Z Container start method called.
+2026-05-22T01:59:05.7590542Z State: Starting, Action: PullingImage, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:18:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Pulling image 10.1.0.7:13209/appsvc/python:3.11_20260504.4.tuxprod for app-evangelista-backend-19863., DetailsLevel: INFO
+2026-05-22T01:59:05.7594126Z Establishing network.
+2026-05-22T01:59:05.7603814Z Pulling image: appsvc/python:3.11_20260504.4.tuxprod.
+2026-05-22T01:59:06.1267825Z Container is starting.
+2026-05-22T01:59:06.1269903Z State: Starting, Action: MountingVolumes, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:18:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Mounting volumes for app-evangelista-backend-19863., DetailsLevel: INFO
+2026-05-22T01:59:06.1279579Z Establishing user namespace if not established already.
+2026-05-22T01:59:06.1281341Z Establishing network if not established already.
+2026-05-22T01:59:06.1283082Z Mounting volumes.
+2026-05-22T01:59:06.1373617Z Nested mountpoint 
+2026-05-22T01:59:06.1782989Z Nested mountpoint volatile/logs
+2026-05-22T01:59:06.2096828Z Nested mountpoint 
+2026-05-22T01:59:06.2703025Z Nested mountpoint 
+2026-05-22T01:59:06.3305295Z Nested mountpoint 
+2026-05-22T01:59:06.8554499Z State: Starting, Action: CreatingContainer, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:18:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Finished pulling container image and mounting volumes for app-evangelista-backend-19863. Allocatinng the rest of the container resources to finish container creation., DetailsLevel: INFO
+2026-05-22T01:59:06.8564039Z Creating container.
+2026-05-22T01:59:06.8572387Z Creating pipes for streaming container io.
+2026-05-22T01:59:06.8576874Z Creating stdout named pipe at /podr/container/pipe/ae85f16ccbd0_app-evangelista-backend-19863/stdout_f54e940b789d44af874a0631e4276188.
+2026-05-22T01:59:06.8664188Z Successfully created stdout named pipe at: /podr/container/pipe/ae85f16ccbd0_app-evangelista-backend-19863/stdout_f54e940b789d44af874a0631e4276188.
+2026-05-22T01:59:06.8675762Z Opening named pipe /podr/container/pipe/ae85f16ccbd0_app-evangelista-backend-19863/stdout_f54e940b789d44af874a0631e4276188 for reading in non-blocking mode.
+2026-05-22T01:59:06.8764321Z Successfully opened named pipe: /podr/container/pipe/ae85f16ccbd0_app-evangelista-backend-19863/stdout_f54e940b789d44af874a0631e4276188.
+2026-05-22T01:59:06.8786720Z Successfully removed non-blocking flag from /podr/container/pipe/ae85f16ccbd0_app-evangelista-backend-19863/stdout_f54e940b789d44af874a0631e4276188.
+2026-05-22T01:59:06.8880020Z Creating stderr named pipe at /podr/container/pipe/ae85f16ccbd0_app-evangelista-backend-19863/stderr_220df1c174374e46a25eb8cd752f86ba.
+2026-05-22T01:59:06.8953300Z Successfully created stderr named pipe at: /podr/container/pipe/ae85f16ccbd0_app-evangelista-backend-19863/stderr_220df1c174374e46a25eb8cd752f86ba.
+2026-05-22T01:59:06.8964758Z Opening named pipe /podr/container/pipe/ae85f16ccbd0_app-evangelista-backend-19863/stderr_220df1c174374e46a25eb8cd752f86ba for reading in non-blocking mode.
+2026-05-22T01:59:06.8966293Z Successfully opened named pipe: /podr/container/pipe/ae85f16ccbd0_app-evangelista-backend-19863/stderr_220df1c174374e46a25eb8cd752f86ba.
+2026-05-22T01:59:06.8967376Z Successfully removed non-blocking flag from /podr/container/pipe/ae85f16ccbd0_app-evangelista-backend-19863/stderr_220df1c174374e46a25eb8cd752f86ba.
+2026-05-22T01:59:06.9050540Z Creating container with image: appsvc/python:3.11_20260504.4.tuxprod from registry: 10.1.0.7:13209 and fully qualified image name: 10.1.0.7:13209/appsvc/python:3.11_20260504.4.tuxprod
+2026-05-22T01:59:07.7068455Z Starting container: ae85f16ccbd0_app-evangelista-backend-19863.
+2026-05-22T01:59:07.8862866Z Starting watchers and probes.
+2026-05-22T01:59:07.8964896Z Starting metrics collection.
+2026-05-22T01:59:07.9064348Z Container is running.
+2026-05-22T01:59:07.9068913Z State: Starting, Action: CreatingContainer, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:18:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Container app-evangelista-backend-19863 successfully created and is running., DetailsLevel: INFO
+2026-05-22T01:59:08.1461221Z Container start method finished after 2395 ms.
+2026-05-22T01:59:08.1535990Z State: Starting, Action: InitiatingSiteWarmUpProbe, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:18:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Container app-evangelista-backend-19863 successfully created and is running., DetailsLevel: INFO
+2026-05-22T01:59:08.1536971Z State: Starting, Action: WaitingForSiteWarmUpProbeSuccess, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:18:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Pinging warmup path to ensure container is ready to receive requests., DetailsLevel: INFO
+2026-05-22T02:01:01.6649597Z Container has finished running with exit code: 1.
+2026-05-22T02:01:01.6854911Z Container is terminating. Grace period: 5 seconds.
+2026-05-22T02:01:01.8068864Z Stop and delete container. Retry count = 0
+2026-05-22T02:01:01.8262608Z Stopping container: ae85f16ccbd0_app-evangelista-backend-19863.
+2026-05-22T02:01:02.2922023Z Deleting container: ae85f16ccbd0_app-evangelista-backend-19863. Retry count = 0
+2026-05-22T02:01:08.6816828Z Container spec TerminationMessagePolicy  path 
+2026-05-22T02:01:08.7039337Z Container is terminated. Total time elapsed: 6988 ms.
+2026-05-22T02:01:08.7047302Z Site container: app-evangelista-backend-19863 terminated during site startup.
+2026-05-22T02:01:08.7146888Z State: Stopping, Action: CancellingStartup, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 01:18:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T02:01:09.1215179Z Site startup probe failed after 120.8471936 seconds.
+2026-05-22T02:01:09.5329076Z State: Stopping, Action: CancellingStartup, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:01:09, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T02:01:09.5749285Z Failed to start site. Revert by stopping site.
+2026-05-22T02:01:09.6189412Z State: Stopping, Action: StoppingSite, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:01:09, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T02:01:09.6289078Z State: Stopping, Action: StoppingSiteContainers, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:01:09, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T02:01:09.6293248Z Site: app-evangelista-backend-19863 stopped.
+2026-05-22T02:01:09.6578438Z State: Stopping, Action: UnmountingVolumes, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:01:09, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T02:01:10.2295636Z State: Stopping, Action: StoppingSiteNetworks, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:01:09, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T02:01:10.5027913Z Site: app-evangelista-backend-19863 will be blocked for 4 minutes till 05/22/2026 02:05:10
+2026-05-22T02:01:10.5085411Z State: Blocked, Action: StoppingSiteNetworks, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:01:09, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site: app-evangelista-backend-19863 will be blocked for 4 minutes till 05/22/2026 02:05:10, DetailsLevel: WARN
+2026-05-22T02:01:10.5107748Z State: Stopped, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:01:09, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/22/2026 02:01:10 (UTC), DetailsLevel: WARN
+2026-05-22T02:01:10.6897466Z State: Stopped, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:01:09, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/22/2026 02:01:10 (UTC), DetailsLevel: WARN
+2026-05-22T02:01:55.5651260Z State: Blocked, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:01:09, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site is blocked due to multiple, consecutive cold start failures. Site scheduled to be unblocked at 05/22/2026 02:05:10, DetailsLevel: WARN
+2026-05-22T02:01:55.5662359Z Start site prohibitted because the site is being blocked.
+2026-05-22T02:01:55.8245404Z State: Blocked, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:01:09, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site is blocked due to multiple, consecutive cold start failures. Site scheduled to be unblocked at 05/22/2026 02:05:10, DetailsLevel: WARN
+2026-05-22T02:01:55.8245842Z Start site prohibitted because the site is being blocked.
+2026-05-22T02:01:56.1620962Z State: Blocked, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:01:09, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site is blocked due to multiple, consecutive cold start failures. Site scheduled to be unblocked at 05/22/2026 02:05:10, DetailsLevel: WARN
+2026-05-22T02:01:56.1621451Z Start site prohibitted because the site is being blocked.
+2026-05-22T02:04:03.1926818Z State: Blocked, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:01:09, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site is blocked due to multiple, consecutive cold start failures. Site scheduled to be unblocked at 05/22/2026 02:05:10, DetailsLevel: WARN
+2026-05-22T02:04:03.1928563Z Start site prohibitted because the site is being blocked.
+2026-05-22T02:05:10.5153860Z Site: app-evangelista-backend-19863 is unblocked.
+2026-05-22T02:06:27.6270992Z State: Starting, Action: EstablishingSiteNetworks, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:01:09, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site is blocked due to multiple, consecutive cold start failures. Site scheduled to be unblocked at 05/22/2026 02:05:10, DetailsLevel: WARN
+2026-05-22T02:06:29.4138423Z State: Starting, Action: StartingSiteContainers, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:01:09, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site is blocked due to multiple, consecutive cold start failures. Site scheduled to be unblocked at 05/22/2026 02:05:10, DetailsLevel: WARN
+2026-05-22T02:06:29.4158088Z Container start method called.
+2026-05-22T02:06:29.4237620Z State: Starting, Action: PullingImage, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:01:09, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Pulling image 10.1.0.7:13209/appsvc/python:3.11_20260504.4.tuxprod for app-evangelista-backend-19863., DetailsLevel: INFO
+2026-05-22T02:06:29.4240121Z Establishing network.
+2026-05-22T02:06:29.4241698Z Pulling image: appsvc/python:3.11_20260504.4.tuxprod.
+2026-05-22T02:06:29.6978630Z Container is starting.
+2026-05-22T02:06:29.6986179Z State: Starting, Action: MountingVolumes, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:01:09, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Mounting volumes for app-evangelista-backend-19863., DetailsLevel: INFO
+2026-05-22T02:06:29.6993565Z Establishing user namespace if not established already.
+2026-05-22T02:06:29.7006253Z Establishing network if not established already.
+2026-05-22T02:06:29.7084793Z Mounting volumes.
+2026-05-22T02:06:29.7091991Z Nested mountpoint 
+2026-05-22T02:06:29.7477457Z Nested mountpoint volatile/logs
+2026-05-22T02:06:29.7666779Z Nested mountpoint 
+2026-05-22T02:06:29.7801653Z Nested mountpoint 
+2026-05-22T02:06:29.7893131Z Nested mountpoint 
+2026-05-22T02:06:30.2336212Z State: Starting, Action: CreatingContainer, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:01:09, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Finished pulling container image and mounting volumes for app-evangelista-backend-19863. Allocatinng the rest of the container resources to finish container creation., DetailsLevel: INFO
+2026-05-22T02:06:30.2362236Z Creating container.
+2026-05-22T02:06:30.2745158Z Creating pipes for streaming container io.
+2026-05-22T02:06:30.2755947Z Creating stdout named pipe at /podr/container/pipe/b2cb63409094_app-evangelista-backend-19863/stdout_ab3b580c414245e9a6d13a50570910fe.
+2026-05-22T02:06:30.2855147Z Successfully created stdout named pipe at: /podr/container/pipe/b2cb63409094_app-evangelista-backend-19863/stdout_ab3b580c414245e9a6d13a50570910fe.
+2026-05-22T02:06:30.2936258Z Opening named pipe /podr/container/pipe/b2cb63409094_app-evangelista-backend-19863/stdout_ab3b580c414245e9a6d13a50570910fe for reading in non-blocking mode.
+2026-05-22T02:06:30.2940759Z Successfully opened named pipe: /podr/container/pipe/b2cb63409094_app-evangelista-backend-19863/stdout_ab3b580c414245e9a6d13a50570910fe.
+2026-05-22T02:06:30.2948942Z Successfully removed non-blocking flag from /podr/container/pipe/b2cb63409094_app-evangelista-backend-19863/stdout_ab3b580c414245e9a6d13a50570910fe.
+2026-05-22T02:06:30.3259856Z Creating stderr named pipe at /podr/container/pipe/b2cb63409094_app-evangelista-backend-19863/stderr_80bba482dac644d68bea10f3b42c786c.
+2026-05-22T02:06:30.3262365Z Successfully created stderr named pipe at: /podr/container/pipe/b2cb63409094_app-evangelista-backend-19863/stderr_80bba482dac644d68bea10f3b42c786c.
+2026-05-22T02:06:30.3263447Z Opening named pipe /podr/container/pipe/b2cb63409094_app-evangelista-backend-19863/stderr_80bba482dac644d68bea10f3b42c786c for reading in non-blocking mode.
+2026-05-22T02:06:30.3264576Z Successfully opened named pipe: /podr/container/pipe/b2cb63409094_app-evangelista-backend-19863/stderr_80bba482dac644d68bea10f3b42c786c.
+2026-05-22T02:06:30.3265456Z Successfully removed non-blocking flag from /podr/container/pipe/b2cb63409094_app-evangelista-backend-19863/stderr_80bba482dac644d68bea10f3b42c786c.
+2026-05-22T02:06:30.3432548Z Creating container with image: appsvc/python:3.11_20260504.4.tuxprod from registry: 10.1.0.7:13209 and fully qualified image name: 10.1.0.7:13209/appsvc/python:3.11_20260504.4.tuxprod
+2026-05-22T02:06:31.1945425Z Starting container: b2cb63409094_app-evangelista-backend-19863.
+2026-05-22T02:06:31.3142745Z Starting watchers and probes.
+2026-05-22T02:06:31.3325359Z Starting metrics collection.
+2026-05-22T02:06:31.3518784Z Container is running.
+2026-05-22T02:06:31.3521161Z State: Starting, Action: CreatingContainer, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:01:09, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Container app-evangelista-backend-19863 successfully created and is running., DetailsLevel: INFO
+2026-05-22T02:06:31.5684467Z Container start method finished after 2116 ms.
+2026-05-22T02:06:31.5999104Z State: Starting, Action: InitiatingSiteWarmUpProbe, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:01:09, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Container app-evangelista-backend-19863 successfully created and is running., DetailsLevel: INFO
+2026-05-22T02:06:31.6006866Z State: Starting, Action: WaitingForSiteWarmUpProbeSuccess, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:01:09, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Pinging warmup path to ensure container is ready to receive requests., DetailsLevel: INFO
+2026-05-22T02:08:39.1344355Z Container has finished running with exit code: 1.
+2026-05-22T02:08:39.1358906Z Container is terminating. Grace period: 5 seconds.
+2026-05-22T02:08:39.1770530Z Stop and delete container. Retry count = 0
+2026-05-22T02:08:39.1774857Z Stopping container: b2cb63409094_app-evangelista-backend-19863.
+2026-05-22T02:08:39.3267194Z Deleting container: b2cb63409094_app-evangelista-backend-19863. Retry count = 0
+2026-05-22T02:08:45.9716624Z Container spec TerminationMessagePolicy  path 
+2026-05-22T02:08:45.9945942Z Container is terminated. Total time elapsed: 6856 ms.
+2026-05-22T02:08:45.9959272Z Site container: app-evangelista-backend-19863 terminated during site startup.
+2026-05-22T02:08:46.0203815Z State: Stopping, Action: CancellingStartup, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:01:09, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T02:08:46.1946947Z Site startup probe failed after 134.5285091 seconds.
+2026-05-22T02:08:46.7473252Z State: Stopping, Action: CancellingStartup, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:08:46, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T02:08:46.7863571Z Failed to start site. Revert by stopping site.
+2026-05-22T02:08:46.8118314Z State: Stopping, Action: StoppingSite, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:08:46, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T02:08:46.8181907Z State: Stopping, Action: StoppingSiteContainers, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:08:46, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T02:08:46.8182394Z Site: app-evangelista-backend-19863 stopped.
+2026-05-22T02:08:46.8280703Z State: Stopping, Action: UnmountingVolumes, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:08:46, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T02:08:47.4541639Z State: Stopping, Action: StoppingSiteNetworks, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:08:46, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T02:08:47.7127691Z Site: app-evangelista-backend-19863 will be blocked for 4 minutes till 05/22/2026 02:12:47
+2026-05-22T02:08:47.7199797Z State: Blocked, Action: StoppingSiteNetworks, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:08:46, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site: app-evangelista-backend-19863 will be blocked for 4 minutes till 05/22/2026 02:12:47, DetailsLevel: WARN
+2026-05-22T02:08:47.7211355Z State: Stopped, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:08:46, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/22/2026 02:08:47 (UTC), DetailsLevel: WARN
+2026-05-22T02:08:47.8529155Z State: Stopped, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:08:46, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/22/2026 02:08:47 (UTC), DetailsLevel: WARN
+2026-05-22T02:12:47.7167813Z Site: app-evangelista-backend-19863 is unblocked.
+2026-05-22T02:20:12.3674275Z State: Starting, Action: EstablishingSiteNetworks, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:08:46, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/22/2026 02:08:47 (UTC), DetailsLevel: WARN
+2026-05-22T02:20:14.5590334Z State: Starting, Action: StartingSiteContainers, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:08:46, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/22/2026 02:08:47 (UTC), DetailsLevel: WARN
+2026-05-22T02:20:14.5595394Z Container start method called.
+2026-05-22T02:20:14.5671360Z State: Starting, Action: PullingImage, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:08:46, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Pulling image 10.1.0.7:13209/appsvc/python:3.11_20260504.4.tuxprod for app-evangelista-backend-19863., DetailsLevel: INFO
+2026-05-22T02:20:14.5674195Z Establishing network.
+2026-05-22T02:20:14.5689844Z Pulling image: appsvc/python:3.11_20260504.4.tuxprod.
+2026-05-22T02:20:14.9577739Z Container is starting.
+2026-05-22T02:20:14.9640754Z State: Starting, Action: MountingVolumes, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:08:46, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Mounting volumes for app-evangelista-backend-19863., DetailsLevel: INFO
+2026-05-22T02:20:14.9650895Z Establishing user namespace if not established already.
+2026-05-22T02:20:14.9653220Z Establishing network if not established already.
+2026-05-22T02:20:14.9659153Z Mounting volumes.
+2026-05-22T02:20:14.9675998Z Nested mountpoint 
+2026-05-22T02:20:15.0480589Z Nested mountpoint volatile/logs
+2026-05-22T02:20:15.0766937Z Nested mountpoint 
+2026-05-22T02:20:15.1259115Z Nested mountpoint 
+2026-05-22T02:20:15.1371573Z Nested mountpoint 
+2026-05-22T02:20:15.6549494Z State: Starting, Action: CreatingContainer, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:08:46, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Finished pulling container image and mounting volumes for app-evangelista-backend-19863. Allocatinng the rest of the container resources to finish container creation., DetailsLevel: INFO
+2026-05-22T02:20:15.6557479Z Creating container.
+2026-05-22T02:20:15.6559463Z Creating pipes for streaming container io.
+2026-05-22T02:20:15.6560996Z Creating stdout named pipe at /podr/container/pipe/294be5797871_app-evangelista-backend-19863/stdout_edf614d2ece841ea86647eda52f66a18.
+2026-05-22T02:20:15.6668092Z Successfully created stdout named pipe at: /podr/container/pipe/294be5797871_app-evangelista-backend-19863/stdout_edf614d2ece841ea86647eda52f66a18.
+2026-05-22T02:20:15.6670882Z Opening named pipe /podr/container/pipe/294be5797871_app-evangelista-backend-19863/stdout_edf614d2ece841ea86647eda52f66a18 for reading in non-blocking mode.
+2026-05-22T02:20:15.6855734Z Successfully opened named pipe: /podr/container/pipe/294be5797871_app-evangelista-backend-19863/stdout_edf614d2ece841ea86647eda52f66a18.
+2026-05-22T02:20:15.6860871Z Successfully removed non-blocking flag from /podr/container/pipe/294be5797871_app-evangelista-backend-19863/stdout_edf614d2ece841ea86647eda52f66a18.
+2026-05-22T02:20:15.6958597Z Creating stderr named pipe at /podr/container/pipe/294be5797871_app-evangelista-backend-19863/stderr_5e450909e9f14a979e7524601a938ff8.
+2026-05-22T02:20:15.6964907Z Successfully created stderr named pipe at: /podr/container/pipe/294be5797871_app-evangelista-backend-19863/stderr_5e450909e9f14a979e7524601a938ff8.
+2026-05-22T02:20:15.7042648Z Opening named pipe /podr/container/pipe/294be5797871_app-evangelista-backend-19863/stderr_5e450909e9f14a979e7524601a938ff8 for reading in non-blocking mode.
+2026-05-22T02:20:15.7047951Z Successfully opened named pipe: /podr/container/pipe/294be5797871_app-evangelista-backend-19863/stderr_5e450909e9f14a979e7524601a938ff8.
+2026-05-22T02:20:15.7049724Z Successfully removed non-blocking flag from /podr/container/pipe/294be5797871_app-evangelista-backend-19863/stderr_5e450909e9f14a979e7524601a938ff8.
+2026-05-22T02:20:15.7057274Z Creating container with image: appsvc/python:3.11_20260504.4.tuxprod from registry: 10.1.0.7:13209 and fully qualified image name: 10.1.0.7:13209/appsvc/python:3.11_20260504.4.tuxprod
+2026-05-22T02:20:16.7850775Z Starting container: 294be5797871_app-evangelista-backend-19863.
+2026-05-22T02:20:16.9457689Z Starting watchers and probes.
+2026-05-22T02:20:16.9536241Z Starting metrics collection.
+2026-05-22T02:20:16.9808171Z Container is running.
+2026-05-22T02:20:16.9812396Z State: Starting, Action: CreatingContainer, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:08:46, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Container app-evangelista-backend-19863 successfully created and is running., DetailsLevel: INFO
+2026-05-22T02:20:17.0826126Z Container start method finished after 2522 ms.
+2026-05-22T02:20:17.1096993Z State: Starting, Action: InitiatingSiteWarmUpProbe, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:08:46, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Container app-evangelista-backend-19863 successfully created and is running., DetailsLevel: INFO
+2026-05-22T02:20:17.1098642Z State: Starting, Action: WaitingForSiteWarmUpProbeSuccess, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:08:46, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Pinging warmup path to ensure container is ready to receive requests., DetailsLevel: INFO
+2026-05-22T02:23:06.8900246Z Container has finished running with exit code: 1.
+2026-05-22T02:23:06.9002692Z Container is terminating. Grace period: 5 seconds.
+2026-05-22T02:23:06.9389046Z Stop and delete container. Retry count = 0
+2026-05-22T02:23:06.9483786Z Stopping container: 294be5797871_app-evangelista-backend-19863.
+2026-05-22T02:23:07.3870831Z Deleting container: 294be5797871_app-evangelista-backend-19863. Retry count = 0
+2026-05-22T02:23:12.1262608Z Container get mounts received unexpected exception.
+2026-05-22T02:23:12.1672464Z Container get processes received unexpected exception.
+2026-05-22T02:23:21.5889142Z Container spec TerminationMessagePolicy  path 
+2026-05-22T02:23:21.5985758Z Container is terminated. Total time elapsed: 14688 ms.
+2026-05-22T02:23:21.6001927Z Site container: app-evangelista-backend-19863 terminated during site startup.
+2026-05-22T02:23:21.6264970Z State: Stopping, Action: CancellingStartup, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:08:46, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T02:23:22.1045840Z Site startup probe failed after 184.9154589 seconds.
+2026-05-22T02:23:22.7448386Z State: Stopping, Action: CancellingStartup, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:23:22, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T02:23:22.7749216Z Failed to start site. Revert by stopping site.
+2026-05-22T02:23:22.7969238Z State: Stopping, Action: StoppingSite, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:23:22, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T02:23:22.8149749Z State: Stopping, Action: StoppingSiteContainers, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:23:22, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T02:23:22.8162516Z Site: app-evangelista-backend-19863 stopped.
+2026-05-22T02:23:22.8629055Z State: Stopping, Action: UnmountingVolumes, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:23:22, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T02:23:23.5758788Z State: Stopping, Action: StoppingSiteNetworks, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:23:22, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T02:23:23.9277912Z Site: app-evangelista-backend-19863 will be blocked for 4 minutes till 05/22/2026 02:27:23
+2026-05-22T02:23:23.9281310Z State: Blocked, Action: StoppingSiteNetworks, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:23:22, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site: app-evangelista-backend-19863 will be blocked for 4 minutes till 05/22/2026 02:27:23, DetailsLevel: WARN
+2026-05-22T02:23:24.0840876Z State: Stopped, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:23:22, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/22/2026 02:23:24 (UTC), DetailsLevel: WARN
+2026-05-22T02:23:24.7677718Z State: Stopped, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:23:22, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/22/2026 02:23:24 (UTC), DetailsLevel: WARN
+2026-05-22T02:23:26.1952800Z State: Blocked, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:23:22, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site is blocked due to multiple, consecutive cold start failures. Site scheduled to be unblocked at 05/22/2026 02:27:23, DetailsLevel: WARN
+2026-05-22T02:23:26.2034551Z Start site prohibitted because the site is being blocked.
+2026-05-22T02:24:16.5437897Z State: Blocked, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:23:22, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site is blocked due to multiple, consecutive cold start failures. Site scheduled to be unblocked at 05/22/2026 02:27:23, DetailsLevel: WARN
+2026-05-22T02:24:16.5448337Z Start site prohibitted because the site is being blocked.
+2026-05-22T02:24:17.1280970Z State: Blocked, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:23:22, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site is blocked due to multiple, consecutive cold start failures. Site scheduled to be unblocked at 05/22/2026 02:27:23, DetailsLevel: WARN
+2026-05-22T02:24:17.1281326Z Start site prohibitted because the site is being blocked.
+2026-05-22T02:24:22.2184741Z State: Blocked, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:23:22, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site is blocked due to multiple, consecutive cold start failures. Site scheduled to be unblocked at 05/22/2026 02:27:23, DetailsLevel: WARN
+2026-05-22T02:24:22.2185516Z Start site prohibitted because the site is being blocked.
+2026-05-22T02:24:22.5895842Z State: Blocked, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:23:22, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site is blocked due to multiple, consecutive cold start failures. Site scheduled to be unblocked at 05/22/2026 02:27:23, DetailsLevel: WARN
+2026-05-22T02:24:22.5896249Z Start site prohibitted because the site is being blocked.
+2026-05-22T02:27:23.9379014Z Site: app-evangelista-backend-19863 is unblocked.
+2026-05-22T04:19:54.5679385Z State: Starting, Action: EstablishingSiteNetworks, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:23:22, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site is blocked due to multiple, consecutive cold start failures. Site scheduled to be unblocked at 05/22/2026 02:27:23, DetailsLevel: WARN
+2026-05-22T04:19:56.5183253Z State: Starting, Action: StartingSiteContainers, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:23:22, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site is blocked due to multiple, consecutive cold start failures. Site scheduled to be unblocked at 05/22/2026 02:27:23, DetailsLevel: WARN
+2026-05-22T04:19:56.5205167Z Container start method called.
+2026-05-22T04:19:56.5236190Z State: Starting, Action: PullingImage, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:23:22, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Pulling image 10.1.0.7:13209/appsvc/python:3.11_20260504.4.tuxprod for app-evangelista-backend-19863., DetailsLevel: INFO
+2026-05-22T04:19:56.5267381Z Establishing network.
+2026-05-22T04:19:56.5291587Z Pulling image: appsvc/python:3.11_20260504.4.tuxprod.
+2026-05-22T04:19:56.8446660Z Container is starting.
+2026-05-22T04:19:56.8447665Z State: Starting, Action: MountingVolumes, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:23:22, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Mounting volumes for app-evangelista-backend-19863., DetailsLevel: INFO
+2026-05-22T04:19:56.8472814Z Establishing user namespace if not established already.
+2026-05-22T04:19:56.8475056Z Establishing network if not established already.
+2026-05-22T04:19:56.8543612Z Mounting volumes.
+2026-05-22T04:19:56.8677062Z Nested mountpoint 
+2026-05-22T04:19:56.9465243Z Nested mountpoint volatile/logs
+2026-05-22T04:19:57.0362219Z Nested mountpoint 
+2026-05-22T04:19:57.1540125Z Nested mountpoint 
+2026-05-22T04:19:57.2032441Z Nested mountpoint 
+2026-05-22T04:19:57.7683386Z State: Starting, Action: CreatingContainer, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:23:22, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Finished pulling container image and mounting volumes for app-evangelista-backend-19863. Allocatinng the rest of the container resources to finish container creation., DetailsLevel: INFO
+2026-05-22T04:19:57.7687874Z Creating container.
+2026-05-22T04:19:57.7694329Z Creating pipes for streaming container io.
+2026-05-22T04:19:57.7701585Z Creating stdout named pipe at /podr/container/pipe/fadd3637db38_app-evangelista-backend-19863/stdout_5a609be435c346088c513b1196b1e74c.
+2026-05-22T04:19:57.7790579Z Successfully created stdout named pipe at: /podr/container/pipe/fadd3637db38_app-evangelista-backend-19863/stdout_5a609be435c346088c513b1196b1e74c.
+2026-05-22T04:19:57.7799319Z Opening named pipe /podr/container/pipe/fadd3637db38_app-evangelista-backend-19863/stdout_5a609be435c346088c513b1196b1e74c for reading in non-blocking mode.
+2026-05-22T04:19:57.7870869Z Successfully opened named pipe: /podr/container/pipe/fadd3637db38_app-evangelista-backend-19863/stdout_5a609be435c346088c513b1196b1e74c.
+2026-05-22T04:19:57.7895589Z Successfully removed non-blocking flag from /podr/container/pipe/fadd3637db38_app-evangelista-backend-19863/stdout_5a609be435c346088c513b1196b1e74c.
+2026-05-22T04:19:57.7971881Z Creating stderr named pipe at /podr/container/pipe/fadd3637db38_app-evangelista-backend-19863/stderr_62c80b399e18453bba6ccb4780fef527.
+2026-05-22T04:19:57.7976638Z Successfully created stderr named pipe at: /podr/container/pipe/fadd3637db38_app-evangelista-backend-19863/stderr_62c80b399e18453bba6ccb4780fef527.
+2026-05-22T04:19:57.7986622Z Opening named pipe /podr/container/pipe/fadd3637db38_app-evangelista-backend-19863/stderr_62c80b399e18453bba6ccb4780fef527 for reading in non-blocking mode.
+2026-05-22T04:19:57.7990897Z Successfully opened named pipe: /podr/container/pipe/fadd3637db38_app-evangelista-backend-19863/stderr_62c80b399e18453bba6ccb4780fef527.
+2026-05-22T04:19:57.7994339Z Successfully removed non-blocking flag from /podr/container/pipe/fadd3637db38_app-evangelista-backend-19863/stderr_62c80b399e18453bba6ccb4780fef527.
+2026-05-22T04:19:57.8066838Z Creating container with image: appsvc/python:3.11_20260504.4.tuxprod from registry: 10.1.0.7:13209 and fully qualified image name: 10.1.0.7:13209/appsvc/python:3.11_20260504.4.tuxprod
+2026-05-22T04:19:58.6168188Z Starting container: fadd3637db38_app-evangelista-backend-19863.
+2026-05-22T04:19:58.7486692Z Starting watchers and probes.
+2026-05-22T04:19:58.7569871Z Starting metrics collection.
+2026-05-22T04:19:58.7731095Z Container is running.
+2026-05-22T04:19:58.7737112Z State: Starting, Action: CreatingContainer, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:23:22, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Container app-evangelista-backend-19863 successfully created and is running., DetailsLevel: INFO
+2026-05-22T04:19:59.2309684Z Container start method finished after 2710 ms.
+2026-05-22T04:19:59.2311639Z State: Starting, Action: InitiatingSiteWarmUpProbe, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:23:22, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Container app-evangelista-backend-19863 successfully created and is running., DetailsLevel: INFO
+2026-05-22T04:19:59.2327223Z State: Starting, Action: WaitingForSiteWarmUpProbeSuccess, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:23:22, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Pinging warmup path to ensure container is ready to receive requests., DetailsLevel: INFO
+2026-05-22T04:22:47.6117729Z Container has finished running with exit code: 1.
+2026-05-22T04:22:47.6412886Z Container get mounts received unexpected exception.
+2026-05-22T04:22:47.6813967Z Container is terminating. Grace period: 5 seconds.
+2026-05-22T04:22:47.8990981Z Stop and delete container. Retry count = 0
+2026-05-22T04:22:47.9082879Z Stopping container: fadd3637db38_app-evangelista-backend-19863.
+2026-05-22T04:22:48.1747040Z Deleting container: fadd3637db38_app-evangelista-backend-19863. Retry count = 0
+2026-05-22T04:23:06.4882935Z Container spec TerminationMessagePolicy  path 
+2026-05-22T04:23:06.4985687Z Container is terminated. Total time elapsed: 18698 ms.
+2026-05-22T04:23:06.5060005Z Site container: app-evangelista-backend-19863 terminated during site startup.
+2026-05-22T04:23:06.5303677Z State: Stopping, Action: CancellingStartup, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 02:23:22, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T04:23:07.2373928Z Site startup probe failed after 187.7340032 seconds.
+2026-05-22T04:23:07.6555806Z State: Stopping, Action: CancellingStartup, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:23:07, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T04:23:07.7518965Z Failed to start site. Revert by stopping site.
+2026-05-22T04:23:07.8088188Z State: Stopping, Action: StoppingSite, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:23:07, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T04:23:07.8174780Z State: Stopping, Action: StoppingSiteContainers, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:23:07, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T04:23:07.8185827Z Site: app-evangelista-backend-19863 stopped.
+2026-05-22T04:23:07.8396954Z State: Stopping, Action: UnmountingVolumes, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:23:07, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T04:23:08.4186828Z State: Stopping, Action: StoppingSiteNetworks, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:23:07, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T04:23:08.7355725Z Site: app-evangelista-backend-19863 will be blocked for 4 minutes till 05/22/2026 04:27:08
+2026-05-22T04:23:08.7451717Z State: Blocked, Action: StoppingSiteNetworks, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:23:07, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site: app-evangelista-backend-19863 will be blocked for 4 minutes till 05/22/2026 04:27:08, DetailsLevel: WARN
+2026-05-22T04:23:08.7826901Z State: Stopped, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:23:07, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/22/2026 04:23:08 (UTC), DetailsLevel: WARN
+2026-05-22T04:23:09.3564807Z State: Stopped, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:23:07, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/22/2026 04:23:08 (UTC), DetailsLevel: WARN
+2026-05-22T04:27:08.7401069Z Site: app-evangelista-backend-19863 is unblocked.
+2026-05-22T04:53:45.0460999Z State: Starting, Action: EstablishingSiteNetworks, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:23:07, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/22/2026 04:23:08 (UTC), DetailsLevel: WARN
+2026-05-22T04:53:47.9237927Z State: Starting, Action: StartingSiteContainers, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:23:07, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/22/2026 04:23:08 (UTC), DetailsLevel: WARN
+2026-05-22T04:53:47.9312191Z Container start method called.
+2026-05-22T04:53:47.9525807Z State: Starting, Action: PullingImage, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:23:07, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Pulling image 10.1.0.7:13209/appsvc/python:3.11_20260504.4.tuxprod for app-evangelista-backend-19863., DetailsLevel: INFO
+2026-05-22T04:53:47.9528877Z Establishing network.
+2026-05-22T04:53:47.9711396Z Pulling image: appsvc/python:3.11_20260504.4.tuxprod.
+2026-05-22T04:53:48.5133748Z Container is starting.
+2026-05-22T04:53:48.5135826Z State: Starting, Action: MountingVolumes, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:23:07, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Mounting volumes for app-evangelista-backend-19863., DetailsLevel: INFO
+2026-05-22T04:53:48.5215110Z Establishing user namespace if not established already.
+2026-05-22T04:53:48.5217183Z Establishing network if not established already.
+2026-05-22T04:53:48.5219185Z Mounting volumes.
+2026-05-22T04:53:48.5334290Z Nested mountpoint 
+2026-05-22T04:53:48.6235663Z Nested mountpoint volatile/logs
+2026-05-22T04:53:48.6420052Z Nested mountpoint 
+2026-05-22T04:53:48.7381143Z Nested mountpoint 
+2026-05-22T04:53:48.7807801Z Nested mountpoint 
+2026-05-22T04:53:49.2035912Z State: Starting, Action: CreatingContainer, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:23:07, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Finished pulling container image and mounting volumes for app-evangelista-backend-19863. Allocatinng the rest of the container resources to finish container creation., DetailsLevel: INFO
+2026-05-22T04:53:49.2126844Z Creating container.
+2026-05-22T04:53:49.2141587Z Creating pipes for streaming container io.
+2026-05-22T04:53:49.2147254Z Creating stdout named pipe at /podr/container/pipe/aabd4bf83627_app-evangelista-backend-19863/stdout_949a625afb7c4c078640eecbe66669f6.
+2026-05-22T04:53:49.2223061Z Successfully created stdout named pipe at: /podr/container/pipe/aabd4bf83627_app-evangelista-backend-19863/stdout_949a625afb7c4c078640eecbe66669f6.
+2026-05-22T04:53:49.2225788Z Opening named pipe /podr/container/pipe/aabd4bf83627_app-evangelista-backend-19863/stdout_949a625afb7c4c078640eecbe66669f6 for reading in non-blocking mode.
+2026-05-22T04:53:49.2232830Z Successfully opened named pipe: /podr/container/pipe/aabd4bf83627_app-evangelista-backend-19863/stdout_949a625afb7c4c078640eecbe66669f6.
+2026-05-22T04:53:49.2241835Z Successfully removed non-blocking flag from /podr/container/pipe/aabd4bf83627_app-evangelista-backend-19863/stdout_949a625afb7c4c078640eecbe66669f6.
+2026-05-22T04:53:49.2614951Z Creating stderr named pipe at /podr/container/pipe/aabd4bf83627_app-evangelista-backend-19863/stderr_49c2d4c96b824fd280c9dded30a192e5.
+2026-05-22T04:53:49.2633269Z Successfully created stderr named pipe at: /podr/container/pipe/aabd4bf83627_app-evangelista-backend-19863/stderr_49c2d4c96b824fd280c9dded30a192e5.
+2026-05-22T04:53:49.2637567Z Opening named pipe /podr/container/pipe/aabd4bf83627_app-evangelista-backend-19863/stderr_49c2d4c96b824fd280c9dded30a192e5 for reading in non-blocking mode.
+2026-05-22T04:53:49.2748369Z Successfully opened named pipe: /podr/container/pipe/aabd4bf83627_app-evangelista-backend-19863/stderr_49c2d4c96b824fd280c9dded30a192e5.
+2026-05-22T04:53:49.3130447Z Successfully removed non-blocking flag from /podr/container/pipe/aabd4bf83627_app-evangelista-backend-19863/stderr_49c2d4c96b824fd280c9dded30a192e5.
+2026-05-22T04:53:49.3666242Z Creating container with image: appsvc/python:3.11_20260504.4.tuxprod from registry: 10.1.0.7:13209 and fully qualified image name: 10.1.0.7:13209/appsvc/python:3.11_20260504.4.tuxprod
+2026-05-22T04:53:51.8025777Z Starting container: aabd4bf83627_app-evangelista-backend-19863.
+2026-05-22T04:53:52.1710779Z Starting watchers and probes.
+2026-05-22T04:53:52.3012893Z Starting metrics collection.
+2026-05-22T04:53:52.3933412Z Container is running.
+2026-05-22T04:53:52.4197180Z State: Starting, Action: CreatingContainer, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:23:07, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Container app-evangelista-backend-19863 successfully created and is running., DetailsLevel: INFO
+2026-05-22T04:53:53.5887305Z Container start method finished after 5657 ms.
+2026-05-22T04:53:53.6175968Z State: Starting, Action: InitiatingSiteWarmUpProbe, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:23:07, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Container app-evangelista-backend-19863 successfully created and is running., DetailsLevel: INFO
+2026-05-22T04:53:53.6198450Z State: Starting, Action: WaitingForSiteWarmUpProbeSuccess, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:23:07, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Pinging warmup path to ensure container is ready to receive requests., DetailsLevel: INFO
+2026-05-22T04:55:50.1132367Z Container has finished running with exit code: 1.
+2026-05-22T04:55:50.1207711Z Container is terminating. Grace period: 5 seconds.
+2026-05-22T04:55:50.2653209Z Stop and delete container. Retry count = 0
+2026-05-22T04:55:50.2824383Z Stopping container: aabd4bf83627_app-evangelista-backend-19863.
+2026-05-22T04:55:50.5322250Z Deleting container: aabd4bf83627_app-evangelista-backend-19863. Retry count = 0
+2026-05-22T04:55:57.0763015Z Container get mounts received unexpected exception.
+2026-05-22T04:55:57.1253708Z Container get processes received unexpected exception.
+2026-05-22T04:55:58.6525881Z Container spec TerminationMessagePolicy  path 
+2026-05-22T04:55:58.7317518Z Container is terminated. Total time elapsed: 8494 ms.
+2026-05-22T04:55:58.7336403Z Site container: app-evangelista-backend-19863 terminated during site startup.
+2026-05-22T04:55:58.8812473Z State: Stopping, Action: CancellingStartup, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:23:07, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T04:56:00.8821744Z Site startup probe failed after 127.1219723 seconds.
+2026-05-22T04:56:01.8059666Z State: Stopping, Action: CancellingStartup, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:56:01, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T04:56:01.8759919Z Failed to start site. Revert by stopping site.
+2026-05-22T04:56:01.8870555Z State: Stopping, Action: StoppingSite, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:56:01, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T04:56:01.9175635Z State: Stopping, Action: StoppingSiteContainers, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:56:01, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T04:56:01.9451309Z Site: app-evangelista-backend-19863 stopped.
+2026-05-22T04:56:01.9835438Z State: Stopping, Action: UnmountingVolumes, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:56:01, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T04:56:02.7010799Z State: Stopping, Action: StoppingSiteNetworks, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:56:01, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T04:56:03.3501847Z Site: app-evangelista-backend-19863 will be blocked for 4 minutes till 05/22/2026 05:00:03
+2026-05-22T04:56:03.3576815Z State: Blocked, Action: StoppingSiteNetworks, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:56:01, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site: app-evangelista-backend-19863 will be blocked for 4 minutes till 05/22/2026 05:00:03, DetailsLevel: WARN
+2026-05-22T04:56:03.4082449Z State: Stopped, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:56:01, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/22/2026 04:56:03 (UTC), DetailsLevel: WARN
+2026-05-22T04:56:03.8616787Z State: Stopped, Action: None, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:56:01, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/22/2026 04:56:03 (UTC), DetailsLevel: WARN
+2026-05-22T05:00:03.3680391Z Site: app-evangelista-backend-19863 is unblocked.
+2026-05-22T05:07:32.0383700Z State: Starting, Action: EstablishingSiteNetworks, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:56:01, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/22/2026 04:56:03 (UTC), DetailsLevel: WARN
+2026-05-22T05:07:39.2591636Z State: Starting, Action: StartingSiteContainers, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:56:01, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site stopped at 05/22/2026 04:56:03 (UTC), DetailsLevel: WARN
+2026-05-22T05:07:39.2799931Z Container start method called.
+2026-05-22T05:07:39.2896527Z State: Starting, Action: PullingImage, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:56:01, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Pulling image 10.1.0.7:13209/appsvc/python:3.11_20260504.4.tuxprod for app-evangelista-backend-19863., DetailsLevel: INFO
+2026-05-22T05:07:39.2911121Z Establishing network.
+2026-05-22T05:07:39.3299345Z Pulling image: appsvc/python:3.11_20260504.4.tuxprod.
+2026-05-22T05:07:40.6260881Z Container is starting.
+2026-05-22T05:07:40.6264808Z State: Starting, Action: MountingVolumes, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:56:01, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Mounting volumes for app-evangelista-backend-19863., DetailsLevel: INFO
+2026-05-22T05:07:40.6271648Z Establishing user namespace if not established already.
+2026-05-22T05:07:40.6275987Z Establishing network if not established already.
+2026-05-22T05:07:40.6280481Z Mounting volumes.
+2026-05-22T05:07:40.6478174Z Nested mountpoint 
+2026-05-22T05:07:40.7788264Z Nested mountpoint volatile/logs
+2026-05-22T05:07:40.8564855Z Nested mountpoint 
+2026-05-22T05:07:41.0165996Z Nested mountpoint 
+2026-05-22T05:07:41.1096180Z Nested mountpoint 
+2026-05-22T05:07:42.0429126Z State: Starting, Action: CreatingContainer, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:56:01, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Finished pulling container image and mounting volumes for app-evangelista-backend-19863. Allocatinng the rest of the container resources to finish container creation., DetailsLevel: INFO
+2026-05-22T05:07:42.0430451Z Creating container.
+2026-05-22T05:07:42.1021390Z Creating pipes for streaming container io.
+2026-05-22T05:07:42.1022931Z Creating stdout named pipe at /podr/container/pipe/d3b625fbd047_app-evangelista-backend-19863/stdout_b16f51d291894853a1badadba5380428.
+2026-05-22T05:07:42.1219026Z Successfully created stdout named pipe at: /podr/container/pipe/d3b625fbd047_app-evangelista-backend-19863/stdout_b16f51d291894853a1badadba5380428.
+2026-05-22T05:07:42.1221362Z Opening named pipe /podr/container/pipe/d3b625fbd047_app-evangelista-backend-19863/stdout_b16f51d291894853a1badadba5380428 for reading in non-blocking mode.
+2026-05-22T05:07:42.1222932Z Successfully opened named pipe: /podr/container/pipe/d3b625fbd047_app-evangelista-backend-19863/stdout_b16f51d291894853a1badadba5380428.
+2026-05-22T05:07:42.1228228Z Successfully removed non-blocking flag from /podr/container/pipe/d3b625fbd047_app-evangelista-backend-19863/stdout_b16f51d291894853a1badadba5380428.
+2026-05-22T05:07:42.1411515Z Creating stderr named pipe at /podr/container/pipe/d3b625fbd047_app-evangelista-backend-19863/stderr_5a415069908245c5873c63813cd63778.
+2026-05-22T05:07:42.1417624Z Successfully created stderr named pipe at: /podr/container/pipe/d3b625fbd047_app-evangelista-backend-19863/stderr_5a415069908245c5873c63813cd63778.
+2026-05-22T05:07:42.1426339Z Opening named pipe /podr/container/pipe/d3b625fbd047_app-evangelista-backend-19863/stderr_5a415069908245c5873c63813cd63778 for reading in non-blocking mode.
+2026-05-22T05:07:42.1427924Z Successfully opened named pipe: /podr/container/pipe/d3b625fbd047_app-evangelista-backend-19863/stderr_5a415069908245c5873c63813cd63778.
+2026-05-22T05:07:42.1428903Z Successfully removed non-blocking flag from /podr/container/pipe/d3b625fbd047_app-evangelista-backend-19863/stderr_5a415069908245c5873c63813cd63778.
+2026-05-22T05:07:42.1802081Z Creating container with image: appsvc/python:3.11_20260504.4.tuxprod from registry: 10.1.0.7:13209 and fully qualified image name: 10.1.0.7:13209/appsvc/python:3.11_20260504.4.tuxprod
+2026-05-22T05:07:43.9867874Z Starting container: d3b625fbd047_app-evangelista-backend-19863.
+2026-05-22T05:07:44.2290591Z Starting watchers and probes.
+2026-05-22T05:07:44.2411028Z Starting metrics collection.
+2026-05-22T05:07:44.3202662Z Container is running.
+2026-05-22T05:07:44.3208567Z State: Starting, Action: CreatingContainer, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:56:01, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Container app-evangelista-backend-19863 successfully created and is running., DetailsLevel: INFO
+2026-05-22T05:07:44.7483456Z Container start method finished after 5466 ms.
+2026-05-22T05:07:44.9190593Z State: Starting, Action: InitiatingSiteWarmUpProbe, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:56:01, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Container app-evangelista-backend-19863 successfully created and is running., DetailsLevel: INFO
+2026-05-22T05:07:44.9578788Z State: Starting, Action: WaitingForSiteWarmUpProbeSuccess, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:56:01, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Pinging warmup path to ensure container is ready to receive requests., DetailsLevel: INFO
+2026-05-22T05:08:42.0315335Z Container has finished running with exit code: 1.
+2026-05-22T05:08:42.0493970Z Container is terminating. Grace period: 5 seconds.
+2026-05-22T05:08:42.0682037Z Stop and delete container. Retry count = 0
+2026-05-22T05:08:42.0695377Z Stopping container: d3b625fbd047_app-evangelista-backend-19863.
+2026-05-22T05:08:42.3535182Z Deleting container: d3b625fbd047_app-evangelista-backend-19863. Retry count = 0
+2026-05-22T05:08:42.8833055Z Container spec TerminationMessagePolicy  path 
+2026-05-22T05:08:42.9034919Z Container is terminated. Total time elapsed: 851 ms.
+2026-05-22T05:08:42.9116206Z Site container: app-evangelista-backend-19863 terminated during site startup.
+2026-05-22T05:08:42.9136496Z State: Stopping, Action: CancellingStartup, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 04:56:01, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T05:08:43.8452983Z Site startup probe failed after 58.77663 seconds.
+2026-05-22T05:08:44.8585104Z State: Stopping, Action: CancellingStartup, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 05:08:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T05:08:44.9697065Z Failed to start site. Revert by stopping site.
+2026-05-22T05:08:45.0174939Z State: Stopping, Action: StoppingSite, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 05:08:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T05:08:45.0378659Z State: Stopping, Action: StoppingSiteContainers, LastError: ContainerTimeout, LastErrorTimestamp: 05/22/2026 05:08:44, LastErrorDetails: Container did not start within expected time limit of 230s. Please inspect your container logs for more details., Details: Site container: app-evangelista-backend-19863 terminated during site startup. Cancelling site startup., DetailsLevel: ERR
+2026-05-22T05:08:45.0973874Z Site: app-evangelista-backend-19863 stopped.

@@ -1,0 +1,59 @@
+2026-05-22T05:07:12.0239382Z,Updating submodules.,02d65fcb-c172-4d2f-9599-18dd3dc0dfcd,0
+2026-05-22T05:07:13.3573962Z,Preparing deployment for commit id '4a76b584-c'.,70d63c47-1e06-46fb-a575-573215b98ad7,0
+2026-05-22T05:07:14.1692737Z,PreDeployment: context.CleanOutputPath False,ba1d8191-55a7-424c-9c3f-f49cd53f95fc,0
+2026-05-22T05:07:14.4957179Z,PreDeployment: context.OutputPath /home/site/wwwroot,64696f52-9be0-4feb-90ba-20aacdccbf38,0
+2026-05-22T05:07:14.8327669Z,Repository path is /tmp/zipdeploy/extracted,21fb7217-679f-496a-aabc-c5e32d49d063,0
+2026-05-22T05:07:15.0472215Z,Running oryx build...,b8f0d1fd-aa4f-4f92-bf92-5db0f46228e8,0
+	2026-05-22T05:07:15.0592960Z,Command: oryx build /tmp/zipdeploy/extracted -o /home/site/wwwroot --platform python --platform-version 3.11 -p virtualenv_name=antenv --log-file /tmp/build-debug.log  -i /tmp/8deb7bffc8d57e1 --compress-destination-dir | tee /tmp/oryx-build.log,,0
+	2026-05-22T05:07:20.8176128Z,Operation performed by Microsoft Oryx&comma; https://github.com/Microsoft/Oryx,,0
+	2026-05-22T05:07:20.9082925Z,You can report issues at https://github.com/Microsoft/Oryx/issues,,0
+	2026-05-22T05:07:20.9946923Z,,,0
+	2026-05-22T05:07:21.0386190Z,Oryx Version: 0.2.20260420.1+83c04e9ee1882dc90d279b63348824daedbd3c96&comma; Commit: 83c04e9ee1882dc90d279b63348824daedbd3c96&comma; ReleaseTagName: 20260420.1,,0
+	2026-05-22T05:07:21.1138844Z,,,0
+	2026-05-22T05:07:21.1828032Z,Build Operation ID: 3dfb98b2d2251f17,,0
+	2026-05-22T05:07:21.2726806Z,Repository Commit : 4a76b584-cd00-4c8e-a3fd-17d686b717e2,,0
+	2026-05-22T05:07:21.3223672Z,OS Type           : bullseye,,0
+	2026-05-22T05:07:21.3646914Z,Image Type        : githubactions,,0
+	2026-05-22T05:07:21.4324417Z,,,0
+	2026-05-22T05:07:21.4649253Z,Primary SDK Storage URL: https://oryx-cdn.microsoft.io,,0
+	2026-05-22T05:07:21.5126991Z,Backup SDK Storage URL: ,,0
+	2026-05-22T05:07:21.5749192Z,ACR SDK Registry URL: (not set),,0
+	2026-05-22T05:07:21.6235187Z,SDK provider status:,,0
+	2026-05-22T05:07:21.6839976Z,  External ACR SDK provider: Disabled,,0
+	2026-05-22T05:07:21.8326229Z,  External SDK provider: Enabled,,0
+	2026-05-22T05:07:21.8620407Z,  Direct ACR SDK provider: Disabled,,0
+	2026-05-22T05:07:21.9016136Z,  Blob SDK provider: Enabled,,0
+	2026-05-22T05:07:21.9726342Z,Detecting platforms...,,0
+	2026-05-22T05:07:22.0216704Z,Requesting metadata for platform python from external SDK provider,,0
+	2026-05-22T05:07:24.2587183Z,Requesting metadata for platform python from external SDK provider,,0
+	2026-05-22T05:07:25.1847468Z,Version resolved using external SDK provider.,,0
+	2026-05-22T05:07:26.7547033Z,Detected following platforms:,,0
+	2026-05-22T05:07:26.8242104Z,  python: 3.11.15,,0
+	2026-05-22T05:07:28.2290635Z,,,0
+	2026-05-22T05:07:28.4871675Z,Using intermediate directory '/tmp/8deb7bffc8d57e1'.,,0
+	2026-05-22T05:07:28.5174730Z,,,0
+	2026-05-22T05:07:28.5549564Z,Copying files to the intermediate directory...,,0
+	2026-05-22T05:07:35.6339160Z,Copying files to intermediate directory done in 7 sec(s).,,0
+	2026-05-22T05:07:35.9691595Z,,,0
+	2026-05-22T05:07:36.3335824Z,Source directory     : /tmp/8deb7bffc8d57e1,,0
+	2026-05-22T05:07:36.5726777Z,Destination directory: /home/site/wwwroot,,0
+	2026-05-22T05:07:36.6617981Z,,,0
+	2026-05-22T05:07:38.4363696Z,Running build script snippets...,,0
+	2026-05-22T05:07:38.4735204Z,Python Version: /tmp/oryx/platforms/python/3.11.15/bin/python3.11,,0
+	2026-05-22T05:07:38.5765395Z,Creating directory for command manifest file if it does not exist,,0
+	2026-05-22T05:07:38.6880425Z,Removing existing manifest file,,0
+	2026-05-22T05:07:38.9037459Z,Python Virtual Environment: antenv,,0
+	2026-05-22T05:07:38.9922030Z,Creating virtual environment...,,0
+	2026-05-22T05:07:39.0419639Z,Executing: /tmp/oryx/platforms/python/3.11.15/bin/python3.11 -m venv antenv --copies --system-site-packages,,0
+	2026-05-22T05:08:52.2784053Z,Activating virtual environment...,,0
+	2026-05-22T05:08:52.3187163Z,Fast build is enabled,,0
+	2026-05-22T05:08:52.3567681Z,Installing uv...,,0
+	2026-05-22T05:08:56.9920877Z,Collecting uv,,0
+	2026-05-22T05:08:57.0246575Z,  Using cached uv-0.11.16-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (11 kB),,0
+	2026-05-22T05:08:57.0840488Z,Using cached uv-0.11.16-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (24.7 MB),,0
+	2026-05-22T05:08:58.1364098Z,Installing collected packages: uv,,0
+	2026-05-22T05:08:59.8510672Z,Successfully installed uv-0.11.16,,0
+	2026-05-22T05:09:00.4497328Z,,,1
+	2026-05-22T05:09:00.4785433Z,[notice] A new release of pip is available: 24.0 -> 26.1.1,,1
+	2026-05-22T05:09:00.5107617Z,[notice] To update&comma; run: pip install --upgrade pip,,1
+	2026-05-22T05:09:01.9250691Z,Running uv pip install...,,0
