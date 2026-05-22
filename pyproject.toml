@@ -18,7 +18,8 @@ dependencies = [
     "langgraph>=0.2",
     "langchain-core>=0.3",
     "fastapi>=0.115",
-    "uvicorn[standard]>=0.30"
+    "uvicorn[standard]>=0.30",
+    "supabase>=2.0.0"
 ]
 
 [tool.setuptools.packages.find]
