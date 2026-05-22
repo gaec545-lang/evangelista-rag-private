@@ -7,6 +7,44 @@ router = APIRouter()
 logger = get_logger(__name__)
 
 
+import os
+
+@router.get("/library")
+async def get_library_tree():
+    """Retorna la estructura de carpetas y archivos del vault (Knowledge Library)."""
+    from src.config import settings
+    path = settings.VAULT_PATH
+    
+    def build_tree(current_path):
+        tree = []
+        try:
+            for item in sorted(os.listdir(current_path)):
+                # Ignore hidden files/folders and specific metadata folders
+                if item.startswith('.') or item in ['_meta', '_templates']:
+                    continue
+                item_path = os.path.join(current_path, item)
+                is_dir = os.path.isdir(item_path)
+                
+                node = {
+                    "name": item,
+                    "path": os.path.relpath(item_path, path).replace("\\", "/"),
+                    "type": "directory" if is_dir else "file"
+                }
+                if is_dir:
+                    node["children"] = build_tree(item_path)
+                elif not item.endswith('.md'):
+                    # Optionally filter only markdown or useful files if needed, but for now include all non-hidden
+                    pass
+                tree.append(node)
+        except Exception as e:
+            logger.error("Error reading directory", path=current_path, error=str(e))
+        return tree
+
+    if not os.path.exists(path):
+        return []
+
+    return build_tree(path)
+
 @router.post("/search", response_model=SearchResponse)
 async def search_knowledge(request: SearchRequest):
     """Busca en el knowledge base. Aplica filtro de agente si se especifica."""
