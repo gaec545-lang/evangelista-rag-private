@@ -1,0 +1,274 @@
+2026-05-21T15:57:22.0754283Z    _____                               
+2026-05-21T15:57:22.0756739Z   /  _  \ __________ _________   ____  
+2026-05-21T15:57:22.0756890Z  /  /_\  \\___   /  |  \_  __ \_/ __ \ 
+2026-05-21T15:57:22.0756930Z /    |    \/    /|  |  /|  | \/\  ___/ 
+2026-05-21T15:57:22.0756968Z \____|__  /_____ \____/ |__|    \___  >
+2026-05-21T15:57:22.0757014Z         \/      \/                  \/ 
+2026-05-21T15:57:22.0757051Z A P P   S E R V I C E   O N   L I N U X
+2026-05-21T15:57:22.0757087Z 
+2026-05-21T15:57:22.0757151Z Documentation     : https://aka.ms/webapp-linux
+2026-05-21T15:57:22.0757195Z Python quickstart : https://aka.ms/python-qs
+2026-05-21T15:57:22.0757232Z Python version    : 3.11.15
+2026-05-21T15:57:22.0757270Z Instance name     : lw1sdlwk00071B
+2026-05-21T15:57:22.0757314Z Instance id       : 9d9ad26f55314832f40453d107bc280606f9336225ee3827727ea25821b4efdd
+2026-05-21T15:57:22.0757350Z 
+2026-05-21T15:57:22.0757386Z App port          : 8000
+2026-05-21T15:57:22.0757441Z Port selected by  : Default for this image
+2026-05-21T15:57:22.0757481Z (Learn more about the PORT appsetting https://aka.ms/webapp-python-settings)
+2026-05-21T15:57:22.0763698Z 
+2026-05-21T15:57:22.0763783Z Note: Any data outside '/home' is not persisted
+2026-05-21T15:57:22.0763821Z 
+2026-05-21T15:57:22.0763879Z ────────────────────────────────────────────────────────────────
+2026-05-21T15:57:22.0763959Z  Run 'apphelp' for available commands and aliases.
+2026-05-21T15:57:22.0763999Z  Run 'install-nettools' to install networking utilities.
+2026-05-21T15:57:22.0764048Z ────────────────────────────────────────────────────────────────
+2026-05-21T15:57:41.5649363Z Starting OpenBSD Secure Shell server: sshd.
+2026-05-21T15:57:41.7833860Z WEBSITES_INCLUDE_CLOUD_CERTS is not set to true.
+2026-05-21T15:57:42.2436995Z Updating certificates in /etc/ssl/certs...
+2026-05-21T15:58:27.1821084Z 4 added, 0 removed; done.
+2026-05-21T15:58:27.1821646Z Running hooks in /etc/ca-certificates/update.d...
+2026-05-21T15:58:27.1821721Z done.
+2026-05-21T15:58:27.1822330Z CA certificates copied and updated successfully.
+2026-05-21T15:58:27.1835079Z rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+2026-05-21T15:58:27.1835504Z rehash: warning: skipping duplicate certificate in azl_SSL.com_TLS_ECC_Root_CA_2022.pem
+2026-05-21T15:58:27.1835558Z rehash: warning: skipping duplicate certificate in azl_SSL.com_TLS_RSA_Root_CA_2022.pem
+2026-05-21T15:58:27.2230698Z Site's appCommandLine: python -m uvicorn src.api.server:app --host 0.0.0.0 --port 8000
+2026-05-21T15:58:27.8594935Z Starting periodic command scheduler: cron.
+2026-05-21T15:58:27.8705236Z Launching oryx with: create-script -appPath /home/site/wwwroot -output /opt/startup/startup.sh -virtualEnvName antenv -defaultApp /opt/defaultsite -userStartupCommand 'python -m uvicorn src.api.server:app --host 0.0.0.0 --port 8000'
+2026-05-21T15:58:28.6143837Z Could not find build manifest file at '/home/site/wwwroot/oryx-manifest.toml'
+2026-05-21T15:58:28.6144305Z Could not find operation ID in manifest. Generating an operation id...
+2026-05-21T15:58:28.6144361Z Build Operation ID: 5578cd42-2f54-4f9e-be6f-3ea863749057
+2026-05-21T15:58:29.8710959Z Oryx Version: 0.2.20260504.2, Commit: a776ec9f2fd225b305599e35443ecb3533bcdb26, ReleaseTagName: 20260504.2
+2026-05-21T15:58:29.9009760Z Writing output script to '/opt/startup/startup.sh'
+2026-05-21T15:58:29.9995156Z WARNING: Could not find virtual environment directory /home/site/wwwroot/antenv.
+2026-05-21T15:58:29.9996538Z WARNING: Could not find package directory /home/site/wwwroot/__oryx_packages__.
+2026-05-21T15:58:30.2741759Z /opt/python/3.11.15/bin/python: No module named uvicorn
+2026-05-21T15:59:04.1813434Z    _____                               
+2026-05-21T15:59:04.2376447Z   /  _  \ __________ _________   ____  
+2026-05-21T15:59:04.2376783Z  /  /_\  \\___   /  |  \_  __ \_/ __ \ 
+2026-05-21T15:59:04.2376828Z /    |    \/    /|  |  /|  | \/\  ___/ 
+2026-05-21T15:59:04.2376873Z \____|__  /_____ \____/ |__|    \___  >
+2026-05-21T15:59:04.2376988Z         \/      \/                  \/ 
+2026-05-21T15:59:04.2377029Z A P P   S E R V I C E   O N   L I N U X
+2026-05-21T15:59:04.2377066Z 
+2026-05-21T15:59:04.2377108Z Documentation     : https://aka.ms/webapp-linux
+2026-05-21T15:59:04.2377149Z Python quickstart : https://aka.ms/python-qs
+2026-05-21T15:59:04.2377186Z Python version    : 3.11.15
+2026-05-21T15:59:04.2377241Z Instance name     : lw1sdlwk00071B
+2026-05-21T15:59:04.2377290Z Instance id       : 9d9ad26f55314832f40453d107bc280606f9336225ee3827727ea25821b4efdd
+2026-05-21T15:59:04.2377328Z 
+2026-05-21T15:59:04.2377363Z App port          : 8000
+2026-05-21T15:59:04.2377401Z Port selected by  : Default for this image
+2026-05-21T15:59:04.2377441Z (Learn more about the PORT appsetting https://aka.ms/webapp-python-settings)
+2026-05-21T15:59:04.2377494Z 
+2026-05-21T15:59:04.2377533Z Note: Any data outside '/home' is not persisted
+2026-05-21T15:59:04.2377567Z 
+2026-05-21T15:59:04.2377621Z ────────────────────────────────────────────────────────────────
+2026-05-21T15:59:04.2377663Z  Run 'apphelp' for available commands and aliases.
+2026-05-21T15:59:04.2378770Z  Run 'install-nettools' to install networking utilities.
+2026-05-21T15:59:04.2378948Z ────────────────────────────────────────────────────────────────
+2026-05-21T15:59:07.3937208Z Starting OpenBSD Secure Shell server: sshd.
+2026-05-21T15:59:07.4338897Z WEBSITES_INCLUDE_CLOUD_CERTS is not set to true.
+2026-05-21T15:59:07.5526857Z Updating certificates in /etc/ssl/certs...
+2026-05-21T15:59:34.7287870Z rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+2026-05-21T15:59:34.7562065Z rehash: warning: skipping duplicate certificate in azl_SSL.com_TLS_ECC_Root_CA_2022.pem
+2026-05-21T15:59:34.8463912Z rehash: warning: skipping duplicate certificate in azl_SSL.com_TLS_RSA_Root_CA_2022.pem
+2026-05-21T15:59:34.9677813Z 4 added, 0 removed; done.
+2026-05-21T15:59:34.9678334Z Running hooks in /etc/ca-certificates/update.d...
+2026-05-21T15:59:35.0364792Z done.
+2026-05-21T15:59:35.0365614Z CA certificates copied and updated successfully.
+2026-05-21T15:59:35.5754623Z Site's appCommandLine: python -m uvicorn src.api.server:app --host 0.0.0.0 --port 8000
+2026-05-21T15:59:37.6518169Z Starting periodic command scheduler: cron.
+2026-05-21T15:59:37.6519052Z Launching oryx with: create-script -appPath /home/site/wwwroot -output /opt/startup/startup.sh -virtualEnvName antenv -defaultApp /opt/defaultsite -userStartupCommand 'python -m uvicorn src.api.server:app --host 0.0.0.0 --port 8000'
+2026-05-21T15:59:39.6871425Z Could not find build manifest file at '/home/site/wwwroot/oryx-manifest.toml'
+2026-05-21T15:59:39.6871903Z Could not find operation ID in manifest. Generating an operation id...
+2026-05-21T15:59:39.6871954Z Build Operation ID: e6e04789-6d39-4b28-940f-681f32a453da
+2026-05-21T15:59:42.2005892Z Oryx Version: 0.2.20260504.2, Commit: a776ec9f2fd225b305599e35443ecb3533bcdb26, ReleaseTagName: 20260504.2
+2026-05-21T15:59:42.3195786Z Writing output script to '/opt/startup/startup.sh'
+2026-05-21T15:59:42.5681626Z WARNING: Could not find virtual environment directory /home/site/wwwroot/antenv.
+2026-05-21T15:59:42.5682133Z WARNING: Could not find package directory /home/site/wwwroot/__oryx_packages__.
+2026-05-21T15:59:43.0986436Z /opt/python/3.11.15/bin/python: No module named uvicorn
+2026-05-21T16:06:03.6176556Z    _____                               
+2026-05-21T16:06:03.6194350Z   /  _  \ __________ _________   ____  
+2026-05-21T16:06:03.6194619Z  /  /_\  \\___   /  |  \_  __ \_/ __ \ 
+2026-05-21T16:06:03.6194660Z /    |    \/    /|  |  /|  | \/\  ___/ 
+2026-05-21T16:06:03.6194697Z \____|__  /_____ \____/ |__|    \___  >
+2026-05-21T16:06:03.6194750Z         \/      \/                  \/ 
+2026-05-21T16:06:03.6194791Z A P P   S E R V I C E   O N   L I N U X
+2026-05-21T16:06:03.6194827Z 
+2026-05-21T16:06:03.6194871Z Documentation     : https://aka.ms/webapp-linux
+2026-05-21T16:06:03.6194933Z Python quickstart : https://aka.ms/python-qs
+2026-05-21T16:06:03.6194972Z Python version    : 3.11.15
+2026-05-21T16:06:03.6195010Z Instance name     : lw1sdlwk00071B
+2026-05-21T16:06:03.6195055Z Instance id       : 9d9ad26f55314832f40453d107bc280606f9336225ee3827727ea25821b4efdd
+2026-05-21T16:06:03.6195091Z 
+2026-05-21T16:06:03.6195126Z App port          : 8000
+2026-05-21T16:06:03.6195180Z Port selected by  : Default for this image
+2026-05-21T16:06:03.6195220Z (Learn more about the PORT appsetting https://aka.ms/webapp-python-settings)
+2026-05-21T16:06:03.6195257Z 
+2026-05-21T16:06:03.6195294Z Note: Any data outside '/home' is not persisted
+2026-05-21T16:06:03.6195330Z 
+2026-05-21T16:06:03.6195382Z ────────────────────────────────────────────────────────────────
+2026-05-21T16:06:03.6195453Z  Run 'apphelp' for available commands and aliases.
+2026-05-21T16:06:03.6195492Z  Run 'install-nettools' to install networking utilities.
+2026-05-21T16:06:03.6195540Z ────────────────────────────────────────────────────────────────
+2026-05-21T16:06:08.8196160Z Starting OpenBSD Secure Shell server: sshd.
+2026-05-21T16:06:08.8686794Z WEBSITES_INCLUDE_CLOUD_CERTS is not set to true.
+2026-05-21T16:06:09.0901749Z Updating certificates in /etc/ssl/certs...
+2026-05-21T16:06:59.0632123Z rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+2026-05-21T16:06:59.1486754Z rehash: warning: skipping duplicate certificate in azl_SSL.com_TLS_ECC_Root_CA_2022.pem
+2026-05-21T16:06:59.1706422Z rehash: warning: skipping duplicate certificate in azl_SSL.com_TLS_RSA_Root_CA_2022.pem
+2026-05-21T16:06:59.2573559Z 4 added, 0 removed; done.
+2026-05-21T16:06:59.2578734Z Running hooks in /etc/ca-certificates/update.d...
+2026-05-21T16:06:59.2878806Z done.
+2026-05-21T16:06:59.3873435Z CA certificates copied and updated successfully.
+2026-05-21T16:06:59.7203536Z Site's appCommandLine: python -m uvicorn src.api.server:app --host 0.0.0.0 --port 8000
+2026-05-21T16:07:03.2170589Z Starting periodic command scheduler: cron.
+2026-05-21T16:07:03.2171226Z Launching oryx with: create-script -appPath /home/site/wwwroot -output /opt/startup/startup.sh -virtualEnvName antenv -defaultApp /opt/defaultsite -userStartupCommand 'python -m uvicorn src.api.server:app --host 0.0.0.0 --port 8000'
+2026-05-21T16:07:05.7952289Z Could not find build manifest file at '/home/site/wwwroot/oryx-manifest.toml'
+2026-05-21T16:07:05.7953281Z Could not find operation ID in manifest. Generating an operation id...
+2026-05-21T16:07:05.7953337Z Build Operation ID: d1b37005-98bf-48ae-8696-43739045afa2
+2026-05-21T16:07:07.7451670Z Oryx Version: 0.2.20260504.2, Commit: a776ec9f2fd225b305599e35443ecb3533bcdb26, ReleaseTagName: 20260504.2
+2026-05-21T16:07:07.8141827Z Writing output script to '/opt/startup/startup.sh'
+2026-05-21T16:07:07.9626499Z WARNING: Could not find virtual environment directory /home/site/wwwroot/antenv.
+2026-05-21T16:07:07.9924087Z WARNING: Could not find package directory /home/site/wwwroot/__oryx_packages__.
+2026-05-21T16:07:08.7601713Z /opt/python/3.11.15/bin/python: No module named uvicorn
+2026-05-21T16:07:25.5436727Z    _____                               
+2026-05-21T16:07:25.5437108Z   /  _  \ __________ _________   ____  
+2026-05-21T16:07:25.5437147Z  /  /_\  \\___   /  |  \_  __ \_/ __ \ 
+2026-05-21T16:07:25.5437176Z /    |    \/    /|  |  /|  | \/\  ___/ 
+2026-05-21T16:07:25.5437204Z \____|__  /_____ \____/ |__|    \___  >
+2026-05-21T16:07:25.5437234Z         \/      \/                  \/ 
+2026-05-21T16:07:25.5437262Z A P P   S E R V I C E   O N   L I N U X
+2026-05-21T16:07:25.5437289Z 
+2026-05-21T16:07:25.5437319Z Documentation     : https://aka.ms/webapp-linux
+2026-05-21T16:07:25.5437347Z Python quickstart : https://aka.ms/python-qs
+2026-05-21T16:07:25.5437378Z Python version    : 3.11.15
+2026-05-21T16:07:25.5437433Z Instance name     : lw1sdlwk00071B
+2026-05-21T16:07:25.5437468Z Instance id       : 9d9ad26f55314832f40453d107bc280606f9336225ee3827727ea25821b4efdd
+2026-05-21T16:07:25.5437496Z 
+2026-05-21T16:07:25.5437524Z App port          : 8000
+2026-05-21T16:07:25.5437553Z Port selected by  : Default for this image
+2026-05-21T16:07:25.5437584Z (Learn more about the PORT appsetting https://aka.ms/webapp-python-settings)
+2026-05-21T16:07:25.5437609Z 
+2026-05-21T16:07:25.5437639Z Note: Any data outside '/home' is not persisted
+2026-05-21T16:07:25.5437665Z 
+2026-05-21T16:07:25.5437711Z ────────────────────────────────────────────────────────────────
+2026-05-21T16:07:25.5437741Z  Run 'apphelp' for available commands and aliases.
+2026-05-21T16:07:25.5437791Z  Run 'install-nettools' to install networking utilities.
+2026-05-21T16:07:25.5437831Z ────────────────────────────────────────────────────────────────
+2026-05-21T16:07:39.7971455Z Starting OpenBSD Secure Shell server: sshd.
+2026-05-21T16:07:39.8366601Z WEBSITES_INCLUDE_CLOUD_CERTS is not set to true.
+2026-05-21T16:07:40.1283748Z Updating certificates in /etc/ssl/certs...
+2026-05-21T16:08:37.8536946Z rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+2026-05-21T16:08:37.8921598Z rehash: warning: skipping duplicate certificate in azl_SSL.com_TLS_ECC_Root_CA_2022.pem
+2026-05-21T16:08:37.9245596Z rehash: warning: skipping duplicate certificate in azl_SSL.com_TLS_RSA_Root_CA_2022.pem
+2026-05-21T16:08:38.0210529Z 4 added, 0 removed; done.
+2026-05-21T16:08:38.0307932Z Running hooks in /etc/ca-certificates/update.d...
+2026-05-21T16:08:38.0428781Z done.
+2026-05-21T16:08:38.1511019Z CA certificates copied and updated successfully.
+2026-05-21T16:08:38.4176260Z Site's appCommandLine: python -m uvicorn src.api.server:app --host 0.0.0.0 --port 8000
+2026-05-21T16:08:39.9335385Z Starting periodic command scheduler: cron.
+2026-05-21T16:08:39.9337169Z Launching oryx with: create-script -appPath /home/site/wwwroot -output /opt/startup/startup.sh -virtualEnvName antenv -defaultApp /opt/defaultsite -userStartupCommand 'python -m uvicorn src.api.server:app --host 0.0.0.0 --port 8000'
+2026-05-21T16:08:40.6963144Z Could not find build manifest file at '/home/site/wwwroot/oryx-manifest.toml'
+2026-05-21T16:08:40.6966416Z Could not find operation ID in manifest. Generating an operation id...
+2026-05-21T16:08:40.6968357Z Build Operation ID: 1ec02c3d-7945-4560-b6a7-6a9fda932f04
+2026-05-21T16:08:42.0940846Z Oryx Version: 0.2.20260504.2, Commit: a776ec9f2fd225b305599e35443ecb3533bcdb26, ReleaseTagName: 20260504.2
+2026-05-21T16:08:42.2111729Z Writing output script to '/opt/startup/startup.sh'
+2026-05-21T16:08:42.3794385Z WARNING: Could not find virtual environment directory /home/site/wwwroot/antenv.
+2026-05-21T16:08:42.3964182Z WARNING: Could not find package directory /home/site/wwwroot/__oryx_packages__.
+2026-05-21T16:08:42.9458759Z /opt/python/3.11.15/bin/python: No module named uvicorn
+2026-05-21T16:16:27.7445398Z    _____                               
+2026-05-21T16:16:27.7447637Z   /  _  \ __________ _________   ____  
+2026-05-21T16:16:27.7447703Z  /  /_\  \\___   /  |  \_  __ \_/ __ \ 
+2026-05-21T16:16:27.7447752Z /    |    \/    /|  |  /|  | \/\  ___/ 
+2026-05-21T16:16:27.7447788Z \____|__  /_____ \____/ |__|    \___  >
+2026-05-21T16:16:27.7447898Z         \/      \/                  \/ 
+2026-05-21T16:16:27.7447936Z A P P   S E R V I C E   O N   L I N U X
+2026-05-21T16:16:27.7447971Z 
+2026-05-21T16:16:27.7448013Z Documentation     : https://aka.ms/webapp-linux
+2026-05-21T16:16:27.7448054Z Python quickstart : https://aka.ms/python-qs
+2026-05-21T16:16:27.7448091Z Python version    : 3.11.15
+2026-05-21T16:16:27.7448127Z Instance name     : lw1sdlwk00071B
+2026-05-21T16:16:27.7448190Z Instance id       : 9d9ad26f55314832f40453d107bc280606f9336225ee3827727ea25821b4efdd
+2026-05-21T16:16:27.7448227Z 
+2026-05-21T16:16:27.7448262Z App port          : 8000
+2026-05-21T16:16:27.7448299Z Port selected by  : Default for this image
+2026-05-21T16:16:27.7448338Z (Learn more about the PORT appsetting https://aka.ms/webapp-python-settings)
+2026-05-21T16:16:27.7448376Z 
+2026-05-21T16:16:27.7448431Z Note: Any data outside '/home' is not persisted
+2026-05-21T16:16:27.7448466Z 
+2026-05-21T16:16:27.7448517Z ────────────────────────────────────────────────────────────────
+2026-05-21T16:16:27.7448560Z  Run 'apphelp' for available commands and aliases.
+2026-05-21T16:16:27.7448599Z  Run 'install-nettools' to install networking utilities.
+2026-05-21T16:16:27.7448646Z ────────────────────────────────────────────────────────────────
+2026-05-21T16:16:30.2363335Z Starting OpenBSD Secure Shell server: sshd.
+2026-05-21T16:16:30.3260546Z WEBSITES_INCLUDE_CLOUD_CERTS is not set to true.
+2026-05-21T16:16:30.6840881Z Updating certificates in /etc/ssl/certs...
+2026-05-21T16:17:05.1586863Z rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+2026-05-21T16:17:05.3165742Z rehash: warning: skipping duplicate certificate in azl_SSL.com_TLS_ECC_Root_CA_2022.pem
+2026-05-21T16:17:05.4166366Z rehash: warning: skipping duplicate certificate in azl_SSL.com_TLS_RSA_Root_CA_2022.pem
+2026-05-21T16:17:05.7536757Z 4 added, 0 removed; done.
+2026-05-21T16:17:05.7955060Z Running hooks in /etc/ca-certificates/update.d...
+2026-05-21T16:17:05.7955796Z done.
+2026-05-21T16:17:05.9122262Z CA certificates copied and updated successfully.
+2026-05-21T16:17:07.5194983Z Site's appCommandLine: python -m uvicorn src.api.server:app --host 0.0.0.0 --port 8000
+2026-05-21T16:17:09.3926129Z Starting periodic command scheduler: cron.
+2026-05-21T16:17:09.3926923Z Launching oryx with: create-script -appPath /home/site/wwwroot -output /opt/startup/startup.sh -virtualEnvName antenv -defaultApp /opt/defaultsite -userStartupCommand 'python -m uvicorn src.api.server:app --host 0.0.0.0 --port 8000'
+2026-05-21T16:17:10.4273856Z Found build manifest file at '/home/site/wwwroot/oryx-manifest.toml'. Deserializing it...
+2026-05-21T16:17:10.4681401Z Output is compressed. Extracting it...
+2026-05-21T16:17:10.4682466Z Build Operation ID: 178cd9f7dbd20893
+2026-05-21T16:17:10.4682578Z Oryx Version: 0.2.20260504.2, Commit: a776ec9f2fd225b305599e35443ecb3533bcdb26, ReleaseTagName: 20260504.2
+2026-05-21T16:17:10.4957637Z Found zstd-compressed tarball.
+2026-05-21T16:17:10.4958027Z Extracting '/home/site/wwwroot/output.tar.zst' to directory '/tmp/8deb7528f6c41bd'...
+2026-05-21T16:17:10.4958126Z Using zstd for decompression of file: /home/site/wwwroot/output.tar.zst
+2026-05-21T16:18:55.5260022Z zstd tar Successfully extracted '/home/site/wwwroot/output.tar.zst' to '/tmp/8deb7528f6c41bd'
+2026-05-21T16:18:55.5260764Z App path is set to '/tmp/8deb7528f6c41bd'
+2026-05-21T16:18:55.6523277Z Writing output script to '/opt/startup/startup.sh'
+2026-05-21T16:18:55.7850597Z Using packages from virtual environment antenv located at /tmp/8deb7528f6c41bd/antenv.
+2026-05-21T16:18:55.7853796Z Updated PYTHONPATH to '/opt/startup/app_logs:/tmp/8deb7528f6c41bd/antenv/lib/python3.11/site-packages'
+2026-05-21T16:19:07.8060862Z [2m2026-05-21T16:19:07.805788Z[0m [[32m[1minfo     [0m] [1mcreating_llm_client           [0m [36mmodel[0m=[35mgroq-llama-70b[0m [36mprovider[0m=[35mgroq[0m
+2026-05-21T16:19:07.8167843Z [2m2026-05-21T16:19:07.816477Z[0m [[32m[1minfo     [0m] [1mcreating_llm_client           [0m [36mmodel[0m=[35mgroq-llama-70b[0m [36mprovider[0m=[35mgroq[0m
+2026-05-21T16:19:07.8254977Z [2m2026-05-21T16:19:07.825023Z[0m [[32m[1minfo     [0m] [1mcreating_llm_client           [0m [36mmodel[0m=[35mgroq-llama-70b[0m [36mprovider[0m=[35mgroq[0m
+2026-05-21T16:19:08.0581728Z Traceback (most recent call last):
+2026-05-21T16:19:08.0585079Z   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-05-21T16:19:08.0585780Z   File "<frozen runpy>", line 88, in _run_code
+2026-05-21T16:19:08.0648376Z   File "/tmp/8deb7528f6c41bd/antenv/lib/python3.11/site-packages/uvicorn/__main__.py", line 4, in <module>
+2026-05-21T16:19:08.0655278Z     uvicorn.main()
+2026-05-21T16:19:08.0655448Z   File "/tmp/8deb7528f6c41bd/antenv/lib/python3.11/site-packages/click/core.py", line 1524, in __call__
+2026-05-21T16:19:08.0666642Z     return self.main(*args, **kwargs)
+2026-05-21T16:19:08.0668192Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-21T16:19:08.0669012Z   File "/tmp/8deb7528f6c41bd/antenv/lib/python3.11/site-packages/click/core.py", line 1445, in main
+2026-05-21T16:19:08.0674165Z     rv = self.invoke(ctx)
+2026-05-21T16:19:08.0675448Z          ^^^^^^^^^^^^^^^^
+2026-05-21T16:19:08.0676230Z   File "/tmp/8deb7528f6c41bd/antenv/lib/python3.11/site-packages/click/core.py", line 1308, in invoke
+2026-05-21T16:19:08.0683453Z     return ctx.invoke(self.callback, **ctx.params)
+2026-05-21T16:19:08.0684863Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-21T16:19:08.0685595Z   File "/tmp/8deb7528f6c41bd/antenv/lib/python3.11/site-packages/click/core.py", line 877, in invoke
+2026-05-21T16:19:08.0749440Z     return callback(*args, **kwargs)
+2026-05-21T16:19:08.0751585Z            ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-21T16:19:08.0752408Z   File "/tmp/8deb7528f6c41bd/antenv/lib/python3.11/site-packages/uvicorn/main.py", line 441, in main
+2026-05-21T16:19:08.0784658Z     run(
+2026-05-21T16:19:08.0786569Z   File "/tmp/8deb7528f6c41bd/antenv/lib/python3.11/site-packages/uvicorn/main.py", line 609, in run
+2026-05-21T16:19:08.0789938Z     config.load_app()
+2026-05-21T16:19:08.0793665Z   File "/tmp/8deb7528f6c41bd/antenv/lib/python3.11/site-packages/uvicorn/config.py", line 415, in load_app
+2026-05-21T16:19:08.0879814Z     return import_from_string(self.app)
+2026-05-21T16:19:08.0880121Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-21T16:19:08.0880172Z   File "/tmp/8deb7528f6c41bd/antenv/lib/python3.11/site-packages/uvicorn/importer.py", line 19, in import_from_string
+2026-05-21T16:19:08.0880213Z     module = importlib.import_module(module_str)
+2026-05-21T16:19:08.0880819Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-21T16:19:08.0880939Z   File "/opt/python/3.11.15/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2026-05-21T16:19:08.0880980Z     return _bootstrap._gcd_import(name[level:], package, level)
+2026-05-21T16:19:08.0881018Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-05-21T16:19:08.0881058Z   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2026-05-21T16:19:08.0881095Z   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2026-05-21T16:19:08.0881134Z   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2026-05-21T16:19:08.0881193Z   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2026-05-21T16:19:08.0881255Z   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+2026-05-21T16:19:08.0881294Z   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2026-05-21T16:19:08.0881332Z   File "/tmp/8deb7528f6c41bd/src/api/server.py", line 89, in <module>
+2026-05-21T16:19:08.0881369Z     from src.api.routes import (
+2026-05-21T16:19:08.0881408Z   File "/tmp/8deb7528f6c41bd/src/api/routes/erp_connections.py", line 1
+2026-05-21T16:19:08.0881476Z     """ERP Connections router – Supabase removed. Placeholder implementation for alternative storage.
+2026-05-21T16:19:08.0881517Z     ^
+2026-05-21T16:19:08.0881559Z SyntaxError: unterminated triple-quoted string literal (detected at line 25)
