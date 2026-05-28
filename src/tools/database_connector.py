@@ -29,3 +29,10 @@ def get_db():
         yield db
     finally:
         db.close()
+
+def get_ephemeral_connection():
+    """Mock connection function for compatibility."""
+    if engine is None:
+        raise RuntimeError("Database connection not configured.")
+    return engine.connect()
+

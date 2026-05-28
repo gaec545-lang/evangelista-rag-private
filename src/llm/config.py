@@ -88,6 +88,17 @@ MODELS: Dict[str, LLMModelConfig] = {
         base_url="https://api.deepseek.com",
         temperature=0.1
     ),
+    
+    # DEEPSEEK V4 PRO — Nvidia Integrate
+    "deepseek-v4-pro": LLMModelConfig(
+        name="deepseek-v4-pro",
+        provider="openai_generic",
+        model_id="deepseek-ai/deepseek-v4-pro",
+        api_key_env="NVIDIA_API_KEY",
+        base_url="https://integrate.api.nvidia.com/v1",
+        temperature=0.2,
+        max_tokens=8000,
+    ),
 }
 
 def get_model_config(name: str) -> LLMModelConfig:

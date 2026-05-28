@@ -43,11 +43,26 @@ async def chat(request: ChatRequest, req: Request):
             avg_relevance=0.0
         )
     
+    # Inyectar contexto según eva_mode
+    system_prompt_extras = []
+    
+    if request.eva_mode == 'client' and request.client_context:
+        system_prompt_extras.append(f"=== CONTEXTO DEL CLIENTE ===\n{request.client_context.model_dump_json(indent=2)}")
+    elif request.eva_mode == 'project' and request.project_context_full:
+        system_prompt_extras.append(f"=== CONTEXTO DEL PROYECTO (COMPLETO) ===\n{request.project_context_full.model_dump_json(indent=2)}")
+        
+    if request.tab_context:
+        system_prompt_extras.append(f"=== CONTEXTO DEL TAB ACTUAL ===\n{request.tab_context.model_dump_json(indent=2)}")
+
+    final_system_prompt = rag_result.system_prompt
+    if system_prompt_extras:
+        final_system_prompt += "\n\n" + "\n\n".join(system_prompt_extras)
+        
     llm_client = get_llm_client()
     try:
         llm_response = await llm_client.generate(
             prompt=request.message,
-            system_prompt=rag_result.system_prompt
+            system_prompt=final_system_prompt
         )
     except Exception as e:
         logger.error("llm_generation_error", error=str(e))

@@ -56,11 +56,29 @@ class ProjectContext(BaseModel):
     current_coi: float | None = 0.0
 
 
+class TabContext(BaseModel):
+    model_config = {"extra": "allow"}
+
+
+class ClientContext(BaseModel):
+    model_config = {"extra": "allow"}
+
+
+class ProjectContextFull(BaseModel):
+    model_config = {"extra": "allow"}
+
+
+from typing import Literal
+
 class ChatRequest(BaseModel):
     message: str
     agent_name: str
     project_phase: str | None = "scoping"
     project_context: ProjectContext | None = None
+    eva_mode: Literal['global', 'client', 'project'] = 'global'
+    tab_context: TabContext | None = None
+    client_context: ClientContext | None = None
+    project_context_full: ProjectContextFull | None = None
 
 
 class ChatResponse(BaseModel):
