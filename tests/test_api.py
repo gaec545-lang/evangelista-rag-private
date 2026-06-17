@@ -27,6 +27,11 @@ def app_with_mocked_agents():
     """App FastAPI con agentes mock registrados."""
     from src.api.server import app
     from src.agents.registry import AgentRegistry
+    from src.api.middleware.auth import verify_jwt
+
+    app.dependency_overrides[verify_jwt] = lambda: {"oid": "test-oid", "roles": ["socio"]}
+
+    from src.api.middleware.auth import verify_jwt
 
     mock_agent = MagicMock()
     mock_agent.name = "financial"
@@ -43,6 +48,10 @@ def app_with_mocked_agents():
     mock_agent.execute = AsyncMock(return_value=mock_result)
 
     AgentRegistry._agents = {"financial": mock_agent}
+    
+    # Mockear JWT
+    app.dependency_overrides[verify_jwt] = lambda: {"sub": "test_user", "roles": ["Admin"]}
+    
     return app
 
 

@@ -68,6 +68,17 @@ MODELS: Dict[str, LLMModelConfig] = {
         api_key_env="NONE",
         base_url="http://localhost:11434/v1"
     ),
+    
+    # Gemma GGUF Local (Llama.cpp Server)
+    "gemma-local": LLMModelConfig(
+        name="gemma-local",
+        provider="openai_generic",
+        model_id="gemma-4",
+        api_key_env="NONE",
+        base_url=os.getenv("LOCAL_LLM_URL", "http://localhost:8080/v1"),
+        temperature=0.3,
+        max_tokens=4096
+    ),
 
     # KIMI (Moonshot AI) — Pro Logic & Long Context
     "kimi": LLMModelConfig(

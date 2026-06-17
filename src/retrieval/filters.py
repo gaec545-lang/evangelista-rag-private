@@ -61,3 +61,14 @@ def combine_filters(*filters: Filter) -> Filter:
         if f.must:
             all_conditions.extend(f.must)
     return Filter(must=all_conditions)
+
+def build_client_filter(client_id: str) -> Filter:
+    """Filtro estricto por cliente (aislamiento de datos)."""
+    return Filter(
+        must=[
+            FieldCondition(
+                key="client_id",
+                match=MatchValue(value=client_id),
+            )
+        ]
+    )

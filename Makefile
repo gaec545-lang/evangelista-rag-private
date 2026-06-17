@@ -17,10 +17,10 @@ prod:
 
 # === KNOWLEDGE BASE ===
 ingest:
-	python -m cli.ingest --vault-path ./evangelista-vault
+	python -m cli.ingest --vault-path ./vault
 
 watch:
-	python -m cli.ingest --vault-path ./evangelista-vault --watch
+	python -m cli.ingest --vault-path ./vault --watch
 
 stats:
 	python -m cli.ingest --stats
@@ -69,7 +69,7 @@ deploy-frontend:
 # === DEMO END-TO-END ===
 demo:
 	@echo "=== 1. Ingestando vault... ==="
-	python -m cli.ingest --vault-path ./evangelista-vault
+	python -m cli.ingest --vault-path ./vault
 	@echo ""
 	@echo "=== 2. Ejecutando análisis de prueba... ==="
 	python -m cli.orchestrate "Calcula el Setup Fee y analiza el proceso de inventarios para una empresa textilera con 2 plantas y 1 SAP"

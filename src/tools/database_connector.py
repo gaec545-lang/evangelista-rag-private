@@ -5,9 +5,11 @@ from src.utils.logger import get_logger
 
 logger = get_logger(__name__)
 
-# Configuración de conexión para Azure SQL (PyODBC)
-# Formato esperado: mssql+pyodbc://<username>:<password>@<server>.database.windows.net/<db>?driver=ODBC+Driver+17+for+SQL+Server
-DATABASE_URL = os.getenv("AZURE_SQL_CONNECTION_STRING", "sqlite:///./local_dev.db")
+# Configuración de conexión para PostgreSQL
+# Formato esperado: postgresql://<username>:<password>@<host>:<port>/<db>
+# Para async: postgresql+asyncpg://<username>:<password>@<host>:<port>/<db>
+DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://user:pass@localhost:5432/evangelista_db")
+ASYNC_DATABASE_URL = os.getenv("ASYNC_DATABASE_URL", "postgresql+asyncpg://user:pass@localhost:5432/evangelista_db")
 
 try:
     engine = create_engine(DATABASE_URL, pool_pre_ping=True)

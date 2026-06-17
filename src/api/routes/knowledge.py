@@ -64,6 +64,7 @@ async def search_knowledge(request: SearchRequest):
         results = await engine.search(
             query=request.query,
             agent_name=agent_name,
+            client_id=request.client_id,
             final_k=request.top_k,
         )
     except Exception as e:

@@ -101,20 +101,27 @@ from src.api.routes import (
     client_files,
     ai_chat,
 )
-from src.api.routes import templates
+from src.api.routes import templates, notarial
+
+from fastapi import Depends
+from src.api.middleware.auth import verify_jwt
+
+
+
 
 app.include_router(health.router, tags=["Health"])
-app.include_router(analyze.router, prefix="/api/v1", tags=["Analyze"])
-app.include_router(graph_viz.router, prefix="/api/v1", tags=["Graph Visualization"])
-app.include_router(agents.router, prefix="/api/v1", tags=["Agents"])
-app.include_router(knowledge.router, prefix="/api/v1", tags=["Knowledge"])
-app.include_router(proposals.router, prefix="/api/v1", tags=["Proposals"])
-app.include_router(erp_connections.router, tags=["ERP Connections"])
-app.include_router(team_management.router, tags=["Team"])
-app.include_router(monte_carlo.router, tags=["Sentinel Monte Carlo"])
-app.include_router(foundation_analysis.router, tags=["Foundation Analysis"])
-app.include_router(documents.router, prefix="/api/v1", tags=["Documents"])
-app.include_router(templates.router, tags=["Templates"])
-app.include_router(client_files.router, tags=["Client Files"])
-app.include_router(ai_chat.router, prefix="/api/v1", tags=["AI Chat"])
+app.include_router(analyze.router, prefix="/api/v1", tags=["Analyze"], dependencies=[Depends(verify_jwt)])
+app.include_router(graph_viz.router, prefix="/api/v1", tags=["Graph Visualization"], dependencies=[Depends(verify_jwt)])
+app.include_router(agents.router, prefix="/api/v1", tags=["Agents"], dependencies=[Depends(verify_jwt)])
+app.include_router(knowledge.router, prefix="/api/v1", tags=["Knowledge"], dependencies=[Depends(verify_jwt)])
+app.include_router(proposals.router, prefix="/api/v1", tags=["Proposals"], dependencies=[Depends(verify_jwt)])
+app.include_router(erp_connections.router, tags=["ERP Connections"], dependencies=[Depends(verify_jwt)])
+app.include_router(team_management.router, tags=["Team"], dependencies=[Depends(verify_jwt)])
+app.include_router(monte_carlo.router, tags=["Sentinel Monte Carlo"], dependencies=[Depends(verify_jwt)])
+app.include_router(foundation_analysis.router, tags=["Foundation Analysis"], dependencies=[Depends(verify_jwt)])
+app.include_router(documents.router, prefix="/api/v1", tags=["Documents"], dependencies=[Depends(verify_jwt)])
+app.include_router(templates.router, tags=["Templates"], dependencies=[Depends(verify_jwt)])
+app.include_router(client_files.router, tags=["Client Files"], dependencies=[Depends(verify_jwt)])
+app.include_router(notarial.router, dependencies=[Depends(verify_jwt)])
+app.include_router(ai_chat.router, prefix="/api/v1", tags=["AI Chat"], dependencies=[Depends(verify_jwt)])
 

@@ -40,6 +40,7 @@ class AgentExecuteResponse(BaseModel):
 
 class SearchRequest(BaseModel):
     query: str = Field(..., min_length=3)
+    client_id: str = Field(..., description="ID del cliente para filtrar vectores")
     agent: str = Field(default="all")
     top_k: int = Field(default=5, ge=1, le=20)
 
@@ -72,6 +73,7 @@ from typing import Literal
 
 class ChatRequest(BaseModel):
     message: str
+    client_id: str = Field(..., description="ID del cliente para filtrar contexto")
     agent_name: str
     project_phase: str | None = "scoping"
     project_context: ProjectContext | None = None
@@ -83,6 +85,7 @@ class ChatRequest(BaseModel):
 
 class ChatResponse(BaseModel):
     message: str
+    client_id: str = Field(..., description="ID del cliente para filtrar contexto")
     agent_used: str
     rag_status: str = "OK"
     avg_relevance: float = 0.0

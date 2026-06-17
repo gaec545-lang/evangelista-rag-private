@@ -24,7 +24,7 @@ services:
       qdrant:
         condition: service_healthy
     volumes:
-      - ../evangelista-vault:/app/evangelista-vault:ro
+      - ../Evangelista-Obsidian/evangelista-vault:/app/vault:ro
     environment:
       - QDRANT_MODE=server
       - QDRANT_HOST=qdrant

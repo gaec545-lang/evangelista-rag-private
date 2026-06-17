@@ -20,10 +20,7 @@ class CorrectivenessEvaluator:
         query: str
     ) -> EvaluationResult:
         """
-        Calcula weighted_score por chunk:
-            weighted_score = (0.6 * semantic_score) + (0.4 * bm25_score)
-        
-        Filtra chunks donde weighted_score < RELEVANCE_THRESHOLD.
+        Filtra chunks donde el score de Qdrant (RRF) < RELEVANCE_THRESHOLD.
         
         Si approved_chunks está vacío → status = "INSUFFICIENT_CONTEXT"
         Si hay al menos 1 chunk aprobado → status = "OK"
@@ -33,11 +30,7 @@ class CorrectivenessEvaluator:
         rejected_count = 0
         
         for chunk in chunks:
-            weighted_score = (0.6 * chunk.semantic_score) + (0.4 * chunk.bm25_score)
-            
-            if weighted_score >= self.RELEVANCE_THRESHOLD:
-                # Actualizar el score del chunk con el weighted score
-                chunk.score = weighted_score
+            if chunk.score >= self.RELEVANCE_THRESHOLD:
                 approved.append(chunk)
             else:
                 rejected_count += 1

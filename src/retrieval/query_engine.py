@@ -3,6 +3,7 @@ from qdrant_client.models import Filter
 
 from src.core.models import SearchResult
 from src.ingestion.embedder import Embedder
+from src.retrieval.filters import build_client_filter
 from src.retrieval.filters import (
     build_agent_filter,
     build_domain_filter,
@@ -62,6 +63,7 @@ class QueryEngine:
         self,
         query: str,
         agent_name: str,
+        client_id: str,
         domain_filter: list[str] | None = None,
         sector_filter: list[str] | None = None,
         type_filter: list[str] | None = None,
@@ -78,17 +80,32 @@ class QueryEngine:
             
             # 2. Construir filtros
             filters = [build_agent_filter(agent_name)]
+            filters.append(build_client_filter(client_id))
             if domain_filter:
                 filters.append(build_domain_filter(domain_filter))
             
             combined = combine_filters(*filters) if len(filters) > 1 else filters[0]
             
-            # 3. Buscar en Qdrant (Compatibilidad >=1.10 y anteriores)
+            # 3. Buscar en Qdrant con Búsqueda Híbrida (Densa + Dispersa)
             if hasattr(self.client, "query_points"):
+                from qdrant_client.models import Prefetch, FusionQuery, Fusion
                 response = self.client.query_points(
                     collection_name=self.collection,
-                    query=query_embedding,
-                    query_filter=combined,
+                    prefetch=[
+                        Prefetch(
+                            query=query_embedding,
+                            using="dense",
+                            filter=combined,
+                            limit=top_k * 2
+                        ),
+                        Prefetch(
+                            query=query, # Qdrant sparse vectors
+                            using="sparse",
+                            filter=combined,
+                            limit=top_k * 2
+                        )
+                    ],
+                    query=FusionQuery(fusion=Fusion.RRF),
                     limit=top_k
                 )
                 results = response.points
@@ -157,6 +174,7 @@ class QueryEngine:
         query: str,
         agent_name: str,
         project_phase: str,
+        client_id: str,
         project_context: dict = None,
         top_k: int = 8
     ) -> OrchestratedResult:
@@ -181,7 +199,7 @@ class QueryEngine:
                     embedder=self.embedder,
                     collection_name=self.collection
                 )
-                chunks = await hyde.retrieve(query, agent_name, top_k)
+                chunks = await hyde.retrieve(query, agent_name, client_id, top_k)
                 
                 if chunks:
                     hypothesis_used = True
@@ -189,10 +207,10 @@ class QueryEngine:
                     # Fallback automático a Hybrid si HyDE falla
                     retriever_used = "HYBRID (fallback de HYDE)"
                     hybrid = HybridRetriever(self.client, self.collection)
-                    chunks = await hybrid.retrieve(query, agent_name, top_k)
+                    chunks = await hybrid.retrieve(query, agent_name, client_id, top_k)
             else:
                 hybrid = HybridRetriever(self.client, self.collection)
-                chunks = await hybrid.retrieve(query, agent_name, top_k)
+                chunks = await hybrid.retrieve(query, agent_name, client_id, top_k)
             
             # PASO 3: Evaluar corrección
             evaluator = CorrectivenessEvaluator()

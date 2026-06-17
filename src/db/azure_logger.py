@@ -5,21 +5,25 @@ from datetime import datetime
 def log_run(pipeline_name: str, status: str, records_processed: int, error_message: str = None):
     """
     Registra la ejecución del pipeline en Azure SQL.
-    Asegurarse de que AZURE_SQL_CONNECTION_STRING esté en el entorno.
+    Asegurarse de que DATABASE_URL o AZURE_SQL_CONNECTION_STRING esté en el entorno.
     """
-    conn_str = os.environ.get("AZURE_SQL_CONNECTION_STRING")
+    conn_str = os.environ.get("AZURE_SQL_CONNECTION_STRING") or os.environ.get("DATABASE_URL")
     if not conn_str:
         print(f"[{datetime.now()}] MOCK Azure SQL LOG: Pipeline '{pipeline_name}' finished. Status: {status}. Records: {records_processed}. Error: {error_message}")
         return
         
     try:
-        conn = pyodbc.connect(conn_str)
+        if "pyodbc" not in conn_str and "Server=" in conn_str:
+            conn = pyodbc.connect(conn_str)
+        else:
+            # Simple mockup connection for the sake of the environment if we can't parse it
+            conn = pyodbc.connect(conn_str)
+            
         cursor = conn.cursor()
         
-        # Asume la existencia de la tabla pipeline_logs
         query = """
-        INSERT INTO pipeline_logs (pipeline_name, status, records_processed, error_message, execution_time)
-        VALUES (?, ?, ?, ?, GETDATE())
+        INSERT INTO data_library_runs (source, status, records_extracted, error_message, run_date, created_at)
+        VALUES (?, ?, ?, ?, SYSDATETIMEOFFSET(), SYSDATETIMEOFFSET())
         """
         cursor.execute(query, pipeline_name, status, records_processed, error_message)
         conn.commit()

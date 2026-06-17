@@ -90,6 +90,7 @@ class TestQueryEngine:
             query="¿Qué es ALCOA+?",
             agent_name="financial",
             final_k=5,
+            client_id="test_client"
         )
 
         # Verificar que query_points fue llamado con algún filtro
@@ -113,5 +114,5 @@ class TestQueryEngine:
         engine.reranker = MagicMock()
         engine.reranker.rerank = lambda q, r, k: r[:k]
 
-        results = await engine.search(query="test", agent_name="all")
+        results = await engine.search(query="test", agent_name="all", client_id="test_client")
         assert results == []

@@ -1,0 +1,7 @@
+FROM ghcr.io/ggerganov/llama.cpp:server
+
+EXPOSE 8080
+
+# Configurar punto de entrada optimizado para CPU y concurrencia.
+# Habilita embeddings (--embedding) y paralelismo moderado para reducir sobrecarga en CPU.
+ENTRYPOINT ["/llama-server", "--host", "0.0.0.0", "--port", "8080", "--model", "/models/google_gemma-4-E4B-it-Q5_K_M.gguf", "-c", "4096", "--embedding", "--parallel", "2"]

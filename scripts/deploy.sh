@@ -3,7 +3,7 @@ set -e
 
 echo "=== Deploy Evangelista Intelligence Platform ==="
 ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
-VAULT_DIR="$(cd "$ROOT_DIR/../evangelista-vault" && pwd)"
+VAULT_DIR="$(cd "$ROOT_DIR/vault" && pwd)"
 
 # 1. Ingestar vault al Qdrant Cloud
 echo ""

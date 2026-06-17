@@ -13,6 +13,7 @@ from src.core.models import SearchResult
 async def test_query_classifier_keywords():
     """Test 1: QueryClassifier — keywords exactos"""
     classifier = QueryClassifier()
+    classifier.CONFIDENCE_THRESHOLD = 0.1  # bajar umbral para test sin fallback LLM
     # Para evitar llamar al LLM en el test, comprobamos solo los keywords que dan alta confianza
     # "cómo estructurar" (PROCEDURAL)
     res_proc = await classifier.classify("¿Cómo estructuro un issue tree?")
@@ -32,15 +33,15 @@ def test_corrective_evaluator_threshold():
     evaluator = CorrectivenessEvaluator()
     evaluator.RELEVANCE_THRESHOLD = 0.65
 
-    # Chunk con semantic=0.8, bm25=0.6 → weighted = 0.6*0.8 + 0.4*0.6 = 0.48 + 0.24 = 0.72 (PASA)
+    # Chunk con score=0.72 (PASA)
     chunk_pass = RetrievedChunk(
         chunk_id="1", document_id="doc1", text="test", 
-        score=0.0, semantic_score=0.8, bm25_score=0.6, metadata={}
+        score=0.72, metadata={}
     )
-    # Chunk con semantic=0.4, bm25=0.3 → weighted = 0.6*0.4 + 0.4*0.3 = 0.24 + 0.12 = 0.36 (FALLA)
+    # Chunk con score=0.36 (FALLA)
     chunk_fail = RetrievedChunk(
         chunk_id="2", document_id="doc2", text="test", 
-        score=0.0, semantic_score=0.4, bm25_score=0.3, metadata={}
+        score=0.36, metadata={}
     )
 
     result = evaluator.evaluate([chunk_pass, chunk_fail], "query")
@@ -49,31 +50,19 @@ def test_corrective_evaluator_threshold():
     assert result.approved_chunks[0].chunk_id == "1"
 
 
-def test_reciprocal_rank_fusion():
-    """Test 3: RRF — orden correcto"""
-    hybrid = HybridRetriever(qdrant_client=MagicMock(), collection_name="test", embedder=AsyncMock())
+@pytest.mark.asyncio
+async def test_hybrid_retrieval_query_call():
+    """Test 3: Búsqueda híbrida llama a Qdrant correctamente"""
+    mock_client = MagicMock()
+    mock_client.query = MagicMock(return_value=[])
+    hybrid = HybridRetriever(qdrant_client=mock_client, collection_name="test", embedder=AsyncMock())
     
-    bm25 = [
-        ("chunk1", 0.9, "text1"), # rank 0
-        ("chunk2", 0.8, "text2"), # rank 1
-    ]
-    qdrant = [
-        ("chunk3", 0.85, {"text": "text3"}), # rank 0
-        ("chunk2", 0.80, {"text": "text2"}), # rank 1
-        ("chunk1", 0.70, {"text": "text1"}), # rank 2
-    ]
+    await hybrid.retrieve("query text", agent_name="financial", client_id="test_client", top_k=5)
     
-    # RRF (k=60):
-    # chunk1: 1/61 (bm25) + 1/63 (qdrant) = 0.01639 + 0.01587 = 0.03226
-    # chunk2: 1/62 (bm25) + 1/62 (qdrant) = 0.01612 + 0.01612 = 0.03224
-    # chunk3: 0 (bm25) + 1/61 (qdrant) = 0.01639
-    
-    fused = hybrid._reciprocal_rank_fusion(bm25, qdrant, k=60)
-    
-    assert len(fused) == 3
-    assert fused[0].chunk_id == "chunk1"
-    assert fused[1].chunk_id == "chunk2"
-    assert fused[2].chunk_id == "chunk3"
+    assert mock_client.query.called
+    kwargs = mock_client.query.call_args.kwargs
+    assert kwargs["query_text"] == "query text"
+    assert kwargs["limit"] == 5
 
 
 def test_insufficient_context():
@@ -83,7 +72,7 @@ def test_insufficient_context():
     
     chunk_fail = RetrievedChunk(
         chunk_id="1", document_id="doc1", text="test", 
-        score=0.0, semantic_score=0.4, bm25_score=0.3, metadata={}
+        score=0.4, metadata={}
     )
     result = evaluator.evaluate([chunk_fail], "query")
     
@@ -114,7 +103,7 @@ async def test_retrocompatibility_original_search():
     engine = QueryEngine(embedder=mock_embedder, collection="test_col")
     engine.client = mock_client
     
-    results = await engine.search(query="test", agent_name="financial", final_k=1)
+    results = await engine.search(query="test", agent_name="financial", final_k=1, client_id="test_client")
     
     assert len(results) == 1
     assert isinstance(results[0], SearchResult)

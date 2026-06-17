@@ -3,8 +3,13 @@
 __pycache__/
 *.pyc
 .env
+.env.*
+!.env.example
+._*
 .DS_Store
 qdrant_storage/
 qdrant_storage_v2/
 uvicorn_output*.txt
 .pytest_cache/
+.env*
+._*

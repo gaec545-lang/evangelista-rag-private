@@ -28,6 +28,7 @@ async def chat(request: ChatRequest, req: Request):
         rag_result = await query_engine.retrieve_orchestrated(
             query=request.message,
             agent_name=request.agent_name,
+            client_id=request.client_id,
             project_phase=request.project_phase,
             project_context=context_dict
         )

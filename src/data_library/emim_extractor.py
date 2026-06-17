@@ -122,9 +122,13 @@ class EMIMExtractor(BaseExtractor):
                         results[region_name][ind_name] = df
                     else:
                         api_failed = True
+                        break
                 except Exception as e:
                     print(f"Error extracting {ind_name} for {region_name}: {e}")
                     api_failed = True
+                    break
+            if api_failed:
+                break
                     
         # Verificar si faltan datos en los resultados y aplicar fallback si es necesario
         has_empty_results = any(not results[r] for r in ["nacional", "puebla"]) or any(len(results[r]) < len(INDICATORS) for r in ["nacional", "puebla"])

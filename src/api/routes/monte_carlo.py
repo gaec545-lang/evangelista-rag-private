@@ -1,7 +1,7 @@
 """Sentinel Monte Carlo Simulation Router — Evangelista Intelligence Platform.
 
 Endpoint protegido con:
-- JWT authentication via Supabase Auth
+- JWT authentication via Entra ID
 - Subscription ownership verification
 - Rate limiting (5 req/min por IP)
 - Pydantic validation estricta
@@ -309,7 +309,7 @@ async def simulate_monte_carlo(
     """Ejecuta simulacion Monte Carlo para una suscripcion Sentinel.
 
     Protegido por:
-    - JWT Auth (Supabase)
+    - JWT Auth (Entra ID)
     - Subscription ownership
     - Rate limiting (middleware)
     - Validacion Pydantic estricta
@@ -368,7 +368,7 @@ async def simulate_monte_carlo(
     sim_id = str(uuid.uuid4())
     _simulations[sim_id] = {
         "subscription_id": subscription_id,
-        "user_id": user.get("user_id"),
+        "user_id": user.get("oid"),
         "iterations": request.iterations,
         "num_variables": len(request.variables),
         "executed_at": datetime.now(timezone.utc).isoformat(),
@@ -380,7 +380,7 @@ async def simulate_monte_carlo(
         "monte_carlo_simulation_executed",
         simulation_id=sim_id,
         subscription_id=subscription_id,
-        user_id=user.get("user_id"),
+        user_id=user.get("oid"),
         iterations=request.iterations,
         duration_ms=_simulations[sim_id]["duration_ms"],
         num_variables=len(request.variables),

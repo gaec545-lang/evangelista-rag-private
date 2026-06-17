@@ -105,23 +105,83 @@ Write-Host "[3/4] Desplegando Storage..." -ForegroundColor Yellow
 
 # ── Kong (API Gateway) ──
 Write-Host "[4/4] Desplegando Kong (API Gateway)..." -ForegroundColor Yellow
+
+$SHARE_NAME = "kong-config"
+$STORAGE_MOUNT_NAME = "kong-volume"
+
+Write-Host "Configurando Azure Files para Kong..." -ForegroundColor Cyan
+& az storage share create --name $SHARE_NAME --account-name $STORAGE_ACCOUNT --account-key $STORAGE_KEY --output none
+
+$KONG_YML_PATH = Join-Path $PSScriptRoot "..\..\kong\kong.yml"
+if (-not (Test-Path $KONG_YML_PATH)) {
+    $KONG_YML_PATH = ".\kong\kong.yml"
+}
+& az storage file upload --account-name $STORAGE_ACCOUNT --account-key $STORAGE_KEY --share-name $SHARE_NAME --source $KONG_YML_PATH --path "kong.yml" --output none
+
+Write-Host "Vinculando Azure Files a Container Apps Env..." -ForegroundColor Cyan
+& az containerapp env storage set `
+    --name $ACA_ENV `
+    --resource-group $RG_NAME `
+    --storage-name $STORAGE_MOUNT_NAME `
+    --azure-file-account-name $STORAGE_ACCOUNT `
+    --azure-file-account-key $STORAGE_KEY `
+    --azure-file-share-name $SHARE_NAME `
+    --access-mode ReadOnly `
+    --output none
+
+Write-Host "Generando configuración YAML y creando Container App..." -ForegroundColor Cyan
+$ENV_ID = & az containerapp env show --name $ACA_ENV --resource-group $RG_NAME --query id -o tsv
+
+$KONG_YAML = @"
+location: $LOCATION
+properties:
+  environmentId: $ENV_ID
+  configuration:
+    ingress:
+      external: true
+      targetPort: 8000
+  template:
+    containers:
+      - name: ca-kong
+        image: kong:2.8.1
+        env:
+          - name: KONG_DATABASE
+            value: "off"
+          - name: KONG_DECLARATIVE_CONFIG
+            value: "/home/kong/kong.yml"
+          - name: KONG_DNS_ORDER
+            value: "LAST,A,CNAME"
+          - name: KONG_PLUGINS
+            value: "request-transformer,cors,key-auth,acl,basic-auth"
+          - name: SUPABASE_ANON_KEY
+            value: "$ANON_KEY"
+          - name: SUPABASE_SERVICE_KEY
+            value: "$SERVICE_ROLE_KEY"
+        resources:
+          cpu: 0.5
+          memory: 1Gi
+        volumeMounts:
+          - volumeName: kong-volume
+            mountPath: /home/kong
+    scale:
+      minReplicas: 1
+      maxReplicas: 3
+    volumes:
+      - name: kong-volume
+        storageType: AzureFile
+        storageName: kong-volume
+"@
+
+$KONG_YAML_PATH = "kong_app.yaml"
+$KONG_YAML | Set-Content $KONG_YAML_PATH -Encoding UTF8
+
 & az containerapp create `
     --name ca-kong `
     --resource-group $RG_NAME `
     --environment $ACA_ENV `
-    --image kong:2.8.1 `
-    --target-port 8000 `
-    --ingress external `
-    --min-replicas 1 `
-    --max-replicas 3 `
-    --cpu 0.5 --memory 1Gi `
-    --env-vars `
-        "KONG_DATABASE=off" `
-        "KONG_DECLARATIVE_CONFIG=/home/kong/kong.yml" `
-        "KONG_DNS_ORDER=LAST,A,CNAME" `
-        "KONG_PLUGINS=request-transformer,cors,key-auth,acl,basic-auth" `
-        "SUPABASE_ANON_KEY=$ANON_KEY" `
-        "SUPABASE_SERVICE_KEY=$SERVICE_ROLE_KEY"
+    --yaml $KONG_YAML_PATH
+
+Remove-Item $KONG_YAML_PATH
 
 Write-Host "=============================================" -ForegroundColor Green
 Write-Host " ¡DESPLIEGUE COMPLETADO!" -ForegroundColor Green

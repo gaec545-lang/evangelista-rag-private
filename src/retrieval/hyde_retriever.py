@@ -2,7 +2,7 @@ import logging
 import asyncio
 from typing import List
 from qdrant_client import QdrantClient
-from .filters import build_agent_filter
+from .filters import build_agent_filter, build_client_filter, combine_filters
 from .hybrid_retriever import RetrievedChunk
 from src.llm.ollama_client import OllamaClient
 from src.config import settings
@@ -36,6 +36,7 @@ Fragmento metodológico:"""
         self,
         query: str,
         agent_name: str,
+        client_id: str,
         top_k: int = 8
     ) -> List[RetrievedChunk]:
         """
@@ -56,11 +57,13 @@ Fragmento metodológico:"""
             
             # PASO 3: Buscar en Qdrant con embedding de hipótesis
             agent_filter = build_agent_filter(agent_name)
+            client_filter = build_client_filter(client_id)
+            combined_filter = combine_filters(agent_filter, client_filter)
             
             results = self.qdrant.search(
                 collection_name=self.collection,
                 query_vector=hypothesis_embedding,
-                query_filter=agent_filter,
+                query_filter=combined_filter,
                 limit=top_k,
                 with_payload=True
             )
