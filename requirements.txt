@@ -66,3 +66,8 @@ azure-keyvault-secrets>=4.8.0
 # LLM Local & Storage Support
 openai>=2.0.0
 azure-storage-file-share>=12.0.0
+
+# Password Hashing
+passlib[bcrypt]>=1.7.4
+bcrypt>=4.0.0
+
