@@ -7,6 +7,15 @@ from .database import Base
 def gen_uuid():
     return str(uuid.uuid4())
 
+class Usuario(Base):
+    __tablename__ = 'usuarios'
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    email = Column(String, unique=True, index=True, nullable=False)
+    hashed_password = Column(String, nullable=False)
+    rol = Column(String, default='socio', nullable=False)
+    created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
+    updated_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc))
+
 class Client(Base):
     __tablename__ = 'clients'
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)

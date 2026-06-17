@@ -101,7 +101,7 @@ from src.api.routes import (
     client_files,
     ai_chat,
 )
-from src.api.routes import templates, notarial
+from src.api.routes import templates, notarial, auth_routes
 
 from fastapi import Depends
 from src.api.middleware.auth import verify_jwt
@@ -109,6 +109,7 @@ from src.api.middleware.auth import verify_jwt
 
 
 
+app.include_router(auth_routes.router, prefix="/api/v1/auth", tags=["Auth"])
 app.include_router(health.router, tags=["Health"])
 app.include_router(analyze.router, prefix="/api/v1", tags=["Analyze"], dependencies=[Depends(verify_jwt)])
 app.include_router(graph_viz.router, prefix="/api/v1", tags=["Graph Visualization"], dependencies=[Depends(verify_jwt)])

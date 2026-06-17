@@ -62,6 +62,10 @@ class Settings(BaseSettings):
     DATABASE_URL: str = ""
     ASYNC_DATABASE_URL: str = ""
 
+    # Local Auth
+    JWT_SECRET_KEY: str = "a_very_secret_key_for_local_dev"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24
+
     model_config = {
         "env_file": ".env",
         "env_file_encoding": "utf-8",
