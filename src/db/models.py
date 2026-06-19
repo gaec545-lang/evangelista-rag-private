@@ -118,3 +118,21 @@ class EvaMemoria(Base):
     key = Column(String, nullable=False)
     value = Column(JSONB, nullable=False)
     created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
+
+from sqlalchemy import Integer
+
+class ProjectPhase(Base):
+    __tablename__ = 'projects_phases'
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    project_id = Column(UUID(as_uuid=True), ForeignKey('projects.id'), nullable=False)
+    phase_name = Column(String, nullable=False)
+    name = Column(String, nullable=True)
+    phase_order = Column(Integer, default=0)
+    status = Column(String, default='pendiente')
+    responsible = Column(String, nullable=True)
+    assigned_to_role = Column(String, nullable=True)
+    notes = Column(Text, nullable=True)
+    started_at = Column(DateTime(timezone=True), nullable=True)
+    completed_at = Column(DateTime(timezone=True), nullable=True)
+    created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
+    updated_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc))

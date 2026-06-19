@@ -14,6 +14,15 @@ async def lifespan(app: FastAPI):
     """Startup: registrar agentes y verificar servicios. Shutdown: cleanup."""
     logger.info("api_startup")
 
+    try:
+        from src.db.database import engine
+        from src.db.models import Base
+        async with engine.begin() as conn:
+            await conn.run_sync(Base.metadata.create_all)
+        logger.info("Database tables verified/created.")
+    except Exception as e:
+        logger.error(f"Error initializing database tables: {e}")
+
     # Importar especialistas para disparar auto-registro
     from src.agents import registry  # noqa: F401
 
@@ -126,4 +135,7 @@ app.include_router(templates.router, tags=["Templates"], dependencies=[Depends(v
 app.include_router(client_files.router, tags=["Client Files"], dependencies=[Depends(verify_jwt)])
 app.include_router(notarial.router, dependencies=[Depends(verify_jwt)])
 app.include_router(ai_chat.router, prefix="/api/v1", tags=["AI Chat"], dependencies=[Depends(verify_jwt)])
+
+from src.api.routes import db_crud
+app.include_router(db_crud.router, dependencies=[Depends(verify_jwt)])
 

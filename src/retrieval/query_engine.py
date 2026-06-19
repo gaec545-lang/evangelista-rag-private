@@ -206,10 +206,10 @@ class QueryEngine:
                 else:
                     # Fallback automático a Hybrid si HyDE falla
                     retriever_used = "HYBRID (fallback de HYDE)"
-                    hybrid = HybridRetriever(self.client, self.collection)
+                    hybrid = HybridRetriever(self.client, self.embedder, self.collection)
                     chunks = await hybrid.retrieve(query, agent_name, client_id, top_k)
             else:
-                hybrid = HybridRetriever(self.client, self.collection)
+                hybrid = HybridRetriever(self.client, self.embedder, self.collection)
                 chunks = await hybrid.retrieve(query, agent_name, client_id, top_k)
             
             # PASO 3: Evaluar corrección

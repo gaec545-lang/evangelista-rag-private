@@ -21,6 +21,9 @@ class HybridRetriever:
         # Assume FastEmbed or similar is generating sparse vectors if needed, 
         # or we just rely on Qdrant's sparse vector support via FastEmbed.
         
+    async def _build_bm25_index(self):
+        pass
+        
     async def retrieve(
         self, 
         query: str, 

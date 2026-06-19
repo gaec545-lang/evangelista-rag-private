@@ -85,7 +85,7 @@ class ChatRequest(BaseModel):
 
 class ChatResponse(BaseModel):
     message: str
-    client_id: str = Field(..., description="ID del cliente para filtrar contexto")
+    client_id: str | None = Field(default=None, description="ID del cliente para filtrar contexto")
     agent_used: str
     rag_status: str = "OK"
     avg_relevance: float = 0.0
