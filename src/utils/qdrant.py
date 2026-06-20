@@ -16,8 +16,9 @@ def get_qdrant_client() -> QdrantClient:
                 logger.info("inicializando_qdrant_local", path=settings.QDRANT_LOCAL_PATH)
                 _shared_client = QdrantClient(path=settings.QDRANT_LOCAL_PATH)
             else:
-                logger.info("inicializando_qdrant_server", host=settings.QDRANT_HOST, port=settings.QDRANT_PORT)
-                _shared_client = QdrantClient(host=settings.QDRANT_HOST, port=settings.QDRANT_PORT)
+                https = settings.QDRANT_PORT == 443
+                logger.info("inicializando_qdrant_server", host=settings.QDRANT_HOST, port=settings.QDRANT_PORT, https=https)
+                _shared_client = QdrantClient(host=settings.QDRANT_HOST, port=settings.QDRANT_PORT, https=https)
         except Exception as e:
             logger.error("error_inicializando_qdrant", error=str(e))
             raise
