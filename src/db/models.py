@@ -28,6 +28,9 @@ class Project(Base):
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     client_id = Column(UUID(as_uuid=True), ForeignKey('clients.id'), nullable=False)
     name = Column(String, nullable=False)
+    status = Column(String, default="active", nullable=False)
+    current_phase = Column(String, default="Scoping", nullable=False)
+    total_price = Column(String, default="0.00", nullable=False)
     created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
     updated_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc))
 

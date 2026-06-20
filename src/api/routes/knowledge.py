@@ -95,7 +95,7 @@ async def trigger_ingest(vault_path: str = Query(default=None)):
         embedder = Embedder()
         indexer = Indexer()
 
-        await indexer.ensure_collection()
+        indexer.ensure_collection()
         documents = parser.parse_directory(path)
 
         total_chunks = 0
@@ -107,7 +107,7 @@ async def trigger_ingest(vault_path: str = Query(default=None)):
                 continue
             chunks = chunker.chunk(doc)
             chunks_with_embeddings = await embedder.embed_batch(chunks)
-            await indexer.upsert_chunks(chunks_with_embeddings, doc)
+            indexer.upsert_chunks(chunks_with_embeddings)
             total_chunks += len(chunks_with_embeddings)
 
         stats = {

@@ -300,7 +300,7 @@ def _generate_recommendations(stats: dict) -> dict:
 # ─── Endpoints ───
 
 
-@router.post("{subscription_id}/simulate", response_model=dict, tags=["Sentinel"])
+@router.post("/{subscription_id}/simulate", response_model=dict, tags=["Sentinel"])
 async def simulate_monte_carlo(
     subscription_id: str,
     request: MonteCarloRequest,
@@ -404,7 +404,7 @@ async def simulate_monte_carlo(
     }
 
 
-@router.get("{subscription_id}/simulations", response_model=list[dict], tags=["Sentinel"])
+@router.get("/{subscription_id}/simulations", response_model=list[dict], tags=["Sentinel"])
 async def list_simulations(
     subscription_id: str,
     limit: int = 10,

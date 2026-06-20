@@ -95,3 +95,27 @@ async def generate_expediente_pdf(
     
     return {"status": "ok", "pdf_url": pdf_path, "pdf_id": str(pdf_id)}
 
+@router.get("/documentos")
+async def list_documentos(
+    client_id: UUID | None = None,
+    user: dict = Depends(verify_jwt),
+    db: AsyncSession = Depends(get_db)
+):
+    stmt = select(Documento)
+    if client_id:
+        stmt = stmt.where(Documento.client_id == client_id)
+    result = await db.execute(stmt)
+    return result.scalars().all()
+
+@router.get("/bitacora")
+async def list_bitacora(
+    client_id: UUID | None = None,
+    user: dict = Depends(verify_jwt),
+    db: AsyncSession = Depends(get_db)
+):
+    stmt = select(Bitacora)
+    if client_id:
+        stmt = stmt.where(Bitacora.client_id == client_id)
+    result = await db.execute(stmt)
+    return result.scalars().all()
+

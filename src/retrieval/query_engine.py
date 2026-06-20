@@ -63,7 +63,7 @@ class QueryEngine:
         self,
         query: str,
         agent_name: str,
-        client_id: str,
+        client_id: str | None = None,
         domain_filter: list[str] | None = None,
         sector_filter: list[str] | None = None,
         type_filter: list[str] | None = None,
@@ -80,7 +80,8 @@ class QueryEngine:
             
             # 2. Construir filtros
             filters = [build_agent_filter(agent_name)]
-            filters.append(build_client_filter(client_id))
+            if client_id:
+                filters.append(build_client_filter(client_id))
             if domain_filter:
                 filters.append(build_domain_filter(domain_filter))
             
@@ -174,7 +175,7 @@ class QueryEngine:
         query: str,
         agent_name: str,
         project_phase: str,
-        client_id: str,
+        client_id: str | None = None,
         project_context: dict = None,
         top_k: int = 8
     ) -> OrchestratedResult:
@@ -186,7 +187,7 @@ class QueryEngine:
         try:
             # PASO 1: Clasificar query
             classifier = QueryClassifier()
-            classification = classifier.classify(query)
+            classification = await classifier.classify(query)
             
             hypothesis_used = False
             chunks = []

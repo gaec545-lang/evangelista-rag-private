@@ -9,6 +9,7 @@ from pydantic import BaseModel
 from src.api.middleware.auth import verify_jwt
 from src.db.database import get_db
 from src.db.models import Client, Project, Finding, Hypothesis, ProjectPhase
+from src.db.repositories import BaseRepository
 
 router = APIRouter(prefix="/api/v1", tags=["DB CRUD"])
 
@@ -34,6 +35,9 @@ class ClientResponse(ClientBase):
 class ProjectBase(BaseModel):
     client_id: UUID
     name: str
+    status: str = "active"
+    current_phase: str = "Scoping"
+    total_price: str = "0.00"
 
 class ProjectCreate(ProjectBase):
     pass
@@ -41,6 +45,9 @@ class ProjectCreate(ProjectBase):
 class ProjectUpdate(BaseModel):
     client_id: Optional[UUID] = None
     name: Optional[str] = None
+    status: Optional[str] = None
+    current_phase: Optional[str] = None
+    total_price: Optional[str] = None
 
 class ProjectResponse(ProjectBase):
     id: UUID
@@ -166,6 +173,8 @@ async def create_client(
     db.add(client)
     await db.commit()
     await db.refresh(client)
+    repo = BaseRepository(db, client.id)
+    await repo.log_to_bitacora("CREATE_CLIENT", "Client", str(client.id), user.get("oid"))
     return client
 
 @router.put("/clients/{id}", response_model=ClientResponse)
@@ -187,6 +196,8 @@ async def update_client(
     
     await db.commit()
     await db.refresh(client)
+    repo = BaseRepository(db, client.id)
+    await repo.log_to_bitacora("UPDATE_CLIENT", "Client", str(client.id), user.get("oid"))
     return client
 
 @router.delete("/clients/{id}")
@@ -203,6 +214,8 @@ async def delete_client(
     
     await db.delete(client)
     await db.commit()
+    repo = BaseRepository(db, client.id)
+    await repo.log_to_bitacora("DELETE_CLIENT", "Client", str(client.id), user.get("oid"))
     return {"status": "success", "message": "Client deleted"}
 
 
@@ -245,6 +258,8 @@ async def create_project(
     db.add(project)
     await db.commit()
     await db.refresh(project)
+    repo = BaseRepository(db, project.client_id)
+    await repo.log_to_bitacora("CREATE_PROJECT", "Project", str(project.id), user.get("oid"))
     return project
 
 @router.put("/projects/{id}", response_model=ProjectResponse)
@@ -266,6 +281,8 @@ async def update_project(
     
     await db.commit()
     await db.refresh(project)
+    repo = BaseRepository(db, project.client_id)
+    await repo.log_to_bitacora("UPDATE_PROJECT", "Project", str(project.id), user.get("oid"))
     return project
 
 @router.delete("/projects/{id}")
@@ -280,8 +297,11 @@ async def delete_project(
     if not project:
         raise HTTPException(status_code=404, detail="Project not found")
     
+    client_id = project.client_id
     await db.delete(project)
     await db.commit()
+    repo = BaseRepository(db, client_id)
+    await repo.log_to_bitacora("DELETE_PROJECT", "Project", str(project.id), user.get("oid"))
     return {"status": "success", "message": "Project deleted"}
 
 

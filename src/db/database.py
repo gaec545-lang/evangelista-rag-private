@@ -4,7 +4,9 @@ from sqlalchemy.orm import declarative_base
 
 from urllib.parse import urlparse, parse_qs, urlencode, urlunparse
 
-DATABASE_URL = os.getenv("ASYNC_DATABASE_URL") or os.getenv("DATABASE_URL") or "postgresql+asyncpg://user:password@localhost/dbname"
+from src.config import settings
+
+DATABASE_URL = settings.ASYNC_DATABASE_URL or settings.DATABASE_URL or "postgresql+asyncpg://user:password@localhost/dbname"
 if DATABASE_URL.startswith("postgresql://"):
     DATABASE_URL = DATABASE_URL.replace("postgresql://", "postgresql+asyncpg://", 1)
 

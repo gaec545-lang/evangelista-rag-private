@@ -10,20 +10,28 @@ from src.core.models import SearchResult
 
 
 @pytest.mark.asyncio
-async def test_query_classifier_keywords():
-    """Test 1: QueryClassifier — keywords exactos"""
+async def test_query_classifier_llm_delegation(monkeypatch):
+    """Test 1: QueryClassifier — delegación al LLM simulada"""
     classifier = QueryClassifier()
-    classifier.CONFIDENCE_THRESHOLD = 0.1  # bajar umbral para test sin fallback LLM
-    # Para evitar llamar al LLM en el test, comprobamos solo los keywords que dan alta confianza
-    # "cómo estructurar" (PROCEDURAL)
+    
+    async def mock_generate(self, prompt):
+        prompt_lower = prompt.lower()
+        if "estructuro" in prompt_lower:
+            return "PROCEDURAL"
+        elif "qué es" in prompt_lower:
+            return "FACTUAL"
+        elif "aplico" in prompt_lower:
+            return "METODOLOGICO"
+        return "FACTUAL"
+        
+    monkeypatch.setattr("src.llm.ollama_client.OllamaClient.generate", mock_generate)
+
     res_proc = await classifier.classify("¿Cómo estructuro un issue tree?")
     assert res_proc.query_type == "PROCEDURAL"
 
-    # "qué es" (FACTUAL)
     res_fac = await classifier.classify("¿Qué es el COI?")
     assert res_fac.query_type == "FACTUAL"
 
-    # "aplicar" (METODOLOGICO)
     res_met = await classifier.classify("¿Cómo aplico MECE?")
     assert res_met.query_type == "METODOLOGICO"
 

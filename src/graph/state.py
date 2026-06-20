@@ -12,8 +12,11 @@ Ciclos posibles:
 from __future__ import annotations
 
 from pydantic import BaseModel, Field
-from typing import Optional, Literal
+from typing import Optional, Literal, Annotated
 from enum import Enum
+
+def reduce_list(left: list | None, right: list | None) -> list:
+    return (left or []) + (right or [])
 
 
 class NodeStatus(str, Enum):
@@ -50,6 +53,12 @@ class GraphState(BaseModel):
     question: str                                       # Pregunta original del usuario
     context: dict = Field(default_factory=dict)         # Metadata de sesión / cliente
     thread_id: str = "default"                          # ID de sesión para trazabilidad
+    scqa_input: dict = Field(default_factory=dict)
+    current_agent: Optional[str] = None
+    financial_hypothesis: dict = Field(default_factory=dict)
+    process_friction: dict = Field(default_factory=dict)
+    data_viability: dict = Field(default_factory=dict)
+    swarm_consensus: str = ""
 
     # ─── ROUTING ──────────────────────────────────────────────────────────────
     route: Optional[Literal["rag", "tools", "web", "multi"]] = None
@@ -84,14 +93,14 @@ class GraphState(BaseModel):
 
     # ─── META ─────────────────────────────────────────────────────────────────
     current_node: str = ""
-    node_history: list[str] = Field(default_factory=list)
+    node_history: Annotated[list[str], reduce_list] = Field(default_factory=list)
     retry_count: int = 0
     max_retries: int = 2
     errors: list[str] = Field(default_factory=list)
     execution_time_ms: int = 0
 
     # ─── MERMAID LOG (para /api/v1/graph/state/{id}) ──────────────────────────
-    mermaid_log: list[dict] = Field(default_factory=list)
+    mermaid_log: Annotated[list[dict], reduce_list] = Field(default_factory=list)
     # Formato: [{"node": "router", "status": "completed", "timestamp": "...", "detail": "..."}]
 
     def log_node(self, node: str, status: NodeStatus, detail: str = "") -> dict:

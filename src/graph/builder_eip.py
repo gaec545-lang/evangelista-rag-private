@@ -85,16 +85,27 @@ def build_eip_graph() -> StateGraph:
 
     def financial_tool_route(state: GraphState) -> str:
         """Financial Agent → RAG / Sandbox / Consenso."""
-        # TODO: lógica real de decisión basada en el estado
+        if state.route == "rag":
+            return "rag_node"
+        elif state.route in ("tools", "sandbox"):
+            return "sandbox_node"
         return "consensus"
 
     def process_tool_route(state: GraphState) -> str:
         """Process Agent → RAG / Sandbox / Financial o Consenso."""
-        return "consensus"
+        if state.route == "rag":
+            return "rag_node"
+        elif state.route in ("tools", "sandbox"):
+            return "sandbox_node"
+        return "consensus" if state.swarm_consensus else "financial_node"
 
     def data_eng_tool_route(state: GraphState) -> str:
         """DataEng Agent → RAG / Sandbox / Financial o Consenso."""
-        return "consensus"
+        if state.route == "rag":
+            return "rag_node"
+        elif state.route in ("tools", "sandbox"):
+            return "sandbox_node"
+        return "consensus" if state.swarm_consensus else "financial_node"
 
     # ── Financial Agent ── conditional a herramientas o consenso ──────────
     workflow.add_conditional_edges(
