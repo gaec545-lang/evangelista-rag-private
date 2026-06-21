@@ -1,5 +1,6 @@
 """FastAPI app principal — Evangelista Intelligence Platform."""
 from contextlib import asynccontextmanager
+from sqlalchemy import text
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from src.utils.logger import get_logger
@@ -19,7 +20,13 @@ async def lifespan(app: FastAPI):
         from src.db.models import Base
         async with engine.begin() as conn:
             await conn.run_sync(Base.metadata.create_all)
-        logger.info("Database tables verified/created.")
+            try:
+                await conn.execute(text("ALTER TABLE projects ADD COLUMN IF NOT EXISTS status VARCHAR DEFAULT 'active' NOT NULL;"))
+                await conn.execute(text("ALTER TABLE projects ADD COLUMN IF NOT EXISTS current_phase VARCHAR DEFAULT 'Scoping' NOT NULL;"))
+                await conn.execute(text("ALTER TABLE projects ADD COLUMN IF NOT EXISTS total_price VARCHAR DEFAULT '0.00' NOT NULL;"))
+                logger.info("Database migration: projects table columns verified.")
+            except Exception as e:
+                logger.warning(f"Database migration warning: {e}")
     except Exception as e:
         logger.error(f"Error initializing database tables: {e}")
 
