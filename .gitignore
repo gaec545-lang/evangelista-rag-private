@@ -13,3 +13,4 @@ uvicorn_output*.txt
 .pytest_cache/
 .env*
 ._*
+google_gemma-4-E4B-it-GGUF/

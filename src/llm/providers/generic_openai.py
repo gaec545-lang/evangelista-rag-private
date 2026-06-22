@@ -1,6 +1,5 @@
 import os
 from typing import Optional, Dict, Any
-from openai import AsyncOpenAI
 import structlog
 from src.llm.config import LLMModelConfig
 
@@ -18,6 +17,7 @@ class GenericOpenAIProvider:
             # Intentar usar una genérica si no hay específica
             api_key = os.getenv("OPENAI_API_KEY", "no-key")
 
+        from openai import AsyncOpenAI
         self.client = AsyncOpenAI(
             api_key=api_key,
             base_url=config.base_url

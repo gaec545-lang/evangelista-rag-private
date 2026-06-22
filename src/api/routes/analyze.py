@@ -4,6 +4,7 @@ from src.graph.builder import run_graph
 from src.viz.mermaid_renderer import render_execution_trace
 from src.api.schemas.requests import AnalyzeRequest, AnalyzeResponse
 from src.utils.logger import get_logger
+from src.graph.builder_eip import run_eip_graph
 
 router = APIRouter()
 logger = get_logger(__name__)
@@ -15,10 +16,19 @@ async def analyze(request: AnalyzeRequest):
     logger.info("analyze_request_graph", task=request.task[:80])
 
     try:
-        state = await run_graph(
-            question=request.task,
-            context=request.context,
-        )
+        task_lower = request.task.lower()
+        is_complex = "multi" in task_lower or "complejo" in task_lower or "análisis" in task_lower or "analisis" in task_lower
+
+        if is_complex:
+            state = await run_eip_graph(
+                scqa_input={"task": request.task},
+                context=request.context,
+            )
+        else:
+            state = await run_graph(
+                question=request.task,
+                context=request.context,
+            )
 
         return AnalyzeResponse(
             status="completed",

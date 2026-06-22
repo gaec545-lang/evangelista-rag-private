@@ -60,9 +60,12 @@ class GraphState(BaseModel):
     data_viability: dict = Field(default_factory=dict)
     swarm_consensus: str = ""
 
-    # ─── ROUTING ──────────────────────────────────────────────────────────────
+    # ─── ROUTING & SWARM ──────────────────────────────────────────────────────
     route: Optional[Literal["rag", "tools", "web", "multi"]] = None
     route_reasoning: str = ""
+    tasks: list[dict] = Field(default_factory=list)
+    active_agents: list[str] = Field(default_factory=list)
+    grader_feedback: Annotated[list[dict], reduce_list] = Field(default_factory=list)
 
     # ─── RETRIEVAL ────────────────────────────────────────────────────────────
     documents: list[RetrievedDocument] = Field(default_factory=list)
@@ -81,9 +84,11 @@ class GraphState(BaseModel):
     generation: str = ""
     generation_sources: list[str] = Field(default_factory=list)
 
-    # ─── SELF-REFLECTIVE RAG ──────────────────────────────────────────────────
+    # ─── SELF-REFLECTIVE RAG ──────────────────────────────────────────────────    # 🟢 SELF-REFLECTIVE RAG 🟢
     hallucination_check: Optional[bool] = None          # True = grounded | False = hallucinated
     hallucination_reasoning: str = ""
+    hallucination_flag: bool = False                    # EIP Swarm: True = alucinacion
+    rejection_reason: str = ""
     quality_check: Optional[bool] = None                # True = útil | False = no responde
     quality_reasoning: str = ""
 

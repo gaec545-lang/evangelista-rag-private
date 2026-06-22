@@ -1,30 +1,81 @@
 """
-Nodo Router del Enjambre Multi-Agente EIP.
+Nodo Router del Enjambre Multi-Agente EIP (Orquestador).
 
 Recibe el SCQA del Consultor y asigna el trabajo al Enjambre de Agentes.
-No bifurca entre RAG y Sandbox — los agentes son los que consultan
-las herramientas durante su razonamiento (PED — Protocolo de Ejecución Determinista).
+Usa partición de modelos: Groq 8B para ruteo rápido y validación de complejidad.
 """
 from __future__ import annotations
 
+import json
 from ..state import GraphState, NodeStatus
+from src.llm.factory import get_llm_client
 import structlog
 
 logger = structlog.get_logger(__name__)
 
+ROUTER_PROMPT = """Eres el Orquestador del Concilio Maestro de Evangelista & Co.
+Dada la siguiente consulta del usuario, debes descomponerla en tareas para los subagentes especialistas y decidir cuáles activar.
 
-def eip_router(state: GraphState) -> dict:
-    """
-    Asigna el trabajo al Enjambre de Agentes.
+Agentes disponibles:
+- "financial": Especialista en finanzas corporativas, valuaciones, modelos de precios.
+- "process": Especialista en procesos, reingeniería, mapas de valor, operaciones.
+- "data_engineer": Especialista en arquitectura de datos, ETL, viabilidad de datos.
 
-    TODO: Implementar lógica de assignment basada en el tipo de scqa_input.
-    Por ahora, inicia en el Financial Agent.
+Responde SOLO con un JSON estricto con esta estructura:
+{{
+  "active_agents": ["financial", "process"],
+  "tasks": [
+    {{"agent": "financial", "task": "Calcular la Tasa de Descuento"}},
+    {{"agent": "process", "task": "Mapear procesos As-Is"}}
+  ]
+}}
+
+Consulta: {question}
+SCQA Contexto: {scqa}
+Feedback anterior: {feedback}
+"""
+
+async def eip_router(state: GraphState) -> dict:
     """
-    log = state.log_node("eip_router", NodeStatus.COMPLETED, "assigned_to_swarm")
-    logger.info("eip_router", scqa=state.scqa_input)
+    Asigna el trabajo al Enjambre de Agentes basándose en la complejidad y la pregunta.
+    """
+    llm = get_llm_client("groq-llama-8b")
+    
+    feedback_text = str(state.grader_feedback) if state.grader_feedback else "Ninguno"
+    
+    response = await llm.generate(
+        prompt=ROUTER_PROMPT.format(
+            question=state.question if getattr(state, "question", None) else str(state.scqa_input),
+            scqa=state.scqa_input,
+            feedback=feedback_text
+        ),
+        system_prompt="",
+        temperature=0.0,
+        max_tokens=300
+    )
+    
+    try:
+        clean = response.strip()
+        if clean.startswith("```"):
+            clean = clean.split("```")[1].replace("json", "").strip()
+        parsed = json.loads(clean)
+        active_agents = parsed.get("active_agents", ["financial"])
+        tasks = parsed.get("tasks", [{"agent": "financial", "task": "Responder consulta general"}])
+    except (json.JSONDecodeError, KeyError) as e:
+        logger.error("eip_router_parse_error", error=str(e), response=response)
+        active_agents = ["financial"]
+        tasks = [{"agent": "financial", "task": "Responder consulta general (Fallback)"}]
+    
+    log = state.log_node("eip_router", NodeStatus.COMPLETED, f"assigned_to: {active_agents}")
+    logger.info("eip_router_success", active_agents=active_agents, tasks=tasks)
+
+    # Multi route para el distribuidor
+    route = "multi" if len(active_agents) > 1 else "rag"
 
     return {
-        "current_agent": "financial",
-        "node_history": [*state.node_history, "eip_router"],
-        "mermaid_log": [*state.mermaid_log, log],
+        "active_agents": active_agents,
+        "tasks": tasks,
+        "route": route,
+        "node_history": state.node_history + ["eip_router"],
+        "mermaid_log": state.mermaid_log + [log],
     }

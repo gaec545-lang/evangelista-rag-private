@@ -228,6 +228,7 @@ async def run_eip_graph(
 
     compiled = build_eip_graph()
     initial_state = GraphState(
+        question=scqa_input.get("question", ""),
         scqa_input=scqa_input,
         context=context or {},
         thread_id=thread_id,

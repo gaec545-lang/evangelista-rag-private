@@ -12,26 +12,43 @@ import structlog
 logger = structlog.get_logger(__name__)
 
 
-def eip_synthesizer(state: GraphState) -> dict:
+async def eip_synthesizer(state: GraphState) -> dict:
     """
-    Synthesizer — convierte el swarm_consensus en final_pdf_data.
+    Synthesizer — convierte el swarm_consensus en final_response (Markdown) y final_pdf_data.
+    """
+    from src.llm.factory import get_llm_client
+    llm = get_llm_client()
 
-    TODO: Integrar con proposals/generator.py para estampado en PDF.
+    system_prompt = "Eres un consultor senior redactando un informe final ejecutivo y pulido."
+    prompt = f"""
+    Redacta una respuesta final pulida en formato Markdown basándote en el siguiente consenso
+    del enjambre de agentes:
+    
+    {state.swarm_consensus}
+    
+    Asegúrate de que la respuesta sea profesional, estructurada, clara y lista para presentar.
     """
+    
+    try:
+        final_markdown = await llm.generate(prompt=prompt, system_prompt=system_prompt)
+    except Exception as e:
+        logger.error("eip_synthesizer_generation_error", error=str(e))
+        final_markdown = f"Error al generar síntesis: {str(e)}\n\nConsenso original:\n{state.swarm_consensus}"
+
     log = state.log_node("eip_synthesizer", NodeStatus.COMPLETED, "synthesis_complete")
     logger.info("eip_synthesizer")
 
     pdf_data = {
-        "executive_summary": "pending_implementation",
+        "executive_summary": "Generado desde síntesis",
         "kpi_impact": {},
-        "recommendations": state.swarm_consensus.get("recommendations", []),
+        "recommendations": [],
         "cost_of_inaction": 0.0,
         "sources": [],
     }
 
     return {
         "final_pdf_data": pdf_data,
-        "final_response": "Synthesis complete (stub)",
+        "final_response": final_markdown,
         "node_history": [*state.node_history, "eip_synthesizer"],
         "mermaid_log": [*state.mermaid_log, log],
     }
