@@ -19,7 +19,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          submodules: 'true'
+          submodules: recursive
           token: ${{ secrets.GH_PAT }}
 
       - name: Log in to Azure
@@ -34,11 +34,13 @@ jobs:
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
       - name: Build and push backend image
+        working-directory: Backend
         run: |
           docker build -t ${{ env.ACR_LOGIN_SERVER }}/${{ env.CONTAINER_APP_NAME }}:${{ github.sha }} -t ${{ env.ACR_LOGIN_SERVER }}/${{ env.CONTAINER_APP_NAME }}:latest .
           docker push ${{ env.ACR_LOGIN_SERVER }}/${{ env.CONTAINER_APP_NAME }}:${{ github.sha }}
           docker push ${{ env.ACR_LOGIN_SERVER }}/${{ env.CONTAINER_APP_NAME }}:latest
 
+      # ponytail: align to use Groq provider and secure port 443 for Qdrant
       - name: Deploy to Azure Container App
         uses: azure/container-apps-deploy-action@v2
         with:
@@ -49,4 +51,4 @@ jobs:
           ingress: external
           targetPort: 8000
           arguments: |
-            --env-vars LLM_PROVIDER=openai_generic LLM_MODEL=gemma-local LOCAL_LLM_URL=http://app-evangelista-llm.internal.jollyflower-774ba306.eastus2.azurecontainerapps.io/v1 DATABASE_URL="postgresql://evangelista_admin:Evangelista.Pass7990*@pg-evangelista-7990.postgres.database.azure.com:5432/db_evangelista?sslmode=require" ASYNC_DATABASE_URL="postgresql+asyncpg://evangelista_admin:Evangelista.Pass7990*@pg-evangelista-7990.postgres.database.azure.com:5432/db_evangelista?sslmode=require" QDRANT_MODE=server QDRANT_HOST=app-evangelista-qdrant.internal.jollyflower-774ba306.eastus2.azurecontainerapps.io QDRANT_PORT=80
+            --env-vars LLM_PROVIDER=groq LLM_MODEL=groq-llama-70b GROQ_API_KEY="${{ secrets.GROQ_API_KEY }}" DATABASE_URL="${{ secrets.DATABASE_URL }}" ASYNC_DATABASE_URL="${{ secrets.ASYNC_DATABASE_URL }}" QDRANT_MODE=server QDRANT_HOST=app-evangelista-qdrant.internal.jollyflower-774ba306.eastus2.azurecontainerapps.io QDRANT_PORT=443

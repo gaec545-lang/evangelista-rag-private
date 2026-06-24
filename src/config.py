@@ -73,6 +73,7 @@ class Settings(BaseSettings):
     }
 
     def load_secrets(self):
+        # ponytail: BaseSettings reads env vars first; Azure Key Vault overrides if AZURE_KEY_VAULT_URL is set.
         if not self.AZURE_KEY_VAULT_URL:
             return
         
