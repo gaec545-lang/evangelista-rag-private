@@ -44,6 +44,7 @@ async def lifespan(app: FastAPI):
 
     try:
         from src.utils.qdrant import get_qdrant_client
+        qdrant_client = get_qdrant_client()
         from src.retrieval.hybrid_retriever import HybridRetriever
         logger.info("Building BM25 index from Qdrant vault...")
         from src.ingestion.embedder import Embedder
