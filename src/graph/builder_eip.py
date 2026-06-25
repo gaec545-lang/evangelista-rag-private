@@ -107,7 +107,9 @@ def build_eip_graph() -> StateGraph:
         # ponytail: route to next agent in sequence
         if "data_engineer" in state.active_agents:
             return "data_engineer_node"
-        return "financial_node"
+        if "financial" in state.active_agents:
+            return "financial_node"
+        return "consensus"
 
     def data_eng_tool_route(state: GraphState) -> str:
         """DataEng Agent → RAG / Sandbox / Financial."""
@@ -115,7 +117,9 @@ def build_eip_graph() -> StateGraph:
             return "rag_node"
         elif state.route in ("tools", "sandbox"):
             return "sandbox_node"
-        return "financial_node"
+        if "financial" in state.active_agents:
+            return "financial_node"
+        return "consensus"
 
     # ── Financial Agent ── conditional a herramientas o consenso ──────────
     workflow.add_conditional_edges(
@@ -138,6 +142,7 @@ def build_eip_graph() -> StateGraph:
             "sandbox_node": "sandbox_node",
             "data_engineer_node": "data_engineer_node",
             "financial_node": "financial_node",
+            "consensus": "consensus",
         },
     )
 
@@ -149,6 +154,7 @@ def build_eip_graph() -> StateGraph:
             "rag_node": "rag_node",
             "sandbox_node": "sandbox_node",
             "financial_node": "financial_node",
+            "consensus": "consensus",
         },
     )
 
@@ -207,12 +213,14 @@ def build_eip_graph() -> StateGraph:
     # ═══════════════════════════════════════════════════════════════════════
     # Grader → rechaza (vuelta al ENJAMBRE) o aprueba (synth)
     # ═══════════════════════════════════════════════════════════════════════
-    # CORRECCIÓN: rechazo VA al enjambre (financial_node), NO a consensus
+    # CORRECCIÓN: rechazo VA al enjambre (primer agente activo), NO a consensus
     workflow.add_conditional_edges(
         "eip_grader",
         decide_after_eip_grader,
         {
-            "financial_node": "financial_node",      # rechazo: regenerar
+            "process_node": "process_node",
+            "data_engineer_node": "data_engineer_node",
+            "financial_node": "financial_node",
             "eip_synthesizer": "eip_synthesizer",     # aprobado
         },
     )

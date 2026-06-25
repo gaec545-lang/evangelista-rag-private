@@ -26,6 +26,9 @@ class MarkdownParser:
         path = Path(file_path)
         try:
             raw = path.read_text(encoding="utf-8")
+        except UnicodeDecodeError:
+            # ponytail: utf-8 failed, try cp1252 for emojis/windows quirks
+            raw = path.read_text(encoding="cp1252")
         except OSError as e:
             logger.warning("error_leyendo_archivo", path=str(path), error=str(e))
             return None

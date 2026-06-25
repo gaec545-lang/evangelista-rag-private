@@ -69,13 +69,11 @@ async def eip_router(state: GraphState) -> dict:
     log = state.log_node("eip_router", NodeStatus.COMPLETED, f"assigned_to: {active_agents}")
     logger.info("eip_router_success", active_agents=active_agents, tasks=tasks)
 
-    # Multi route para el distribuidor
-    route = "multi" if len(active_agents) > 1 else "rag"
-
+    # ponytail: don't hijack state.route, agents request tools themselves.
     return {
         "active_agents": active_agents,
         "tasks": tasks,
-        "route": route,
+        "route": None,
         "node_history": ["eip_router"],
         "mermaid_log": [log],
     }
