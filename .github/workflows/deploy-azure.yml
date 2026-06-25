@@ -34,7 +34,6 @@ jobs:
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
       - name: Build and push backend image
-        working-directory: Backend
         run: |
           docker build -t ${{ env.ACR_LOGIN_SERVER }}/${{ env.CONTAINER_APP_NAME }}:${{ github.sha }} -t ${{ env.ACR_LOGIN_SERVER }}/${{ env.CONTAINER_APP_NAME }}:latest .
           docker push ${{ env.ACR_LOGIN_SERVER }}/${{ env.CONTAINER_APP_NAME }}:${{ github.sha }}
