@@ -60,11 +60,13 @@ async def chat(request: ChatRequest, req: Request):
         final_system_prompt += "\n\n" + "\n\n".join(system_prompt_extras)
         
     llm_client = get_llm_client()
+    from src.config import settings
     try:
         llm_response = await llm_client.generate(
             prompt=request.message,
             system_prompt=final_system_prompt
         )
+        llm_model_used = getattr(llm_client, "last_used_model", settings.LLM_MODEL)
     except Exception as e:
         logger.error("llm_generation_error", error=str(e))
         raise HTTPException(status_code=500, detail=f"Error in LLM generation: {str(e)}")
@@ -75,7 +77,8 @@ async def chat(request: ChatRequest, req: Request):
         rag_status=rag_result.status,
         avg_relevance=rag_result.avg_relevance,
         retriever_used=rag_result.retriever_used,
-        hypothesis_used=rag_result.hypothesis_used
+        hypothesis_used=rag_result.hypothesis_used,
+        llm_model=llm_model_used
     )
 
 

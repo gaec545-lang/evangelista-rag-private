@@ -17,7 +17,7 @@ async def analyze(request: AnalyzeRequest):
 
     try:
         task_lower = request.task.lower()
-        is_complex = "multi" in task_lower or "complejo" in task_lower or "análisis" in task_lower or "analisis" in task_lower
+        is_complex = "multi" in task_lower or "complejo" in task_lower or "análisis" in task_lower or "analisis" in task_lower or "eficiencia" in task_lower
 
         if is_complex:
             state = await run_eip_graph(

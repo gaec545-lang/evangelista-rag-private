@@ -145,9 +145,10 @@ class HybridRetriever:
         if qdrant_filter is not None:
             combined_filter = qdrant_filter
         else:
-            agent_filter = build_agent_filter(agent_name)
-            client_filter = build_client_filter(client_id)
-            combined_filter = combine_filters(agent_filter, client_filter)
+            filters = [build_agent_filter(agent_name)]
+            if client_id:
+                filters.append(build_client_filter(client_id))
+            combined_filter = combine_filters(*filters) if len(filters) > 1 else filters[0]
         
         # 2. Búsqueda Densa en Qdrant (filtrado por Qdrant de forma nativa)
         dense_results = []

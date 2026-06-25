@@ -16,6 +16,7 @@ class FallbackLLMClient(LLMClient):
     def __init__(self, primary: LLMClient, fallbacks: list[LLMClient]) -> None:
         self.primary = primary
         self.fallbacks = fallbacks
+        self.last_used_model: str | None = None
 
     @property
     def __class__(self):
@@ -36,12 +37,14 @@ class FallbackLLMClient(LLMClient):
         for i, client in enumerate(clients):
             try:
                 # ponytail: Attempt generation with current client
-                return await client.generate(
+                res = await client.generate(
                     prompt,
                     system_prompt=system_prompt,
                     temperature=temperature,
                     max_tokens=max_tokens,
                 )
+                self.last_used_model = getattr(client, "model", client.__class__.__name__)
+                return res
             except Exception as e:
                 last_error = e
                 logger.warning(

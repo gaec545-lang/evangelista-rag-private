@@ -16,7 +16,7 @@ class Settings(BaseSettings):
 
     # Qdrant
     QDRANT_MODE: str = "local"
-    QDRANT_LOCAL_PATH: str = "./qdrant_storage"
+    QDRANT_LOCAL_PATH: str = "../qdrant_storage"
     QDRANT_HOST: str = "localhost"
     QDRANT_PORT: int = 6333
     QDRANT_COLLECTION: str = "evangelista_knowledge"

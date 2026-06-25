@@ -91,3 +91,4 @@ class ChatResponse(BaseModel):
     avg_relevance: float = 0.0
     retriever_used: str = ""
     hypothesis_used: bool = False
+    llm_model: str | None = Field(default=None, description="Modelo LLM utilizado")
