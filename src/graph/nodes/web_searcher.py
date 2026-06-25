@@ -51,12 +51,13 @@ async def web_search(state: GraphState) -> GraphState:
         logger.error("web_search_failed", error=str(exc))
         new_errors.append(f"web_search: {exc}")
 
-    return state.model_copy(update={
+    # ponytail: state update dictionary avoids Pydantic model copy overhead and node_history duplication
+    return {
         "web_results": web_docs,
         "errors": new_errors,
         "current_node": "web_searcher",
-        "node_history": state.node_history + ["web_searcher"],
-        "mermaid_log": state.mermaid_log + [
+        "node_history": ["web_searcher"],
+        "mermaid_log": [
             state.log_node("web_searcher", NodeStatus.COMPLETED, f"{len(web_docs)} results")
         ],
-    })
+    }

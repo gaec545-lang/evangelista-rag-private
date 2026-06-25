@@ -9,7 +9,8 @@ router = APIRouter(prefix="/api/v1/clients", tags=["Client Files"])
 logger = get_logger(__name__)
 
 def _not_impl():
-    raise NotImplementedError("File storage functionality removed – implement Azure Blob Storage or equivalent.")
+    # ponytail: raising HTTPException avoids unhandled 500 server crashes
+    raise HTTPException(status_code=501, detail="Funcionalidad de almacenamiento de archivos de cliente no implementada.")
 
 @router.get("/{client_id}/files")
 async def list_files(client_id: str):

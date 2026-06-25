@@ -66,6 +66,20 @@ class Settings(BaseSettings):
     JWT_SECRET_KEY: str = "a_very_secret_key_for_local_dev"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24
 
+    # ponytail: configurable CORS defaults to prevent tenant/domain wildcarding issues
+    CORS_ALLOWED_ORIGINS: list[str] = [
+        "https://gaec545-lang.github.io",
+        "https://evangelistaco.com",
+        "https://www.evangelistaco.com",
+        "http://localhost:5173",
+        "http://localhost:5174",
+        "http://localhost:3000",
+        "http://127.0.0.1:5173",
+        "http://127.0.0.1:5174",
+        "http://127.0.0.1:3000",
+    ]
+    CORS_ALLOWED_ORIGIN_REGEX: str | None = r"https://evangelista-.*\.azurecontainerapps\.io"
+
     model_config = {
         "env_file": ".env",
         "env_file_encoding": "utf-8",

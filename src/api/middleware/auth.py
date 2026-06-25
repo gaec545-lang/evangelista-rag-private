@@ -45,5 +45,5 @@ async def verify_jwt(credentials: HTTPAuthorizationCredentials = Depends(securit
 
 async def verify_subscription_ownership(subscription_id: str, user: dict = Depends(verify_jwt)) -> dict:
     """Placeholder for subscription ownership verification using Azure DB."""
-    # To be implemented
-    raise NotImplementedError("Subscription ownership verification not implemented")
+    # ponytail: raising HTTPException avoids unhandled 500 server crashes on unimplemented endpoints
+    raise HTTPException(status_code=501, detail="Subscription ownership verification not implemented")

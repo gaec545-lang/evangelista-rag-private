@@ -39,17 +39,19 @@ def derive_client_code(company_name: str) -> str:
 
 async def generate_folio_atomic(client_id: str, doc_type: str) -> str:
     """Generates an atomic folio for a document using the database."""
+    # ponytail: reuse the same db session to avoid connection leaks/double connection overhead
     client_code = 'XXX'
+    sequence = 1
     
     if SessionLocal is None:
         print("Database not configured, using fallback client code.")
     else:
         db = SessionLocal()
         try:
-            # Query client table with fallback for casing & column names
+            # 1. Query client table with fallback for casing & column names
             row = None
             try:
-                # 1. Try case-insensitive fields in lowercase
+                # Try case-insensitive fields in lowercase
                 res = db.execute(
                     text("SELECT name, client_code FROM clients WHERE id = :client_id"),
                     {"client_id": client_id}
@@ -58,7 +60,7 @@ async def generate_folio_atomic(client_id: str, doc_type: str) -> str:
                     row = dict(res._mapping)
             except Exception:
                 try:
-                    # 2. Try uppercase Client table & column names for Azure SQL
+                    # Try uppercase Client table & column names for Azure SQL
                     res = db.execute(
                         text("SELECT Name FROM Clients WHERE Id = :client_id"),
                         {"client_id": client_id}
@@ -69,13 +71,36 @@ async def generate_folio_atomic(client_id: str, doc_type: str) -> str:
                     print(f"Failed to fetch client: {e}")
             
             if row:
-                # Resolve name/Name and client_code/client_code
                 name = row.get('name') or row.get('Name') or ''
-                client_code = row.get('client_code') or row.get('client_code')
+                client_code = row.get('client_code')
                 if not client_code and name:
                     client_code = derive_client_code(name)
+                    
+            # 2. Calculate sequence
+            try:
+                # Azure SQL casing
+                query = text("""
+                    SELECT COUNT(*) 
+                    FROM Deliverables d
+                    JOIN Projects p ON d.ProjectId = p.Id
+                    WHERE p.ClientId = :client_id AND d.DeliverableType = :doc_type
+                """)
+                sequence = db.execute(query, {"client_id": client_id, "doc_type": doc_type}).scalar() + 1
+            except Exception:
+                try:
+                    # PostgreSQL casing
+                    query = text("""
+                        SELECT COUNT(*) 
+                        FROM deliverables d
+                        JOIN projects p ON d.project_id = p.id
+                        WHERE p.client_id = :client_id AND d.deliverable_type = :doc_type
+                    """)
+                    sequence = db.execute(query, {"client_id": client_id, "doc_type": doc_type}).scalar() + 1
+                except Exception as e:
+                    print(f"Error calculating sequence, falling back to 1: {e}")
+                    sequence = 1
         except Exception as e:
-            print(f"Error resolving client code: {e}")
+            print(f"Error in generate_folio_atomic: {e}")
         finally:
             db.close()
 
@@ -83,35 +108,5 @@ async def generate_folio_atomic(client_id: str, doc_type: str) -> str:
         client_code = 'XXX'
     
     type_code = DOCUMENT_TYPE_CODES.get(doc_type, 'DOC')
-    
-    # Calculate sequence
-    sequence = 1
-    if SessionLocal is not None:
-        db = SessionLocal()
-        try:
-            # Azure SQL casing
-            query = text("""
-                SELECT COUNT(*) 
-                FROM Deliverables d
-                JOIN Projects p ON d.ProjectId = p.Id
-                WHERE p.ClientId = :client_id AND d.DeliverableType = :doc_type
-            """)
-            sequence = db.execute(query, {"client_id": client_id, "doc_type": doc_type}).scalar() + 1
-        except Exception:
-            try:
-                # PostgreSQL casing
-                query = text("""
-                    SELECT COUNT(*) 
-                    FROM deliverables d
-                    JOIN projects p ON d.project_id = p.id
-                    WHERE p.client_id = :client_id AND d.deliverable_type = :doc_type
-                """)
-                sequence = db.execute(query, {"client_id": client_id, "doc_type": doc_type}).scalar() + 1
-            except Exception as e:
-                print(f"Error calculating sequence, falling back to 1: {e}")
-                sequence = 1
-        finally:
-            db.close()
-
     year_suffix = datetime.datetime.now().strftime("%y") # e.g. "26"
     return f"EVA-{client_code}-{type_code}-{year_suffix}-{sequence:03d}"

@@ -12,13 +12,24 @@ class AnthropicClient(LLMClient):
     Los embeddings se delegan a Ollama (Anthropic no tiene endpoint de embeddings).
     """
 
-    def __init__(self, api_key: str, model: str) -> None:
+    def __init__(self, api_key: str, model: str, base_url: str = "https://api.anthropic.com") -> None:
         self.api_key = api_key
         self.model = model
+        self.base_url = base_url.rstrip("/")
         self._embedder = Embedder()
         try:
             import anthropic
-            self._client = anthropic.AsyncAnthropic(api_key=api_key)
+            if not api_key:
+                # ponytail: Avoid crashing during factory initialization if API key is missing
+                self._client = None
+            else:
+                # ponytail: Set client-level timeouts and max_retries on client creation
+                self._client = anthropic.AsyncAnthropic(
+                    api_key=api_key,
+                    base_url=self.base_url,
+                    timeout=60.0,
+                    max_retries=5
+                )
         except ImportError:
             logger.warning("anthropic_sdk_no_instalado")
             self._client = None
@@ -32,7 +43,7 @@ class AnthropicClient(LLMClient):
     ) -> str:
         """Genera texto con Claude API."""
         if self._client is None:
-            raise RuntimeError("SDK de Anthropic no instalado. Ejecuta: pip install anthropic")
+            raise RuntimeError("SDK de Anthropic no instalado o API key faltante.")
 
         kwargs: dict = {
             "model": self.model,

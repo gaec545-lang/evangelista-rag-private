@@ -88,36 +88,16 @@ class QueryEngine:
             combined = combine_filters(*filters) if len(filters) > 1 else filters[0]
             
             # 3. Buscar en Qdrant con Búsqueda Híbrida (Densa + Dispersa)
-            if hasattr(self.client, "query_points"):
-                from qdrant_client.models import Prefetch, FusionQuery, Fusion
-                response = self.client.query_points(
-                    collection_name=self.collection,
-                    prefetch=[
-                        Prefetch(
-                            query=query_embedding,
-                            using="dense",
-                            filter=combined,
-                            limit=top_k * 2
-                        ),
-                        Prefetch(
-                            query=query, # Qdrant sparse vectors
-                            using="sparse",
-                            filter=combined,
-                            limit=top_k * 2
-                        )
-                    ],
-                    query=FusionQuery(fusion=Fusion.RRF),
-                    limit=top_k
-                )
-                results = response.points
-            else:
-                # Fallback para versiones antiguas de qdrant-client
-                results = self.client.search(
-                    collection_name=self.collection,
-                    query_vector=query_embedding,
-                    query_filter=combined,
-                    limit=top_k
-                )
+            # ponytail: delegate to HybridRetriever to perform safe hybrid search and avoid duplicate code/Qdrant errors
+            hybrid = HybridRetriever(self.client, self.embedder, self.collection)
+            results = await hybrid.retrieve(
+                query=query,
+                agent_name=agent_name,
+                client_id=client_id or "",
+                top_k=top_k,
+                qdrant_filter=combined,
+                prefer_query_points=True
+            )
             
             logger.info("rag_search_results", count=len(results), agent=agent_name)
             
@@ -130,16 +110,16 @@ class QueryEngine:
             search_results = []
             for r in results[:final_k]:
                 sr = SearchResult(
-                    chunk_id=r.payload.get("chunk_id", ""),
-                    document_id=r.payload.get("document_id", ""),
-                    document_title=r.payload.get("document_title", "Sin título"),
-                    section_header=r.payload.get("section_header", ""),
-                    content=r.payload.get("content", ""),
+                    chunk_id=r.chunk_id,
+                    document_id=r.document_id,
+                    document_title=r.metadata.get("document_title", "Sin título"),
+                    section_header=r.metadata.get("section_header", ""),
+                    content=r.text,
                     score=r.score,
                     metadata={
-                        "type": r.payload.get("type"),
-                        "domain": r.payload.get("domain"),
-                        "tags": r.payload.get("tags"),
+                        "type": r.metadata.get("type"),
+                        "domain": r.metadata.get("domain"),
+                        "tags": r.metadata.get("tags"),
                     }
                 )
                 search_results.append(sr)

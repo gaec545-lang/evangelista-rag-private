@@ -366,9 +366,10 @@ async def simulate_monte_carlo(
 
     # --- Store simulation record ---
     sim_id = str(uuid.uuid4())
+    # ponytail: user.get("id") is returned by verify_jwt
     _simulations[sim_id] = {
         "subscription_id": subscription_id,
-        "user_id": user.get("oid"),
+        "user_id": user.get("id") or user.get("oid"),
         "iterations": request.iterations,
         "num_variables": len(request.variables),
         "executed_at": datetime.now(timezone.utc).isoformat(),
@@ -380,7 +381,7 @@ async def simulate_monte_carlo(
         "monte_carlo_simulation_executed",
         simulation_id=sim_id,
         subscription_id=subscription_id,
-        user_id=user.get("oid"),
+        user_id=user.get("id") or user.get("oid"),
         iterations=request.iterations,
         duration_ms=_simulations[sim_id]["duration_ms"],
         num_variables=len(request.variables),

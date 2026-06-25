@@ -53,7 +53,8 @@ Fragmento metodológico:"""
                 return []  # Fallback a Hybrid
             
             # PASO 2: Embeds hipótesis
-            hypothesis_embedding = await self.embedder.embed(hypothesis)
+            # ponytail: use embed_single instead of embed
+            hypothesis_embedding = await self.embedder.embed_single(hypothesis)
             
             # PASO 3: Buscar en Qdrant con embedding de hipótesis
             agent_filter = build_agent_filter(agent_name)
@@ -68,14 +69,13 @@ Fragmento metodológico:"""
                 with_payload=True
             )
             
+            # ponytail: instantiate RetrievedChunk matching class definition
             return [
                 RetrievedChunk(
                     chunk_id=str(r.id),
                     document_id=r.payload.get("document_id", ""),
                     text=r.payload.get("content", r.payload.get("text", "")),
                     score=r.score,
-                    semantic_score=r.score,
-                    bm25_score=0.0,
                     metadata=r.payload
                 )
                 for r in results

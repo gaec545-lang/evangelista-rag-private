@@ -5,7 +5,8 @@ Aplicable a endpoints sensibles como simulaciones Monte Carlo.
 """
 import time
 from collections import defaultdict
-from fastapi import Request, HTTPException
+from fastapi import Request
+from fastapi.responses import JSONResponse
 from starlette.middleware.base import BaseHTTPMiddleware
 
 
@@ -80,19 +81,20 @@ class RateLimitingMiddleware(BaseHTTPMiddleware):
         # Find matching limiter
         for prefix, limiter in self.limiters.items():
             if request.url.path.startswith(prefix):
+                # ponytail: returning JSONResponse directly avoids Starlette unhandled HTTPException bug in middleware
                 if limiter.is_blocked(client_ip):
                     remaining = limiter._blocked.get(client_ip, 0) - time.time()
-                    raise HTTPException(
+                    return JSONResponse(
                         status_code=429,
-                        detail={
+                        content={
                             "error": "rate_limit_exceeded",
                             "message": f"Demasiadas solicitudes. Reintente en {int(remaining)} segundos.",
                         },
                     )
                 if not limiter.record(client_ip):
-                    raise HTTPException(
+                    return JSONResponse(
                         status_code=429,
-                        detail={
+                        content={
                             "error": "rate_limit_exceeded",
                             "message": "Demasiadas solicitudes. Usted ha sido bloqueado temporalmente.",
                         },

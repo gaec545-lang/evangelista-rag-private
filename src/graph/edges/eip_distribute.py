@@ -9,12 +9,12 @@ from __future__ import annotations
 from ..state import GraphState
 
 
-def distribute_swarm(state: GraphState) -> list[str]:
+def distribute_swarm(state: GraphState) -> str:
     """
-    Despacha el estado solo a los agentes activos.
+    Selecciona el primer agente activo para ejecutar secuencialmente.
     """
-    if not state.active_agents:
-        # Fallback de seguridad
-        return ["financial_node"]
-    
-    return [f"{agent}_node" for agent in state.active_agents]
+    if "process" in state.active_agents:
+        return "process_node"
+    elif "data_engineer" in state.active_agents:
+        return "data_engineer_node"
+    return "financial_node"

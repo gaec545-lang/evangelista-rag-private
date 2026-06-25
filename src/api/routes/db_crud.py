@@ -6,6 +6,7 @@ from datetime import datetime
 from typing import List, Optional
 from pydantic import BaseModel
 
+import structlog
 from src.api.middleware.auth import verify_jwt
 from src.db.database import get_db
 from src.db.models import Client, Project, Finding, Hypothesis, ProjectPhase
@@ -171,10 +172,11 @@ async def create_client(
 ):
     client = Client(**client_in.model_dump())
     db.add(client)
+    await db.flush() # ponytail: flush first to populate default values (like UUID)
+    repo = BaseRepository(db, client.id)
+    await repo.log_to_bitacora("CREATE_CLIENT", "Client", str(client.id), user.get("id") or user.get("oid"))
     await db.commit()
     await db.refresh(client)
-    repo = BaseRepository(db, client.id)
-    await repo.log_to_bitacora("CREATE_CLIENT", "Client", str(client.id), user.get("oid"))
     return client
 
 @router.put("/clients/{id}", response_model=ClientResponse)
@@ -194,10 +196,10 @@ async def update_client(
     for field, val in update_data.items():
         setattr(client, field, val)
     
+    repo = BaseRepository(db, client.id)
+    await repo.log_to_bitacora("UPDATE_CLIENT", "Client", str(client.id), user.get("id") or user.get("oid"))
     await db.commit()
     await db.refresh(client)
-    repo = BaseRepository(db, client.id)
-    await repo.log_to_bitacora("UPDATE_CLIENT", "Client", str(client.id), user.get("oid"))
     return client
 
 @router.delete("/clients/{id}")
@@ -212,10 +214,11 @@ async def delete_client(
     if not client:
         raise HTTPException(status_code=404, detail="Client not found")
     
+    logger = structlog.get_logger(__name__)
+    # ponytail: cannot log to bitacora because client_id is a non-nullable foreign key referencing clients.id which is being deleted. We log to application log instead.
+    logger.info("DELETE_CLIENT", client_id=str(client.id), user_id=user.get("id") or user.get("oid"))
     await db.delete(client)
     await db.commit()
-    repo = BaseRepository(db, client.id)
-    await repo.log_to_bitacora("DELETE_CLIENT", "Client", str(client.id), user.get("oid"))
     return {"status": "success", "message": "Client deleted"}
 
 
@@ -256,10 +259,11 @@ async def create_project(
 ):
     project = Project(**project_in.model_dump())
     db.add(project)
+    await db.flush() # ponytail: flush first to populate project.id and default values
+    repo = BaseRepository(db, project.client_id)
+    await repo.log_to_bitacora("CREATE_PROJECT", "Project", str(project.id), user.get("id") or user.get("oid"))
     await db.commit()
     await db.refresh(project)
-    repo = BaseRepository(db, project.client_id)
-    await repo.log_to_bitacora("CREATE_PROJECT", "Project", str(project.id), user.get("oid"))
     return project
 
 @router.put("/projects/{id}", response_model=ProjectResponse)
@@ -279,10 +283,10 @@ async def update_project(
     for field, val in update_data.items():
         setattr(project, field, val)
     
+    repo = BaseRepository(db, project.client_id)
+    await repo.log_to_bitacora("UPDATE_PROJECT", "Project", str(project.id), user.get("id") or user.get("oid"))
     await db.commit()
     await db.refresh(project)
-    repo = BaseRepository(db, project.client_id)
-    await repo.log_to_bitacora("UPDATE_PROJECT", "Project", str(project.id), user.get("oid"))
     return project
 
 @router.delete("/projects/{id}")
@@ -298,10 +302,10 @@ async def delete_project(
         raise HTTPException(status_code=404, detail="Project not found")
     
     client_id = project.client_id
+    repo = BaseRepository(db, client_id)
+    await repo.log_to_bitacora("DELETE_PROJECT", "Project", str(project.id), user.get("id") or user.get("oid"))
     await db.delete(project)
     await db.commit()
-    repo = BaseRepository(db, client_id)
-    await repo.log_to_bitacora("DELETE_PROJECT", "Project", str(project.id), user.get("oid"))
     return {"status": "success", "message": "Project deleted"}
 
 

@@ -39,10 +39,11 @@ async def synthesize(state: GraphState) -> GraphState:
     
     logger.info("synthesis_complete", confidence=f"{confidence:.2f}")
     
-    return state.model_copy(update={
+    # ponytail: state update dictionary avoids Pydantic model copy overhead and node_history duplication
+    return {
         "final_response": final,
         "confidence": confidence,
         "current_node": "synthesizer",
-        "node_history": state.node_history + ["synthesizer"],
-        "mermaid_log": state.mermaid_log + [{"node": "synthesizer", "status": "completed", "detail": f"confidence={confidence:.2f}"}]
-    })
+        "node_history": ["synthesizer"],
+        "mermaid_log": [{"node": "synthesizer", "status": "completed", "detail": f"confidence={confidence:.2f}"}]
+    }

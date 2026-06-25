@@ -35,6 +35,9 @@ async def _run_agent(state: GraphState, agent_name: str) -> str:
     
     agent_context = _load_agent_context(agent_name)
     
+    # ponytail: include previous grader feedback if any to help agent adapt
+    feedback_text = str(state.grader_feedback) if state.grader_feedback else "Ninguno"
+    
     prompt = f"""Eres el agente especialista: {agent_name}.
 Tu contexto y habilidades provienen de tu definición en el Vault:
 ---
@@ -45,6 +48,7 @@ Tu tarea asignada por el Orquestador es:
 
 Consulta general del usuario: {state.question if getattr(state, "question", None) else str(state.scqa_input)}
 Información disponible en RAG/Web: {state.documents}
+Feedback del Grader/Orquestador: {feedback_text}
 
 Analiza y proporciona tu dictamen experto.
 """
@@ -59,11 +63,20 @@ Analiza y proporciona tu dictamen experto.
 
 async def financial_node(state: GraphState) -> dict:
     """Financial Agent — aísla métricas por unidad, ROI, LTV/CAC, proyecciones."""
+    # ponytail: wait for process and data_engineer if active before executing final valuation
+    active_others = [a for a in state.active_agents if a != "financial"]
+    is_process_done = "process" not in active_others or ("process_node" in state.node_history) or bool(state.process_friction)
+    is_data_eng_done = "data_engineer" not in active_others or ("data_engineer_node" in state.node_history) or bool(state.data_viability)
+    
+    if not (is_process_done and is_data_eng_done):
+        return {}
+
     resultado = await _run_agent(state, "financial")
     
     log = state.log_node("financial_node", NodeStatus.COMPLETED, "financial_analysis_complete")
     logger.info("financial_node_complete")
 
+    # ponytail: state update dictionary avoids Pydantic model copy overhead and node_history duplication
     return {
         "financial_hypothesis": {
             "metric": "ROI/Valuation",
@@ -71,8 +84,9 @@ async def financial_node(state: GraphState) -> dict:
             "confidence": 0.9,
             "assumptions": [resultado],
         },
-        "node_history": state.node_history + ["financial_node"],
-        "mermaid_log": state.mermaid_log + [log],
+        "current_agent": "financial",
+        "node_history": ["financial_node"],
+        "mermaid_log": [log],
     }
 
 
@@ -83,14 +97,16 @@ async def process_node(state: GraphState) -> dict:
     log = state.log_node("process_node", NodeStatus.COMPLETED, "process_analysis_complete")
     logger.info("process_node_complete")
 
+    # ponytail: state update dictionary avoids Pydantic model copy overhead and node_history duplication
     return {
         "process_friction": {
             "operational_constraint": "Identified by LLM",
             "impact": 0.8,
             "bottleneck": resultado,
         },
-        "node_history": state.node_history + ["process_node"],
-        "mermaid_log": state.mermaid_log + [log],
+        "current_agent": "process",
+        "node_history": ["process_node"],
+        "mermaid_log": [log],
     }
 
 
@@ -101,12 +117,14 @@ async def data_engineer_node(state: GraphState) -> dict:
     log = state.log_node("data_engineer_node", NodeStatus.COMPLETED, "data_viability_complete")
     logger.info("data_engineer_node_complete")
 
+    # ponytail: state update dictionary avoids Pydantic model copy overhead and node_history duplication
     return {
         "data_viability": {
             "data_integrity": resultado,
             "missing_fields": [],
             "etl_feasible": True,
         },
-        "node_history": state.node_history + ["data_engineer_node"],
-        "mermaid_log": state.mermaid_log + [log],
+        "current_agent": "data_engineer",
+        "node_history": ["data_engineer_node"],
+        "mermaid_log": [log],
     }

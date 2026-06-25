@@ -70,25 +70,11 @@ app = FastAPI(
 )
 
 # ━━━ CORS Seguro — Orígenes autorizados ━━━
-ALLOWED_ORIGINS = [
-    # Producción (GitHub Pages)
-    "https://gaec545-lang.github.io",
-    "https://evangelistaco.com",
-    "https://www.evangelistaco.com",
-    
-    # Desarrollo Local
-    "http://localhost:5173",
-    "http://localhost:5174",
-    "http://localhost:3000",
-    "http://127.0.0.1:5173",
-    "http://127.0.0.1:5174",
-    "http://127.0.0.1:3000",
-]
-
+# ponytail: CORS settings loaded dynamically from central config with secure regex targeting our specific prefix.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=ALLOWED_ORIGINS,
-    allow_origin_regex=r"https://.*\.azurecontainerapps\.io",
+    allow_origins=settings.CORS_ALLOWED_ORIGINS,
+    allow_origin_regex=settings.CORS_ALLOWED_ORIGIN_REGEX,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

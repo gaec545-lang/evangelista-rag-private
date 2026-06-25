@@ -12,6 +12,7 @@ def log_run(pipeline_name: str, status: str, records_processed: int, error_messa
         print(f"[{datetime.now()}] MOCK Azure SQL LOG: Pipeline '{pipeline_name}' finished. Status: {status}. Records: {records_processed}. Error: {error_message}")
         return
         
+    conn = None
     try:
         if "pyodbc" not in conn_str and "Server=" in conn_str:
             conn = pyodbc.connect(conn_str)
@@ -27,6 +28,12 @@ def log_run(pipeline_name: str, status: str, records_processed: int, error_messa
         """
         cursor.execute(query, pipeline_name, status, records_processed, error_message)
         conn.commit()
-        conn.close()
     except Exception as e:
         print(f"Error logging to Azure SQL: {e}")
+    finally:
+        if conn:
+            # ponytail: always close connection in finally block to prevent connection leaks
+            try:
+                conn.close()
+            except Exception:
+                pass

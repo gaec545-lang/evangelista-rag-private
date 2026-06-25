@@ -6,7 +6,8 @@ from fastapi.responses import JSONResponse
 router = APIRouter(prefix="/api/v1/foundation", tags=["Foundation Analysis"])
 
 def _not_impl():
-    raise NotImplementedError("Supabase functionality removed – implement alternative.")
+    # ponytail: raising HTTPException avoids unhandled 500 server crashes
+    raise HTTPException(status_code=501, detail="Funcionalidad de análisis Foundation no implementada.")
 
 @router.post("/{client_id}/analyze-upload")
 async def analyze_upload(client_id: str, background_tasks: BackgroundTasks, file: UploadFile = File(...), engagement_id: str = Form(None)):

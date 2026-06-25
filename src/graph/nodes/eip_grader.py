@@ -60,10 +60,14 @@ async def eip_grader(state: GraphState) -> dict:
     if hallucination_flag:
         grader_feedback = [{"agent": "grader", "feedback": reason}]
 
+    new_retry = state.retry_count + (1 if hallucination_flag else 0)
+
+    # ponytail: state update dictionary avoids Pydantic model copy overhead and node_history duplication
     return {
         "hallucination_flag": hallucination_flag,
         "rejection_reason": reason,
         "grader_feedback": grader_feedback,
-        "node_history": [*state.node_history, "eip_grader"],
-        "mermaid_log": [*state.mermaid_log, log],
+        "retry_count": new_retry,
+        "node_history": ["eip_grader"],
+        "mermaid_log": [log],
     }

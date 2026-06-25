@@ -32,9 +32,10 @@ async def execute_tools(state: GraphState) -> GraphState:
     
     logger.info("tool_execution", tools_used=list(tool_results.keys()))
     
-    return state.model_copy(update={
+    # ponytail: state update dictionary avoids Pydantic model copy overhead and node_history duplication
+    return {
         "tool_results": tool_results,
         "current_node": "tool_executor",
-        "node_history": state.node_history + ["tool_executor"],
-        "mermaid_log": state.mermaid_log + [{"node": "tool_executor", "status": "completed", "detail": ", ".join(tool_results.keys())}]
-    })
+        "node_history": ["tool_executor"],
+        "mermaid_log": [{"node": "tool_executor", "status": "completed", "detail": ", ".join(tool_results.keys())}]
+    }

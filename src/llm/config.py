@@ -110,6 +110,15 @@ MODELS: Dict[str, LLMModelConfig] = {
         temperature=0.2,
         max_tokens=8000,
     ),
+
+    # ANTHROPIC (Claude)
+    "anthropic-claude": LLMModelConfig(
+        name="anthropic-claude",
+        provider="anthropic",
+        model_id="claude-3-5-sonnet-20241022",
+        api_key_env="ANTHROPIC_API_KEY",
+        base_url="https://api.anthropic.com"
+    ),
 }
 
 def get_model_config(name: str) -> LLMModelConfig:

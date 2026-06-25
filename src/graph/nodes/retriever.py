@@ -63,9 +63,10 @@ async def retrieve_documents(state: GraphState) -> GraphState:
         top_score=documents[0].score if documents else 0,
     )
 
-    return state.model_copy(update={
+    # ponytail: state update dictionary avoids Pydantic model copy overhead and node_history duplication
+    return {
         "documents": documents,
         "current_node": "retriever",
-        "node_history": state.node_history + ["retriever"],
-        "mermaid_log": state.mermaid_log + [state.log_node("retriever", NodeStatus.COMPLETED, f"{len(documents)} docs")],
-    })
+        "node_history": ["retriever"],
+        "mermaid_log": [state.log_node("retriever", NodeStatus.COMPLETED, f"{len(documents)} docs")],
+    }

@@ -45,8 +45,9 @@ async def consensus_node(state: GraphState) -> dict:
     log = state.log_node("consensus", NodeStatus.COMPLETED, "convergence_achieved")
     logger.info("consensus_node", response_len=len(response))
 
+    # ponytail: state update dictionary avoids Pydantic model copy overhead and node_history duplication
     return {
         "swarm_consensus": response,
-        "node_history": state.node_history + ["consensus"],
-        "mermaid_log": state.mermaid_log + [log],
+        "node_history": ["consensus"],
+        "mermaid_log": [log],
     }

@@ -50,10 +50,11 @@ async def route_question(state: GraphState) -> GraphState:
     
     logger.info("router_decision", route=route, reasoning=reasoning[:100])
     
-    return state.model_copy(update={
+    # ponytail: state update dictionary avoids Pydantic model copy overhead and node_history duplication
+    return {
         "route": route,
         "route_reasoning": reasoning,
         "current_node": "router",
-        "node_history": state.node_history + ["router"],
-        "mermaid_log": state.mermaid_log + [{"node": "router", "status": "completed", "detail": route}]
-    })
+        "node_history": ["router"],
+        "mermaid_log": [{"node": "router", "status": "completed", "detail": route}]
+    }

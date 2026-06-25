@@ -74,10 +74,11 @@ async def generate_response(state: GraphState) -> GraphState:
     
     logger.info("generator_complete", response_length=len(response), sources=len(sources))
     
-    return state.model_copy(update={
+    # ponytail: state update dictionary avoids Pydantic model copy overhead and node_history duplication
+    return {
         "generation": response,
         "generation_sources": sources,
         "current_node": "generator",
-        "node_history": state.node_history + ["generator"],
-        "mermaid_log": state.mermaid_log + [{"node": "generator", "status": "completed", "detail": f"{len(response)} chars"}]
-    })
+        "node_history": ["generator"],
+        "mermaid_log": [{"node": "generator", "status": "completed", "detail": f"{len(response)} chars"}]
+    }

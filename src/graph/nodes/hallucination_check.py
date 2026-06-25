@@ -36,15 +36,16 @@ async def check_hallucination(state: GraphState) -> GraphState:
     sources_text = "\n\n".join([f"[{d.title}]: {d.content[:800]}" for d in docs[:5]])
 
     if not sources_text:
-        return state.model_copy(update={
+        # ponytail: state update dictionary avoids Pydantic model copy overhead and node_history duplication
+        return {
             "hallucination_check": True,
             "hallucination_reasoning": "Sin fuentes para verificar — asumiendo válida.",
             "current_node": "hallucination_check",
-            "node_history": state.node_history + ["hallucination_check"],
-            "mermaid_log": state.mermaid_log + [
+            "node_history": ["hallucination_check"],
+            "mermaid_log": [
                 state.log_node("hallucination_check", NodeStatus.COMPLETED, "no sources → pass")
             ],
-        })
+        }
 
     response = await llm.generate(
         prompt=HALLUCINATION_PROMPT.format(
@@ -71,16 +72,17 @@ async def check_hallucination(state: GraphState) -> GraphState:
     # Incrementar retry_count si se detectó alucinación y quedan reintentos
     new_retry = state.retry_count + (1 if not grounded else 0)
 
-    return state.model_copy(update={
+    # ponytail: state update dictionary avoids Pydantic model copy overhead and node_history duplication
+    return {
         "hallucination_check": grounded,
         "hallucination_reasoning": reasoning,
         "retry_count": new_retry,
         "current_node": "hallucination_check",
-        "node_history": state.node_history + ["hallucination_check"],
-        "mermaid_log": state.mermaid_log + [
+        "node_history": ["hallucination_check"],
+        "mermaid_log": [
             state.log_node(
                 "hallucination_check", NodeStatus.COMPLETED,
                 "grounded" if grounded else f"HALLUCINATED (retry {new_retry})"
             )
         ],
-    })
+    }

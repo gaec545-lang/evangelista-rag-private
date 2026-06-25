@@ -8,7 +8,8 @@ from fastapi import APIRouter, HTTPException
 router = APIRouter()
 
 def _not_impl():
-    raise NotImplementedError("Supabase functionality removed; implement Azure equivalents.")
+    # ponytail: raising HTTPException avoids unhandled 500 server crashes
+    raise HTTPException(status_code=501, detail="Funcionalidad de administracion de equipos no implementada.")
 
 @router.get("/api/v1/team/list", tags=["Team"])
 async def team_list():

@@ -21,8 +21,10 @@ async def create_snapshot(
     repo = BaseRepository(db, snapshot.client_id)
     new_snapshot = Snapshot(client_id=snapshot.client_id, name=snapshot.name, data=snapshot.data)
     db.add(new_snapshot)
+    await db.flush() # ponytail: flush first to populate default values
+    # ponytail: user.get("id") is returned by verify_jwt
+    await repo.log_to_bitacora("CREATE_SNAPSHOT", "Snapshot", str(new_snapshot.id), user.get("id") or user.get("oid"))
     await db.commit()
-    await repo.log_to_bitacora("CREATE_SNAPSHOT", "Snapshot", str(new_snapshot.id), user.get("oid"))
     return {"status": "ok", "id": new_snapshot.id}
 
 @router.post("/coi_calculos")
@@ -34,8 +36,10 @@ async def create_coi_calculo(
     repo = BaseRepository(db, coi.client_id)
     new_coi = CoiCalculo(client_id=coi.client_id, parameters=coi.parameters, results=coi.results)
     db.add(new_coi)
+    await db.flush() # ponytail: flush first to populate default values
+    # ponytail: user.get("id") is returned by verify_jwt
+    await repo.log_to_bitacora("CREATE_COI_CALCULO", "CoiCalculo", str(new_coi.id), user.get("id") or user.get("oid"))
     await db.commit()
-    await repo.log_to_bitacora("CREATE_COI_CALCULO", "CoiCalculo", str(new_coi.id), user.get("oid"))
     return {"status": "ok", "id": new_coi.id}
 
 @router.post("/bitacora")
@@ -45,7 +49,8 @@ async def create_bitacora(
     db: AsyncSession = Depends(get_db)
 ):
     repo = BaseRepository(db, bitacora.client_id)
-    await repo.log_to_bitacora(bitacora.action, bitacora.entity, bitacora.entity_id, user.get("oid"), bitacora.details)
+    # ponytail: user.get("id") is returned by verify_jwt
+    await repo.log_to_bitacora(bitacora.action, bitacora.entity, bitacora.entity_id, user.get("id") or user.get("oid"), bitacora.details)
     await db.commit()
     return {"status": "ok"}
 
@@ -58,8 +63,10 @@ async def create_documento(
     repo = BaseRepository(db, documento.client_id)
     new_doc = Documento(client_id=documento.client_id, project_id=documento.project_id, name=documento.name, path=documento.path)
     db.add(new_doc)
+    await db.flush() # ponytail: flush first to populate default values
+    # ponytail: user.get("id") is returned by verify_jwt
+    await repo.log_to_bitacora("CREATE_DOCUMENTO", "Documento", str(new_doc.id), user.get("id") or user.get("oid"))
     await db.commit()
-    await repo.log_to_bitacora("CREATE_DOCUMENTO", "Documento", str(new_doc.id), user.get("oid"))
     return {"status": "ok", "id": new_doc.id}
 
 @router.post("/credenciales")
@@ -72,8 +79,10 @@ async def create_credencial(
     # Using encode to store string as bytes, in a real scenario encrypt properly with pgcrypto
     new_cred = Credencial(client_id=cred.client_id, service_name=cred.service_name, encrypted_token=cred.encrypted_token.encode())
     db.add(new_cred)
+    await db.flush() # ponytail: flush first to populate default values
+    # ponytail: user.get("id") is returned by verify_jwt
+    await repo.log_to_bitacora("CREATE_CREDENCIAL", "Credencial", str(new_cred.id), user.get("id") or user.get("oid"))
     await db.commit()
-    await repo.log_to_bitacora("CREATE_CREDENCIAL", "Credencial", str(new_cred.id), user.get("oid"))
     return {"status": "ok", "id": new_cred.id}
 
 @router.post("/expediente/pdf")
@@ -90,7 +99,8 @@ async def generate_expediente_pdf(
     pdf_id = uuid.uuid4()
     pdf_path = f"/azure/blob/storage/expedientes/{req.client_id}_{pdf_id}.pdf"
     
-    await repo.log_to_bitacora("GENERATE_EXPEDIENTE_PDF", "Expediente", str(pdf_id), user.get("oid"), {"title": req.title})
+    # ponytail: user.get("id") is returned by verify_jwt
+    await repo.log_to_bitacora("GENERATE_EXPEDIENTE_PDF", "Expediente", str(pdf_id), user.get("id") or user.get("oid"), {"title": req.title})
     await db.commit()
     
     return {"status": "ok", "pdf_url": pdf_path, "pdf_id": str(pdf_id)}

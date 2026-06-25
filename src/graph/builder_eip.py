@@ -85,6 +85,13 @@ def build_eip_graph() -> StateGraph:
 
     def financial_tool_route(state: GraphState) -> str:
         """Financial Agent → RAG / Sandbox / Consenso."""
+        # ponytail: defensive check to ensure sequential execution readiness
+        active_others = [a for a in state.active_agents if a != "financial"]
+        is_process_done = "process" not in active_others or ("process_node" in state.node_history) or bool(state.process_friction)
+        is_data_eng_done = "data_engineer" not in active_others or ("data_engineer_node" in state.node_history) or bool(state.data_viability)
+        if not (is_process_done and is_data_eng_done):
+            return "__end__"
+
         if state.route == "rag":
             return "rag_node"
         elif state.route in ("tools", "sandbox"):
@@ -92,20 +99,23 @@ def build_eip_graph() -> StateGraph:
         return "consensus"
 
     def process_tool_route(state: GraphState) -> str:
-        """Process Agent → RAG / Sandbox / Financial o Consenso."""
+        """Process Agent → RAG / Sandbox / (Data Engineer o Financial)."""
         if state.route == "rag":
             return "rag_node"
         elif state.route in ("tools", "sandbox"):
             return "sandbox_node"
-        return "consensus" if state.swarm_consensus else "financial_node"
+        # ponytail: route to next agent in sequence
+        if "data_engineer" in state.active_agents:
+            return "data_engineer_node"
+        return "financial_node"
 
     def data_eng_tool_route(state: GraphState) -> str:
-        """DataEng Agent → RAG / Sandbox / Financial o Consenso."""
+        """DataEng Agent → RAG / Sandbox / Financial."""
         if state.route == "rag":
             return "rag_node"
         elif state.route in ("tools", "sandbox"):
             return "sandbox_node"
-        return "consensus" if state.swarm_consensus else "financial_node"
+        return "financial_node"
 
     # ── Financial Agent ── conditional a herramientas o consenso ──────────
     workflow.add_conditional_edges(
@@ -115,6 +125,7 @@ def build_eip_graph() -> StateGraph:
             "rag_node": "rag_node",
             "sandbox_node": "sandbox_node",
             "consensus": "consensus",
+            "__end__": END,
         },
     )
 
@@ -125,8 +136,8 @@ def build_eip_graph() -> StateGraph:
         {
             "rag_node": "rag_node",
             "sandbox_node": "sandbox_node",
+            "data_engineer_node": "data_engineer_node",
             "financial_node": "financial_node",
-            "consensus": "consensus",
         },
     )
 
@@ -138,7 +149,6 @@ def build_eip_graph() -> StateGraph:
             "rag_node": "rag_node",
             "sandbox_node": "sandbox_node",
             "financial_node": "financial_node",
-            "consensus": "consensus",
         },
     )
 

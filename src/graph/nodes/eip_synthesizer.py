@@ -46,9 +46,10 @@ async def eip_synthesizer(state: GraphState) -> dict:
         "sources": [],
     }
 
+    # ponytail: state update dictionary avoids Pydantic model copy overhead and node_history duplication
     return {
         "final_pdf_data": pdf_data,
         "final_response": final_markdown,
-        "node_history": [*state.node_history, "eip_synthesizer"],
-        "mermaid_log": [*state.mermaid_log, log],
+        "node_history": ["eip_synthesizer"],
+        "mermaid_log": [log],
     }

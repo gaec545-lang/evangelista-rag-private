@@ -57,16 +57,17 @@ async def check_quality(state: GraphState) -> GraphState:
     # Incrementar retry_count si la respuesta no es útil y quedan reintentos
     new_retry = state.retry_count + (1 if not useful else 0)
 
-    return state.model_copy(update={
+    # ponytail: state update dictionary avoids Pydantic model copy overhead and node_history duplication
+    return {
         "quality_check": useful,
         "quality_reasoning": reasoning,
         "retry_count": new_retry,
         "current_node": "quality_check",
-        "node_history": state.node_history + ["quality_check"],
-        "mermaid_log": state.mermaid_log + [
+        "node_history": ["quality_check"],
+        "mermaid_log": [
             state.log_node(
                 "quality_check", NodeStatus.COMPLETED,
                 "useful" if useful else f"NOT USEFUL (retry {new_retry})"
             )
         ],
-    })
+    }

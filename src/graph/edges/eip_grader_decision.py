@@ -16,6 +16,7 @@ def decide_after_eip_grader(state: GraphState) -> str:
     """
     Grader → financial_node (rechazo) | eip_synthesizer (aprobado).
     """
-    if state.hallucination_flag:
+    # ponytail: respect max_retries limit to avoid infinite rejection loop
+    if state.hallucination_flag and state.retry_count < state.max_retries:
         return "financial_node"  # rechaza: enjambre regenera
-    return "eip_synthesizer"  # aprobado: va al syn
+    return "eip_synthesizer"  # aprobado u límite de reintentos alcanzado: va al syn

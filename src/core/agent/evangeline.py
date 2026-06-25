@@ -3,7 +3,7 @@ import structlog
 from typing import Optional, List, Dict
 from datetime import datetime, timezone
 
-from src.db.database import get_db
+from src.db.database import AsyncSessionLocal
 from src.db.repositories import EvaConversacionRepository, EvaMensajeRepository, EvaMemoriaRepository
 from src.retrieval.hybrid_retriever import HybridRetriever
 from src.retrieval.query_engine import get_qdrant_client
@@ -64,7 +64,8 @@ class EvaAgent:
         """
         logger.info("eva_chat_start", client_id=str(self.client_id), message=user_message[:50])
 
-        async for session in get_db():
+        # ponytail: use AsyncSessionLocal context manager to guarantee session closure and prevent connection leaks
+        async with AsyncSessionLocal() as session:
             conv_repo = EvaConversacionRepository(session, self.client_id)
             msg_repo = EvaMensajeRepository(session, self.client_id)
             mem_repo = EvaMemoriaRepository(session, self.client_id)
@@ -106,10 +107,10 @@ class EvaAgent:
                 # 5. Guardar respuesta del asistente
                 await self._save_message(conv_repo, msg_repo, role="assistant", content=response_content)
                 
-                await conv_repo.commit()
+                await session.commit()
                 return response_content
 
             except Exception as e:
-                await conv_repo.rollback()
+                await session.rollback()
                 logger.error("eva_chat_failed", error=str(e))
                 raise e

@@ -72,7 +72,7 @@ class ProjectContextFull(BaseModel):
 from typing import Literal
 
 class ChatRequest(BaseModel):
-    message: str
+    message: str = Field(..., min_length=1, description="Mensaje del usuario")
     client_id: str = Field(..., description="ID del cliente para filtrar contexto")
     agent_name: str
     project_phase: str | None = "scoping"
