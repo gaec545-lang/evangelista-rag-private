@@ -27,6 +27,7 @@ def rag_node(state: GraphState) -> dict:
     logger.info("rag_node", agent=state.current_agent)
 
     return {
+        "route": None,
         "node_history": ["rag_node"],
         "mermaid_log": [log],
     }
@@ -44,6 +45,7 @@ def sandbox_node(state: GraphState) -> dict:
     logger.info("sandbox_node", agent=state.current_agent)
 
     return {
+        "route": None,
         "node_history": ["sandbox_node"],
         "mermaid_log": [log],
     }

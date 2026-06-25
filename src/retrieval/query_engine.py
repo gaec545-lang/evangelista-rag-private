@@ -3,10 +3,12 @@ from qdrant_client.models import Filter
 
 from src.core.models import SearchResult
 from src.ingestion.embedder import Embedder
-from src.retrieval.filters import build_client_filter
 from src.retrieval.filters import (
     build_agent_filter,
+    build_client_filter,
     build_domain_filter,
+    build_sector_filter,
+    build_type_filter,
     combine_filters,
 )
 from src.config import settings
@@ -84,6 +86,11 @@ class QueryEngine:
                 filters.append(build_client_filter(client_id))
             if domain_filter:
                 filters.append(build_domain_filter(domain_filter))
+            # ponytail: actually apply sector and type filters when present
+            if sector_filter:
+                filters.append(build_sector_filter(sector_filter))
+            if type_filter:
+                filters.append(build_type_filter(type_filter))
             
             combined = combine_filters(*filters) if len(filters) > 1 else filters[0]
             

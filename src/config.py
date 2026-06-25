@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 class Settings(BaseSettings):
     """Configuración cargada desde variables de entorno o archivo .env."""
 
-    AZURE_KEY_VAULT_URL: str = os.getenv("AZURE_KEY_VAULT_URL", "")
+    AZURE_KEY_VAULT_URL: str = os.getenv("AZURE_KEY_VAULT_URL", "https://kv-evangelista-7990.vault.azure.net/")
 
     # Vault
     VAULT_PATH: str = "./vault"
@@ -20,6 +20,8 @@ class Settings(BaseSettings):
     QDRANT_HOST: str = "localhost"
     QDRANT_PORT: int = 6333
     QDRANT_COLLECTION: str = "evangelista_knowledge"
+    # ponytail: allowInsecure=true for connection over HTTP or bypassing certificate checks in production
+    QDRANT_ALLOW_INSECURE: bool = True
 
     # LLM Provider
     LLM_PROVIDER: str = "groq"
@@ -78,7 +80,8 @@ class Settings(BaseSettings):
         "http://127.0.0.1:5174",
         "http://127.0.0.1:3000",
     ]
-    CORS_ALLOWED_ORIGIN_REGEX: str | None = r"https://evangelista-.*\.azurecontainerapps\.io"
+    # ponytail: corrected regex to allow app-evangelista-frontend.jollyflower-774ba306.eastus2.azurecontainerapps.io
+    CORS_ALLOWED_ORIGIN_REGEX: str | None = r"https://.*evangelista-.*\.azurecontainerapps\.io"
 
     model_config = {
         "env_file": ".env",

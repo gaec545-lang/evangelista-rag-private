@@ -23,6 +23,8 @@ class GroqClient(LLMClient):
         self.model = model
         self.base_url = base_url.rstrip("/")
         self._embedder = Embedder()
+        # ponytail: reuse a single AsyncClient instance to prevent connection overhead and support connection pooling
+        self._client = httpx.AsyncClient(timeout=httpx.Timeout(60.0, connect=10.0))
 
     async def generate(
         self,
@@ -39,42 +41,39 @@ class GroqClient(LLMClient):
 
         api_url = f"{self.base_url}/chat/completions"
 
-        # ponytail: Reuse a single AsyncClient instance across retry attempts to avoid connection overhead.
-        # ponytail: Added connect/read timeouts explicitly.
-        async with httpx.AsyncClient(timeout=httpx.Timeout(60.0, connect=10.0)) as client:
-            for attempt in range(MAX_RETRIES):
-                try:
-                    response = await client.post(
-                        api_url,
-                        headers={
-                            "Authorization": f"Bearer {self.api_key}",
-                            "Content-Type": "application/json",
-                        },
-                        json={
-                            "model": self.model,
-                            "messages": messages,
-                            "temperature": temperature,
-                            "max_tokens": max_tokens,
-                        },
-                    )
-                    
-                    if response.status_code == 429:
-                        wait = RETRY_BACKOFF * (2**attempt)
-                        logger.warning("rate_limit_groq", intento=attempt + 1, esperando=wait)
-                        await asyncio.sleep(wait)
-                        continue
-                        
-                    response.raise_for_status()
-                    return response.json()["choices"][0]["message"]["content"]
-                    
-                except httpx.HTTPError as e:
-                    # ponytail: Catch all HTTP errors (including ConnectTimeout, ReadTimeout) to retry properly.
-                    if attempt == MAX_RETRIES - 1:
-                        logger.error("error_groq_definitivo", error=str(e))
-                        raise
+        for attempt in range(MAX_RETRIES):
+            try:
+                response = await self._client.post(
+                    api_url,
+                    headers={
+                        "Authorization": f"Bearer {self.api_key}",
+                        "Content-Type": "application/json",
+                    },
+                    json={
+                        "model": self.model,
+                        "messages": messages,
+                        "temperature": temperature,
+                        "max_tokens": max_tokens,
+                    },
+                )
+                
+                if response.status_code == 429:
                     wait = RETRY_BACKOFF * (2**attempt)
-                    logger.warning("error_groq_retry", intento=attempt + 1, esperando=wait, error=str(e))
+                    logger.warning("rate_limit_groq", intento=attempt + 1, esperando=wait)
                     await asyncio.sleep(wait)
+                    continue
+                    
+                response.raise_for_status()
+                return response.json()["choices"][0]["message"]["content"]
+                
+            except httpx.HTTPError as e:
+                # ponytail: Catch all HTTP errors (including ConnectTimeout, ReadTimeout) to retry properly.
+                if attempt == MAX_RETRIES - 1:
+                    logger.error("error_groq_definitivo", error=str(e))
+                    raise
+                wait = RETRY_BACKOFF * (2**attempt)
+                logger.warning("error_groq_retry", intento=attempt + 1, esperando=wait, error=str(e))
+                await asyncio.sleep(wait)
 
         raise RuntimeError("Groq API: máximo de reintentos excedido")
 

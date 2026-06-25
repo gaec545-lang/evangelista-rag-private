@@ -76,6 +76,6 @@ async def eip_router(state: GraphState) -> dict:
         "active_agents": active_agents,
         "tasks": tasks,
         "route": route,
-        "node_history": state.node_history + ["eip_router"],
-        "mermaid_log": state.mermaid_log + [log],
+        "node_history": ["eip_router"],
+        "mermaid_log": [log],
     }

@@ -22,7 +22,13 @@ if "asyncpg" in DATABASE_URL:
         parsed_url = parsed_url._replace(query=new_query)
         DATABASE_URL = urlunparse(parsed_url)
 
-engine = create_async_engine(DATABASE_URL, echo=False, connect_args=connect_args)
+engine = create_async_engine(
+    DATABASE_URL,
+    echo=False,
+    connect_args=connect_args,
+    pool_pre_ping=True,
+    pool_recycle=1800
+)
 AsyncSessionLocal = async_sessionmaker(engine, expire_on_commit=False, class_=AsyncSession)
 Base = declarative_base()
 

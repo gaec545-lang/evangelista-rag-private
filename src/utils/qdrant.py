@@ -18,7 +18,14 @@ def get_qdrant_client() -> QdrantClient:
             else:
                 https = settings.QDRANT_PORT == 443
                 logger.info("inicializando_qdrant_server", host=settings.QDRANT_HOST, port=settings.QDRANT_PORT, https=https)
-                _shared_client = QdrantClient(host=settings.QDRANT_HOST, port=settings.QDRANT_PORT, https=https)
+                # ponytail: support QDRANT_ALLOW_INSECURE (verify=False) in production on port 80 or for self-signed TLS
+                verify = not settings.QDRANT_ALLOW_INSECURE
+                _shared_client = QdrantClient(
+                    host=settings.QDRANT_HOST,
+                    port=settings.QDRANT_PORT,
+                    https=https,
+                    verify=verify
+                )
         except Exception as e:
             logger.error("error_inicializando_qdrant", error=str(e))
             raise

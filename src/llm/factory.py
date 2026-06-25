@@ -83,24 +83,27 @@ def _build_client_raw(name: str) -> Any:
     
     elif config.provider == "groq":
         from src.llm.groq_client import GroqClient
+        model_id = settings.GROQ_MODEL or config.model_id
         return GroqClient(
             api_key=key,
-            model=config.model_id,
+            model=model_id,
             base_url=config.base_url or "https://api.groq.com/openai/v1"
         )
     
     elif config.provider == "ollama":
         from src.llm.ollama_client import OllamaClient
+        model_id = settings.OLLAMA_MODEL or config.model_id
         return OllamaClient(
             base_url=config.base_url or settings.OLLAMA_BASE_URL,
-            model=config.model_id
+            model=model_id
         )
     
     elif config.provider == "anthropic":
         from src.llm.anthropic_client import AnthropicClient
+        model_id = settings.ANTHROPIC_MODEL or config.model_id
         return AnthropicClient(
             api_key=key,
-            model=config.model_id,
+            model=model_id,
             base_url=config.base_url or "https://api.anthropic.com"
         )
     

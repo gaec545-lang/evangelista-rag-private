@@ -116,3 +116,38 @@ class TestQueryEngine:
 
         results = await engine.search(query="test", agent_name="all", client_id="test_client")
         assert results == []
+
+    @pytest.mark.asyncio
+    async def test_search_aplica_filtros_sector_y_tipo(self):
+        """Verifica que los filtros de sector y tipo de documento sean construidos y aplicados."""
+        mock_embedder = AsyncMock()
+        mock_embedder.embed_single = AsyncMock(return_value=[0.1] * 768)
+
+        mock_client = MagicMock()
+        mock_response = MagicMock()
+        mock_response.points = [
+            make_mock_hit("EVK-TEST-002", "Case Study", "Estrategia", ["all"])
+        ]
+        mock_client.query_points.return_value = mock_response
+
+        engine = QueryEngine.__new__(QueryEngine)
+        engine.embedder = mock_embedder
+        engine.client = mock_client
+        engine.collection = "test_collection"
+
+        await engine.search(
+            query="test query",
+            agent_name="financial",
+            client_id="test_client",
+            sector_filter=["manufactura"],
+            type_filter=["case"]
+        )
+
+        assert mock_client.query_points.called
+        call_kwargs = mock_client.query_points.call_args[1]
+        qdrant_filter = call_kwargs["filter"]
+        
+        # Verificar que el filtro combinado contiene condiciones para 'sector' y 'type'
+        conditions = [cond.key for cond in qdrant_filter.must if hasattr(cond, "key")]
+        assert "sector" in conditions
+        assert "type" in conditions

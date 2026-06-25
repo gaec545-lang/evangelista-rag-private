@@ -40,12 +40,20 @@ def _matches_filter(payload: dict, qdrant_filter) -> bool:
 class HybridRetriever:
     _cached_bm25_index = None
     _cached_chunks_pool = None
+    _bm25_initialized = False
 
     def __init__(self, qdrant_client: QdrantClient, embedder, collection_name: str = "evangelista_knowledge"):
         self.qdrant = qdrant_client
         self.embedder = embedder
         self.collection = collection_name
         
+    @classmethod
+    def invalidate_cache(cls):
+        # ponytail: clear cached BM25 index and chunks pool to trigger rebuild
+        cls._cached_bm25_index = None
+        cls._cached_chunks_pool = None
+        cls._bm25_initialized = False
+
     @property
     def _bm25_index(self):
         return HybridRetriever._cached_bm25_index
@@ -65,6 +73,16 @@ class HybridRetriever:
     async def _build_bm25_index(self):
         # ponytail: scroll-based scan to build a local BM25 index from Qdrant
         try:
+            # ponytail: handle missing collection gracefully at startup
+            try:
+                self.qdrant.get_collection(self.collection)
+            except Exception:
+                logger.warning(f"Collection '{self.collection}' does not exist yet. Skipping BM25 indexing.")
+                HybridRetriever._cached_bm25_index = None
+                HybridRetriever._cached_chunks_pool = None
+                HybridRetriever._bm25_initialized = True
+                return
+
             offset = None
             all_points = []
             while True:
@@ -96,10 +114,13 @@ class HybridRetriever:
                 HybridRetriever._cached_bm25_index = None
                 HybridRetriever._cached_chunks_pool = None
                 logger.warning("No points found in Qdrant; BM25 index is empty.")
+            
+            HybridRetriever._bm25_initialized = True
         except Exception as e:
             logger.error(f"Failed to build BM25 index: {e}")
             HybridRetriever._cached_bm25_index = None
             HybridRetriever._cached_chunks_pool = None
+            HybridRetriever._bm25_initialized = False
         
     async def retrieve(
         self, 
@@ -115,7 +136,7 @@ class HybridRetriever:
         Aplica filtro agent_access OBLIGATORIO.
         """
         # Ensure BM25 is loaded
-        if HybridRetriever._cached_bm25_index is None:
+        if not HybridRetriever._bm25_initialized:
             await self._build_bm25_index()
 
         # 1. Generar vector denso

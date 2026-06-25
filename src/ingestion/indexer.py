@@ -85,6 +85,12 @@ class Indexer:
                 ),
             )
             logger.info("chunks_eliminados", doc_id=document_id)
+            # ponytail: invalidate BM25 cache
+            try:
+                from src.retrieval.hybrid_retriever import HybridRetriever
+                HybridRetriever.invalidate_cache()
+            except ImportError:
+                pass
             return 1
         except Exception as e:
             logger.error("error_eliminando_documento", doc_id=document_id, error=str(e))
@@ -137,6 +143,12 @@ class Indexer:
 
         self.client.upsert(collection_name=self.collection, points=points)
         logger.info("chunks_indexados", doc_id=document_id, total=len(chunks))
+        # ponytail: invalidate BM25 cache
+        try:
+            from src.retrieval.hybrid_retriever import HybridRetriever
+            HybridRetriever.invalidate_cache()
+        except ImportError:
+            pass
         return True
 
     def collection_stats(self) -> dict:

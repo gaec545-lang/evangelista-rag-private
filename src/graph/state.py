@@ -95,6 +95,8 @@ class GraphState(BaseModel):
     # ─── SYNTHESIS ────────────────────────────────────────────────────────────
     final_response: str = ""
     confidence: float = 0.0
+    final_pdf_data: dict = Field(default_factory=dict)
+
 
     # ─── META ─────────────────────────────────────────────────────────────────
     current_node: str = ""
